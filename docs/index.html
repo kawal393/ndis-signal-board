@@ -1,90 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>APEX NDIS Watchtower</title>
+
   <style>
     :root{
-      --bg:#070a0f; --panel:#0b1220; --panel2:#0b1426;
-      --text:#e6edf6; --muted:#9bb0c9; --line:rgba(255,255,255,.08);
-      --gold:#d7b36a; --glow:rgba(215,179,106,.18);
+      --bg:#070a0f;
+      --panel:#0b1220;
+      --line:#1c2a3a;
+      --text:#e6edf6;
+      --muted:#9bb0c9;
+      --gold:#d7b36a;
+      --glow:rgba(215,179,106,.35);
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background: radial-gradient(1200px 700px at 20% 0%, rgba(215,179,106,.14), transparent 60%),
-                  radial-gradient(900px 600px at 90% 10%, rgba(90,160,255,.10), transparent 55%),
-                  linear-gradient(180deg, #05070b, #070a0f 20%, #070a0f);
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, #0c1730 0%, transparent 60%),
+        radial-gradient(900px 500px at 80% -20%, #0a1a2a 0%, transparent 60%),
+        var(--bg);
       color:var(--text);
     }
-    .wrap{max-width:1100px; margin:0 auto; padding:18px 14px 40px;}
+    .wrap{max-width:1100px;margin:0 auto;padding:16px}
     .top{
-      display:flex; gap:12px; align-items:center; justify-content:space-between;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid var(--line); border-radius:14px; padding:12px 14px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,.02), 0 20px 60px rgba(0,0,0,.45);
+      display:flex;gap:12px;align-items:center;justify-content:space-between;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#0b1220,#080f1a);
+      padding:12px;border-radius:12px;
+      box-shadow:0 0 0 1px rgba(255,255,255,.03);
     }
-    .brand{display:flex; flex-direction:column; gap:2px}
-    .brand b{letter-spacing:.12em; font-size:12px; color:var(--gold)}
-    .brand span{font-size:12px; color:var(--muted)}
-    .pillrow{display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .brand{display:flex;flex-direction:column}
+    .brand b{letter-spacing:.12em}
+    .brand span{font-size:12px;color:var(--muted)}
+    .pillrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
     .pill{
-      font-size:12px; padding:6px 10px; border-radius:999px;
-      border:1px solid var(--line); background:rgba(255,255,255,.03);
-      color:var(--muted);
+      font-size:12px;padding:6px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted)
     }
     .pill strong{color:var(--text)}
     .btn{
-      border:1px solid var(--line); background:rgba(255,255,255,.04);
-      color:var(--text); padding:8px 10px; border-radius:10px;
-      font-size:12px; cursor:pointer;
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--text);
+      padding:8px 12px;
+      font-size:12px;
+      cursor:pointer;
+      border-radius:10px;
     }
-    .grid{display:grid; grid-template-columns:1.6fr 1fr; gap:12px; margin-top:12px}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+    .grid{display:grid;grid-template-columns:1fr;margin-top:14px}
     .panel{
-      border:1px solid var(--line); border-radius:14px;
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      padding:14px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,.02), 0 18px 40px rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#0b1220,#080f1a);
+      padding:14px;border-radius:14px;
+      box-shadow:0 0 0 1px rgba(255,255,255,.03);
     }
-    h1{margin:0 0 8px; font-size:22px; letter-spacing:.04em}
-    p{margin:0; color:var(--muted); line-height:1.45}
-    .kpis{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    h1{margin:0 0 8px;font-size:22px}
+    p{margin:0;color:var(--muted);line-height:1.5}
+    .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .kpi{
-      min-width:130px; padding:10px 12px; border-radius:12px;
-      border:1px solid var(--line); background:rgba(0,0,0,.25)
+      min-width:130px;padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(255,255,255,.03);
     }
-    .kpi b{display:block; font-size:18px; color:var(--gold)}
-    .kpi span{font-size:12px; color:var(--muted)}
-    .tablewrap{margin-top:12px; overflow:auto; border-radius:14px; border:1px solid var(--line)}
-    table{width:100%; border-collapse:collapse; min-width:760px; background:rgba(0,0,0,.20)}
-    th,td{padding:10px 10px; border-bottom:1px solid var(--line); font-size:12px; text-align:left}
-    th{color:var(--muted); font-weight:600; letter-spacing:.08em; text-transform:uppercase}
+    .kpi b{display:block;font-size:18px}
+    .kpi span{font-size:12px;color:var(--muted)}
+    .tablewrap{margin-top:12px;overflow:auto}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}
+    th{color:var(--muted);font-weight:600}
     tr:hover td{background:rgba(255,255,255,.03)}
-    .risk{display:inline-flex; align-items:center; gap:8px}
-    .dot{width:8px; height:8px; border-radius:999px; background:#999}
+    .risk{display:inline-flex;align-items:center;gap:6px}
+    .dot{width:8px;height:8px;border-radius:50%}
     .HIGH .dot{background:#ff5252}
     .MED .dot{background:#ffb020}
     .LOW .dot{background:#4ee37b}
-    .footer{margin-top:14px; font-size:12px; color:var(--muted)}
-    .smalllink{color:var(--gold); text-decoration:none}
-    .smalllink:hover{text-decoration:underline}
-    .lockbox{
-      margin-top:12px; padding:12px; border-radius:14px;
-      border:1px solid rgba(215,179,106,.28);
-      background: radial-gradient(600px 120px at 20% 0%, var(--glow), transparent 60%),
-                  rgba(0,0,0,.25);
-    }
-    .lockrow{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px}
-    input{
-      flex:1; min-width:220px;
-      background:rgba(255,255,255,.03); border:1px solid var(--line);
-      border-radius:10px; padding:10px; color:var(--text);
-      outline:none;
-    }
+    footer{margin-top:14px;font-size:12px;color:var(--muted)}
+    small a{color:var(--gold);text-decoration:none}
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="top">
@@ -93,138 +94,102 @@
         <span>Compliance & risk intelligence • Automated</span>
       </div>
       <div class="pillrow">
-        <span class="pill">Status: <strong id="status">Loading</strong></span>
-        <span class="pill">Last updated: <strong id="updated">—</strong></span>
-        <button class="btn" onclick="loadSignals(true)">Force Refresh</button>
+        <span class="pill">Status: <strong id="status">—</strong></span>
+        <span class="pill">Last update: <strong id="last-updated">—</strong></span>
+        <button class="btn" onclick="location.reload()">Force refresh</button>
       </div>
     </div>
 
     <div class="grid">
       <div class="panel">
         <h1>Signals of Enforcement Pressure</h1>
-        <p>This board ingests publicly released enforcement/compliance action data and renders it as a clean, searchable signal feed.</p>
+        <p>This board ingests publicly released NDIS enforcement data and renders it as a clean, searchable signal feed.</p>
 
         <div class="kpis">
-          <div class="kpi"><b id="k_rows">—</b><span>Rows</span></div>
+          <div class="kpi"><b id="k_total">—</b><span>Total records</span></div>
           <div class="kpi"><b id="k_high">—</b><span>High risk</span></div>
           <div class="kpi"><b id="k_med">—</b><span>Medium risk</span></div>
           <div class="kpi"><b id="k_low">—</b><span>Low risk</span></div>
         </div>
 
-        <div class="lockbox">
-          <b style="color:var(--gold); letter-spacing:.08em">Subscriber Access</b>
-          <p style="margin-top:6px">Public view is live. Premium access can unlock extended fields + faster iterations.</p>
-          <div class="lockrow">
-            <a class="btn" href="https://apex888.gumroad.com/l/bjivdq" target="_blank" rel="noreferrer">Subscribe on Gumroad</a>
-            <input id="license" placeholder="Paste Gumroad license key (optional)" />
-            <button class="btn" onclick="unlock()">Unlock</button>
-          </div>
-          <div class="footer" id="unlockmsg"></div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <h1 style="font-size:18px">What you get</h1>
-        <p>Instant search + filtering, risk visualization, and continuous updates.</p>
-        <div class="footer" style="margin-top:12px">
-          Data source: public releases by the NDIS Commission. This is a rendering layer.<br/>
-          <a class="smalllink" href="signals.json" target="_blank" rel="noreferrer">View raw signals.json</a>
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Risk</th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>State</th>
+                <th>Effective</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <div class="panel" style="margin-top:12px">
-      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between">
-        <b style="letter-spacing:.10em">Signal Board</b>
-        <input id="q" placeholder="Search provider, type, state…" style="max-width:420px" oninput="render()" />
-      </div>
-
-      <div class="tablewrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Risk</th>
-              <th>Type</th>
-              <th>Name</th>
-              <th>State</th>
-              <th>Effective</th>
-              <th>End</th>
-            </tr>
-          </thead>
-          <tbody id="rows"></tbody>
-        </table>
-      </div>
-
-      <div class="footer">Built on GitHub Pages • Updates via GitHub Actions schedule</div>
-    </div>
+    <footer>
+      <small>
+        Data source: public releases by the NDIS Commission. This is an information service, not advice.
+      </small>
+    </footer>
   </div>
 
-<script>
-  let DATA = { signals: [], updated_utc: "" };
-
-  function fmtDate(s){
-    if(!s) return "";
-    return s;
-  }
-
-  function setKpis(){
-    const s = DATA.signals || [];
-    const high = s.filter(x=>x.risk==="HIGH").length;
-    const med  = s.filter(x=>x.risk==="MED").length;
-    const low  = s.filter(x=>x.risk==="LOW").length;
-    document.getElementById("k_rows").textContent = s.length;
-    document.getElementById("k_high").textContent = high;
-    document.getElementById("k_med").textContent  = med;
-    document.getElementById("k_low").textContent  = low;
-  }
-
-  function render(){
-    const q = (document.getElementById("q").value || "").toLowerCase().trim();
-    const tbody = document.getElementById("rows");
-    const rows = (DATA.signals || []).filter(x=>{
-      const blob = `${x.risk} ${x.type} ${x.name} ${x.state} ${x.effective} ${x.end}`.toLowerCase();
-      return !q || blob.includes(q);
-    });
-
-    tbody.innerHTML = rows.slice(0, 300).map(x => `
-      <tr class="${x.risk}">
-        <td><span class="risk"><span class="dot"></span>${x.risk}</span></td>
-        <td>${x.type || ""}</td>
-        <td>${x.name || ""}</td>
-        <td>${x.state || ""}</td>
-        <td>${fmtDate(x.effective)}</td>
-        <td>${fmtDate(x.end)}</td>
-      </tr>
-    `).join("");
-  }
-
-  async function loadSignals(bust=false){
-    document.getElementById("status").textContent = "Loading";
-    const url = "signals.json" + (bust ? ("?ts=" + Date.now()) : "");
-    const res = await fetch(url, { cache: "no-store" });
-    DATA = await res.json();
-
-    document.getElementById("updated").textContent = DATA.updated_utc || "—";
-    document.getElementById("status").textContent = "Ready";
-    setKpis();
-    render();
-  }
-
-  // NOTE: Front-end Gumroad license verification is NOT secure.
-  // This is only a soft gate. Real gating requires a server.
-  async function unlock(){
-    const key = (document.getElementById("license").value || "").trim();
-    const msg = document.getElementById("unlockmsg");
-    if(!key){
-      msg.textContent = "Paste your Gumroad license key from your receipt email.";
-      return;
+  <script>
+    async function loadJSON(path){
+      const r = await fetch(path);
+      return r.json();
     }
-    msg.textContent = "Key saved (soft unlock). Premium gating requires server verification.";
-    localStorage.setItem("gumroad_license_key", key);
-  }
 
-  // Load on start (cache-busted)
-  loadSignals(true);
-</script>
+    async function init(){
+      try{
+        const [signals, meta] = await Promise.all([
+          loadJSON("signals.json"),
+          loadJSON("meta.json")
+        ]);
+
+        // Meta
+        if(meta){
+          document.getElementById("status").textContent = meta.status || "OK";
+          if(meta.updated_at){
+            document.getElementById("last-updated").textContent =
+              new Date(meta.updated_at).toLocaleString();
+          }
+        }
+
+        // KPIs
+        const counts = {HIGH:0, MED:0, LOW:0};
+        signals.forEach(s => counts[s.risk] = (counts[s.risk] || 0) + 1);
+        document.getElementById("k_total").textContent = signals.length;
+        document.getElementById("k_high").textContent = counts.HIGH || 0;
+        document.getElementById("k_med").textContent = counts.MED || 0;
+        document.getElementById("k_low").textContent = counts.LOW || 0;
+
+        // Table
+        const tbody = document.getElementById("rows");
+        tbody.innerHTML = "";
+        signals.forEach(s => {
+          const tr = document.createElement("tr");
+          tr.className = s.risk;
+          tr.innerHTML = `
+            <td class="risk"><span class="dot"></span>${s.risk}</td>
+            <td>${s.type}</td>
+            <td>${s.name}</td>
+            <td>${s.state}</td>
+            <td>${s.effective}</td>
+            <td>${s.end || ""}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+      }catch(e){
+        console.error(e);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
 </body>
 </html>
