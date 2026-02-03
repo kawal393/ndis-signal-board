@@ -122,7 +122,7 @@
       <div class="panel">
         <h1>Signals of Enforcement Pressure</h1>
         <p>
-          This board monitors publicly released NDIS enforcement actions so providers can detect compliance pressure early
+          A single board that tracks publicly released enforcement actions so providers can detect compliance pressure early
           — before audits, sanctions, or registration action.
         </p>
 
@@ -136,13 +136,14 @@
         <div class="lockbox">
           <b class="gold">Subscriber Access</b>
           <div class="hint">
-            Public view is live. Premium unlock adds extended fields + faster iterations (alerts, export, deep filters).
+            Premium unlock = “Majestic Layer” (alerts + exports + deeper fields). Public view stays live.
           </div>
 
           <div class="lockrow">
-            <!-- IMPORTANT: replace the href below with YOUR real Gumroad product link -->
-            <a class="btn" id="gumroadBtn" href="https://gumroad.com/" target="_blank" rel="noreferrer">Subscribe on Gumroad</a>
-            <input id="licenseInput" placeholder="Paste Gumroad license key (optional)" />
+            <a class="btn" id="gumroadBtn" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">
+              Subscribe on Gumroad
+            </a>
+            <input id="licenseInput" placeholder="Paste Gumroad license key (after purchase)" />
             <button class="btn" id="unlockBtn" type="button">Unlock</button>
           </div>
 
@@ -178,11 +179,11 @@
       <div class="panel">
         <h1>What you get</h1>
         <p>
-          One place to monitor enforcement actions with search + filtering, a simple risk lens, and continuous updates.
-          Premium adds automation (alerts) and operational utility (export + deep views).
+          Instant search + filtering, a risk lens, and continuous updates. Premium adds operational power:
+          alerts, exports, and deeper views for compliance teams and owners.
         </p>
         <div class="footer" style="margin-top:10px">
-          <span class="gold">Premium promise:</span> “Don’t miss a risk signal again.”
+          <span class="gold">Premium promise:</span> Don’t miss a risk signal again.
         </div>
       </div>
     </div>
@@ -196,7 +197,7 @@
   let filtered = [];
 
   function fmtDate(s){
-    if(!s) return "";
+    if(!s) return "—";
     try{
       const d = new Date(s);
       if (isNaN(d.getTime())) return s;
@@ -216,9 +217,7 @@
     const q = (document.getElementById("search").value || "").toLowerCase().trim();
     filtered = allSignals.filter(s => {
       if(!q) return true;
-      const hay = [
-        s.risk, s.type, s.name, s.state, s.effective, s.end
-      ].join(" ").toLowerCase();
+      const hay = [s.risk,s.type,s.name,s.state,s.effective,s.end].join(" ").toLowerCase();
       return hay.includes(q);
     });
 
@@ -250,13 +249,7 @@
       const tdEnd = document.createElement("td");
       tdEnd.textContent = s.end || "";
 
-      tr.appendChild(tdRisk);
-      tr.appendChild(tdType);
-      tr.appendChild(tdName);
-      tr.appendChild(tdState);
-      tr.appendChild(tdEff);
-      tr.appendChild(tdEnd);
-
+      tr.append(tdRisk, tdType, tdName, tdState, tdEff, tdEnd);
       tbody.appendChild(tr);
     }
 
@@ -273,12 +266,12 @@
   }
 
   async function load(){
-    // meta
+    // meta (safe fallback)
     try{
       const m = await fetch(META_URL, {cache:"no-store"});
       const meta = await m.json();
       document.getElementById("statusText").textContent = meta.status || "OK";
-      document.getElementById("updatedText").textContent = fmtDate(meta.updated_at || meta.updated_utc || "");
+      document.getElementById("updatedText").textContent = fmtDate(meta.updated_at || meta.updated_utc || meta.updated || "");
     }catch(e){
       document.getElementById("statusText").textContent = "OK";
       document.getElementById("updatedText").textContent = "—";
@@ -288,11 +281,9 @@
     const r = await fetch(SIGNALS_URL, {cache:"no-store"});
     const data = await r.json();
 
-    // support both formats:
-    // (A) { updated_utc, count, signals:[...] }
-    // (B) { signals:[...] }
+    // supports: { signals:[...] } OR [...] directly
     const arr = Array.isArray(data) ? data : (data.signals || []);
-    allSignals = arr.slice(0, 500); // cap for mobile performance
+    allSignals = arr.slice(0, 500); // keep mobile fast
     render();
   }
 
@@ -300,17 +291,16 @@
   document.getElementById("refreshBtn").addEventListener("click", () => load());
 
   document.getElementById("unlockBtn").addEventListener("click", () => {
-    // Minimal premium behavior for now:
-    // If they have a key, send to premium page. If not, nudge purchase.
     const key = (document.getElementById("licenseInput").value || "").trim();
     const msg = document.getElementById("unlockMsg");
     if(!key){
-      msg.textContent = "No license key detected. Subscribe on Gumroad, then paste your license key here.";
+      msg.textContent = "Paste your Gumroad license key (after purchase).";
       return;
     }
-    msg.textContent = "Key received. Redirecting to premium…";
-    // premium page in docs/unlocked.html
-    setTimeout(() => { window.location.href = "./unlocked.html?license=" + encodeURIComponent(key); }, 400);
+    msg.textContent = "Key received. Opening Majestic Layer…";
+    setTimeout(() => {
+      window.location.href = "./unlocked.html?license=" + encodeURIComponent(key);
+    }, 250);
   });
 
   load();
