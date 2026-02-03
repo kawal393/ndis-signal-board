@@ -1,8 +1,8 @@
 // scripts/Ingest.js
-// Minimal working ingest script (PROVES automation works)
+// Minimal working ingest script (CommonJS – guaranteed to run)
 
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
 // Where the website reads data from
 const OUT_DIR = "public";
