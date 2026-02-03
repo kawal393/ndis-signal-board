@@ -1,0 +1,18 @@
+[
+  {
+    "risk": "HIGH",
+    "type": "ER - Banning Order",
+    "name": "Example Provider Pty Ltd",
+    "state": "VIC",
+    "effective": "2026-02-03",
+    "end": ""
+  },
+  {
+    "risk": "MED",
+    "type": "ER - Compliance Notice",
+    "name": "Second Example Care Pty Ltd",
+    "state": "NSW",
+    "effective": "2026-02-01",
+    "end": ""
+  }
+]
