@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NDIS Signal Board</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 18px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+    .tag { display:inline-block; padding:2px 8px; border-radius:999px; background:#f2f2f2; margin-right:6px; font-size:12px;}
+    .score { font-weight: bold; }
+    a { text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>NDIS Signal Board</h1>
+  <p>Auto-updated daily. Public preview. <b>PRO</b> gives early + filtered signals.</p>
+
+  <p>
+    <a href="https://gumroad.com/" target="_blank">🔒 Buy PRO (link this later)</a>
+  </p>
+
+  <div id="meta"></div>
+  <div id="list"></div>
+
+  <script>
+    async function run() {
+      const res = await fetch("./signals.json?cache=" + Date.now());
+      const data = await res.json();
+      document.getElementById("meta").innerHTML =
+        `<p>Last updated: <b>${data.generated_at}</b> | Items: <b>${data.items.length}</b></p>`;
+
+      const el = document.getElementById("list");
+      el.innerHTML = "";
+      data.items.slice(0, 30).forEach(item => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <div>
+            <span class="tag">${item.changeType || "Signal"}</span>
+            <span class="tag">${item.affectedArea || "AU"}</span>
+            <span class="tag">${item.affectedService || "All"}</span>
+            <span class="score">Impact: ${item.impactScore ?? "-"}</span>
+          </div>
+          <h3>${item.title || "Update"}</h3>
+          <p>${item.why || item.summary || ""}</p>
+          <p><a href="${item.link}" target="_blank">Source</a></p>
+        `;
+        el.appendChild(div);
+      });
+    }
+    run();
+  </script>
+</body>
+</html>
