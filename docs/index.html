@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>APEX NDIS Watchtower</title>
 
   <style>
@@ -14,15 +14,18 @@
       --muted:#9bb0c9;
       --gold:#d7b36a;
       --glow:rgba(215,179,106,.35);
+      --bad:#ff5252;
+      --mid:#ffb020;
+      --good:#4ee37b;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
       background:
-        radial-gradient(1200px 600px at 20% -10%, #0c1730 0%, transparent 60%),
+        radial-gradient(1200px 600px at 15% -10%, #0c1730 0%, transparent 60%),
         radial-gradient(900px 500px at 80% -20%, #0a1a2a 0%, transparent 60%),
-        var(--bg);
+        linear-gradient(180deg,#06080c,#070a0f);
       color:var(--text);
     }
     .wrap{max-width:1100px;margin:0 auto;padding:16px}
@@ -36,7 +39,7 @@
     .brand{display:flex;flex-direction:column}
     .brand b{letter-spacing:.12em}
     .brand span{font-size:12px;color:var(--muted)}
-    .pillrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .pillrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
     .pill{
       font-size:12px;padding:6px 10px;border-radius:999px;
       border:1px solid var(--line);
@@ -53,7 +56,7 @@
       cursor:pointer;
       border-radius:10px;
     }
-    .grid{display:grid;grid-template-columns:1fr;margin-top:14px}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
     .panel{
       border:1px solid var(--line);
       background:linear-gradient(180deg,#0b1220,#080f1a);
@@ -62,6 +65,7 @@
     }
     h1{margin:0 0 8px;font-size:22px}
     p{margin:0;color:var(--muted);line-height:1.5}
+
     .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .kpi{
       min-width:130px;padding:10px 12px;
@@ -71,16 +75,34 @@
     }
     .kpi b{display:block;font-size:18px}
     .kpi span{font-size:12px;color:var(--muted)}
-    .tablewrap{margin-top:12px;overflow:auto}
-    table{width:100%;border-collapse:collapse}
+
+    .controls{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+      margin-top:12px;
+    }
+    .search{
+      flex:1;
+      min-width:240px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:12px;
+      padding:10px 12px;
+      color:var(--text);
+      outline:none;
+      font-size:13px;
+    }
+    .note{font-size:12px;color:var(--muted)}
+
+    .tablewrap{margin-top:12px;overflow:auto;border-radius:12px}
+    table{width:100%;border-collapse:collapse;min-width:780px}
     th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}
     th{color:var(--muted);font-weight:600}
     tr:hover td{background:rgba(255,255,255,.03)}
     .risk{display:inline-flex;align-items:center;gap:6px}
     .dot{width:8px;height:8px;border-radius:50%}
-    .HIGH .dot{background:#ff5252}
-    .MED .dot{background:#ffb020}
-    .LOW .dot{background:#4ee37b}
+    .HIGH .dot{background:var(--bad)}
+    .MED .dot{background:var(--mid)}
+    .LOW .dot{background:var(--good)}
     footer{margin-top:14px;font-size:12px;color:var(--muted)}
     small a{color:var(--gold);text-decoration:none}
   </style>
@@ -93,8 +115,9 @@
         <b>APEX NDIS WATCHTOWER</b>
         <span>Compliance & risk intelligence • Automated</span>
       </div>
+
       <div class="pillrow">
-        <span class="pill">Status: <strong id="status">—</strong></span>
+        <span class="pill">Status: <strong id="status">Loading…</strong></span>
         <span class="pill">Last update: <strong id="last-updated">—</strong></span>
         <button class="btn" onclick="location.reload()">Force refresh</button>
       </div>
@@ -112,6 +135,11 @@
           <div class="kpi"><b id="k_low">—</b><span>Low risk</span></div>
         </div>
 
+        <div class="controls">
+          <input id="q" class="search" placeholder="Search name, type, state, risk…" />
+          <span class="note" id="shown">— shown</span>
+        </div>
+
         <div class="tablewrap">
           <table>
             <thead>
@@ -127,69 +155,150 @@
             <tbody id="rows"></tbody>
           </table>
         </div>
+
+        <footer>
+          <small>
+            Data source: public releases by the NDIS Commission. This is an information service, not advice.
+          </small>
+        </footer>
       </div>
     </div>
-
-    <footer>
-      <small>
-        Data source: public releases by the NDIS Commission. This is an information service, not advice.
-      </small>
-    </footer>
   </div>
 
   <script>
     async function loadJSON(path){
-      const r = await fetch(path);
-      return r.json();
+      const res = await fetch(path, { cache: "no-store" });
+      if(!res.ok) throw new Error(path + " " + res.status);
+      return res.json();
+    }
+
+    function safeText(x){
+      return (x === null || x === undefined) ? "" : String(x);
+    }
+
+    function normalizeSignals(payload){
+      // Supports:
+      // 1) { updated_utc, count, signals:[...] }  <-- your current format
+      // 2) [...] (array)                           <-- older format (fallback)
+      if(Array.isArray(payload)) {
+        return { updated_utc: null, count: payload.length, signals: payload };
+      }
+      if(payload && Array.isArray(payload.signals)) {
+        return payload;
+      }
+      return { updated_utc: null, count: 0, signals: [] };
+    }
+
+    function setStatus(text){
+      document.getElementById("status").textContent = text;
+    }
+
+    function setLastUpdated(iso){
+      if(!iso) return;
+      const d = new Date(iso);
+      const out = isNaN(d.getTime()) ? iso : d.toLocaleString();
+      document.getElementById("last-updated").textContent = out;
+    }
+
+    function renderKPIs(list){
+      const counts = { HIGH:0, MED:0, LOW:0 };
+      list.forEach(s => counts[s.risk] = (counts[s.risk] || 0) + 1);
+
+      document.getElementById("k_total").textContent = list.length;
+      document.getElementById("k_high").textContent = counts.HIGH || 0;
+      document.getElementById("k_med").textContent = counts.MED || 0;
+      document.getElementById("k_low").textContent = counts.LOW || 0;
+    }
+
+    function rowHTML(s){
+      const risk = safeText(s.risk).toUpperCase();
+      const type = safeText(s.type);
+      const name = safeText(s.name);
+      const state = safeText(s.state);
+      const effective = safeText(s.effective);
+      const end = safeText(s.end);
+
+      return `
+        <tr class="${risk}">
+          <td class="risk"><span class="dot"></span>${risk}</td>
+          <td>${type}</td>
+          <td>${name}</td>
+          <td>${state}</td>
+          <td>${effective}</td>
+          <td>${end}</td>
+        </tr>
+      `;
+    }
+
+    function renderTable(list){
+      const tbody = document.getElementById("rows");
+      tbody.innerHTML = list.map(rowHTML).join("");
+      document.getElementById("shown").textContent = list.length + " shown";
+    }
+
+    function filterSignals(all, q){
+      const s = (q || "").trim().toLowerCase();
+      if(!s) return all;
+
+      return all.filter(x => {
+        return (
+          safeText(x.risk).toLowerCase().includes(s) ||
+          safeText(x.type).toLowerCase().includes(s) ||
+          safeText(x.name).toLowerCase().includes(s) ||
+          safeText(x.state).toLowerCase().includes(s) ||
+          safeText(x.effective).toLowerCase().includes(s) ||
+          safeText(x.end).toLowerCase().includes(s)
+        );
+      });
     }
 
     async function init(){
-      try{
-        const [signals, meta] = await Promise.all([
-          loadJSON("signals.json"),
-          loadJSON("meta.json")
-        ]);
+      setStatus("Loading…");
 
-        // Meta
-        if(meta){
-          document.getElementById("status").textContent = meta.status || "OK";
-          if(meta.updated_at){
-            document.getElementById("last-updated").textContent =
-              new Date(meta.updated_at).toLocaleString();
-          }
-        }
+      let payload, meta = null;
 
-        // KPIs
-        const counts = {HIGH:0, MED:0, LOW:0};
-        signals.forEach(s => counts[s.risk] = (counts[s.risk] || 0) + 1);
-        document.getElementById("k_total").textContent = signals.length;
-        document.getElementById("k_high").textContent = counts.HIGH || 0;
-        document.getElementById("k_med").textContent = counts.MED || 0;
-        document.getElementById("k_low").textContent = counts.LOW || 0;
+      // 1) Load signals (required)
+      payload = await loadJSON("signals.json");
+      const normalized = normalizeSignals(payload);
+      const signals = normalized.signals || [];
 
-        // Table
-        const tbody = document.getElementById("rows");
-        tbody.innerHTML = "";
-        signals.forEach(s => {
-          const tr = document.createElement("tr");
-          tr.className = s.risk;
-          tr.innerHTML = `
-            <td class="risk"><span class="dot"></span>${s.risk}</td>
-            <td>${s.type}</td>
-            <td>${s.name}</td>
-            <td>${s.state}</td>
-            <td>${s.effective}</td>
-            <td>${s.end || ""}</td>
-          `;
-          tbody.appendChild(tr);
-        });
-
-      }catch(e){
-        console.error(e);
+      // 2) Load meta (optional)
+      try {
+        meta = await loadJSON("meta.json");
+      } catch(e) {
+        // meta.json might not exist in docs/ yet — that's fine
+        meta = null;
       }
+
+      // 3) Status + timestamps
+      if(meta && (meta.status || meta.updated_at)){
+        setStatus(meta.status || "OK");
+        setLastUpdated(meta.updated_at || meta.updated_utc);
+      } else {
+        setStatus("OK");
+        // fallback to signals.json updated_utc
+        setLastUpdated(normalized.updated_utc);
+      }
+
+      // 4) KPIs + table
+      renderKPIs(signals);
+      renderTable(signals);
+
+      // 5) Search
+      const q = document.getElementById("q");
+      q.addEventListener("input", () => {
+        const filtered = filterSignals(signals, q.value);
+        renderKPIs(filtered);
+        renderTable(filtered);
+      });
     }
 
-    document.addEventListener("DOMContentLoaded", init);
+    init().catch(err => {
+      console.error(err);
+      setStatus("Error");
+      document.getElementById("last-updated").textContent = "—";
+      document.getElementById("shown").textContent = "0 shown";
+    });
   </script>
 </body>
 </html>
