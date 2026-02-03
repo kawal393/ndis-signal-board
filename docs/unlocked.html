@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>APEX NDIS Watchtower — Majestic Layer</title>
+  <style>
+    :root{
+      --bg:#070a0f; --panel:#0b1220; --line:#1a2a3a;
+      --text:#e6edf6; --muted:#9bb0c9;
+      --gold:#d7b36a; --good:#4ee37b; --bad:#ff5252;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(215,179,106,.10), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(120,180,255,.10), transparent 60%),
+        linear-gradient(180deg, #05070b, #070a0f 40%, #05070b);
+      color:var(--text);
+    }
+    .wrap{max-width:980px; margin:0 auto; padding:14px}
+    .top{
+      display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line); border-radius:16px; padding:12px 14px;
+      box-shadow:0 0 0 1px rgba(0,0,0,.35) inset;
+    }
+    .brand b{letter-spacing:.12em; font-size:12px}
+    .brand span{display:block; font-size:12px; color:var(--muted); margin-top:2px}
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      padding:8px 12px;
+      border-radius:10px;
+      font-size:12px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      white-space:nowrap;
+    }
+    .btn:hover{border-color:rgba(215,179,106,.55)}
+    .panel{
+      margin-top:12px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius:16px;
+      padding:14px;
+      box-shadow:0 0 0 1px rgba(0,0,0,.35) inset;
+    }
+    h1{margin:0 0 8px; font-size:20px}
+    p{margin:0; color:var(--muted); line-height:1.4}
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px}
+    input{
+      flex:1; min-width:260px;
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      color:var(--text);
+      border-radius:10px; padding:10px 10px;
+      outline:none;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--line); background:rgba(0,0,0,.18);
+      color:var(--muted);
+    }
+    .badge strong{color:var(--text)}
+    .ok{color:var(--good)}
+    .no{color:var(--bad)}
+    .gold{color:var(--gold)}
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    .small{margin-top:10px; font-size:12px; color:var(--muted)}
+    code{color:var(--gold)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <b>APEX NDIS WATCHTOWER</b>
+        <span>Majestic Layer • Premium</span>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <a class="btn" href="./index.html">← Back to public board</a>
+        <a class="btn" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Manage subscription</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h1>Premium Access Check</h1>
+      <p>
+        Enter your Gumroad license key to unlock premium functionality on this device.
+        (This page is the “door”. The advanced automation layer can be added next.)
+      </p>
+
+      <div class="row">
+        <span class="badge">Status: <strong id="status">Waiting</strong></span>
+        <input id="license" placeholder="Paste Gumroad license key" />
+        <button class="btn" id="saveBtn" type="button">Save key</button>
+      </div>
+
+      <div class="small" id="msg"></div>
+    </div>
+
+    <div class="panel">
+      <h1>What Premium Is (right now)</h1>
+      <p>
+        This is the premium pathway used to convert buyers cleanly. Next iteration can add real verification + gated fields.
+      </p>
+
+      <ul>
+        <li><span class="gold">Immediate:</span> paid users have a dedicated premium entry, not a dead button.</li>
+        <li><span class="gold">Next:</span> license verification (Gumroad API) + alerts + export buttons.</li>
+        <li><span class="gold">Outcome:</span> the board becomes a self-updating + paid intelligence utility.</li>
+      </ul>
+
+      <div class="small">
+        Your saved key is stored locally in this browser as: <code>apex_watchtower_license</code>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function getParam(name){
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name) || "";
+  }
+
+  const box = document.getElementById("license");
+  const status = document.getElementById("status");
+  const msg = document.getElementById("msg");
+
+  function setState(ok, text){
+    status.textContent = text;
+    status.className = ok ? "ok" : "no";
+  }
+
+  function loadKey(){
+    const fromUrl = getParam("license");
+    const fromStore = localStorage.getItem("apex_watchtower_license") || "";
+    const key = (fromUrl || fromStore || "").trim();
+    if(key) box.value = key;
+    return key;
+  }
+
+  function saveKey(){
+    const key = (box.value || "").trim();
+    if(!key){
+      setState(false, "Missing key");
+      msg.textContent = "Paste the Gumroad license key from your receipt email.";
+      return;
+    }
+    localStorage.setItem("apex_watchtower_license", key);
+    setState(true, "Key saved");
+    msg.textContent = "Saved. Next step can enable real verification + premium features.";
+  }
+
+  document.getElementById("saveBtn").addEventListener("click", saveKey);
+
+  const initial = loadKey();
+  if(initial){
+    setState(true, "Key detected");
+    msg.textContent = "Key detected from URL/local storage. Click “Save key” to store it.";
+  }else{
+    setState(false, "Waiting");
+    msg.textContent = "No key detected yet.";
+  }
+</script>
+</body>
+</html>
