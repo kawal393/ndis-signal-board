@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>APEX NDIS SIGNALS</title>
+  <meta name="description" content="Real-time Compliance & Risk Intelligence for the NDIS Ecosystem." />
+  <style>
+    :root{
+      --bg0:#070A0F;
+      --bg1:#0B1120;
+      --card:#0D162B;
+      --card2:#0A1328;
+      --text:#E6EAF2;
+      --muted:#9AA6BE;
+      --line:rgba(255,255,255,.08);
+      --gold:#D6B35A;
+      --gold2:#B99233;
+      --blue:#6AA8FF;
+      --ok:#34D399;
+      --warn:#FBBF24;
+      --bad:#FB7185;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(106,168,255,.18), transparent 55%),
+        radial-gradient(900px 600px at 90% 0%, rgba(214,179,90,.14), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(106,168,255,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+
+    a{color:inherit}
+    .wrap{
+      max-width:1120px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .sigil{
+      width:40px; height:40px; border-radius:14px;
+      background:
+        linear-gradient(135deg, rgba(214,179,90,.25), rgba(106,168,255,.18)),
+        radial-gradient(circle at 35% 30%, rgba(214,179,90,.35), transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(106,168,255,.35), transparent 55%);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .sigil:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: conic-gradient(from 180deg, rgba(214,179,90,.0), rgba(214,179,90,.35), rgba(106,168,255,.35), rgba(214,179,90,.0));
+      animation: spin 12s linear infinite;
+      filter: blur(0px);
+      opacity:.9;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .brand h1{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:rgba(230,234,242,.92);
+    }
+    .brand .sub{
+      margin-top:3px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .pillrow{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      background: rgba(13,22,43,.55);
+      backdrop-filter: blur(10px);
+      display:flex; align-items:center; gap:10px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
+      font-size:12px;
+      color:rgba(230,234,242,.9);
+      user-select:none;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(52,211,153,.12);
+    }
+    .dot.warn{background:var(--warn); box-shadow: 0 0 0 4px rgba(251,191,36,.12);}
+    .dot.bad{background:var(--bad); box-shadow: 0 0 0 4px rgba(251,113,133,.12);}
+
+    /* Hero */
+    .hero{
+      margin-top:14px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(800px 320px at 20% 10%, rgba(214,179,90,.18), transparent 55%),
+        radial-gradient(800px 360px at 85% 15%, rgba(106,168,255,.16), transparent 55%),
+        linear-gradient(180deg, rgba(13,22,43,.78), rgba(10,19,40,.65));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(214,179,90,.0), rgba(214,179,90,.08), rgba(106,168,255,.08), rgba(214,179,90,.0));
+      opacity:.55;
+      transform: translateX(-40%);
+      animation: sweep 8s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes sweep{
+      0%,100%{transform:translateX(-45%)}
+      50%{transform:translateX(45%)}
+    }
+    .heroInner{
+      padding:24px 20px 18px;
+    }
+    .heroTitle{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .heroTitle h2{
+      margin:0;
+      font-size:28px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      line-height:1.1;
+    }
+    .heroTitle h2 span{
+      background: linear-gradient(90deg, var(--gold), rgba(230,234,242,.95), var(--blue));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .heroMeta{
+      margin:10px 0 0;
+      color:rgba(230,234,242,.85);
+      font-size:13px;
+      line-height:1.45;
+      max-width:720px;
+    }
+    .ctaRow{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .ctaLeft{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      border:none;
+      cursor:pointer;
+      border-radius: 14px;
+      padding:11px 14px;
+      font-weight:700;
+      letter-spacing:.02em;
+      font-size:13px;
+      color:rgba(7,10,15,.95);
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      box-shadow: 0 14px 30px rgba(214,179,90,.18);
+      transition: transform .08s ease, filter .08s ease;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.02);}
+    .btn:active{transform: translateY(0px); filter: brightness(.98);}
+
+    .btn2{
+      border:1px solid rgba(255,255,255,.16);
+      cursor:pointer;
+      border-radius: 14px;
+      padding:11px 14px;
+      font-weight:700;
+      font-size:13px;
+      color:rgba(230,234,242,.92);
+      background: rgba(7,10,15,.15);
+      backdrop-filter: blur(10px);
+      transition: transform .08s ease, border-color .08s ease;
+    }
+    .btn2:hover{transform: translateY(-1px); border-color: rgba(214,179,90,.35);}
+    .btn2:active{transform: translateY(0px);}
+
+    /* Controls + Board */
+    .board{
+      margin-top:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(13,22,43,.78), rgba(10,19,40,.62));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .controls{
+      padding:14px 14px 12px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .controlLeft{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .search{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(7,10,15,.18);
+      min-width:min(520px, 92vw);
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+    }
+    .search input{
+      width:100%;
+      background:transparent;
+      border:none;
+      outline:none;
+      color:rgba(230,234,242,.92);
+      font-size:13px;
+    }
+    .search input::placeholder{color:rgba(154,166,190,.78)}
+
+    select{
+      appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      background: rgba(7,10,15,.18);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(230,234,242,.92);
+      padding:10px 12px;
+      border-radius:14px;
+      font-size:13px;
+      cursor:pointer;
+    }
+
+    .stats{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+      color:rgba(230,234,242,.86);
+      font-size:12px;
+    }
+    .stat{
+      padding:9px 11px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background: rgba(7,10,15,.12);
+    }
+    .stat b{color:rgba(230,234,242,.95)}
+    .mono{font-family:var(--mono)}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:13px;
+    }
+    thead th{
+      text-align:left;
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(154,166,190,.95);
+      padding:14px 14px;
+      border-bottom:1px solid var(--line);
+      background: rgba(7,10,15,.12);
+      position:sticky;
+      top:0;
+      z-index:5;
+      cursor:pointer;
+      user-select:none;
+    }
+    thead th .sort{
+      opacity:.5;
+      margin-left:6px;
+      font-size:10px;
+    }
+    tbody td{
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      color:rgba(230,234,242,.90);
+      vertical-align:top;
+    }
+    tbody tr:hover{
+      background: rgba(106,168,255,.06);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,10,15,.15);
+      white-space:nowrap;
+    }
+    .risk{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(52,211,153,.10);
+    }
+    .risk.warn{background:var(--warn); box-shadow: 0 0 0 4px rgba(251,191,36,.10);}
+    .risk.bad{background:var(--bad); box-shadow: 0 0 0 4px rgba(251,113,133,.10);}
+
+    .muted{color:rgba(154,166,190,.92)}
+    .small{font-size:12px}
+    .right{text-align:right}
+    .nowrap{white-space:nowrap}
+
+    .empty{
+      padding:26px 16px;
+      color:rgba(154,166,190,.92);
+      text-align:center;
+      line-height:1.5;
+    }
+    .error{
+      padding:16px;
+      border-top:1px solid var(--line);
+      background: rgba(251,113,133,.06);
+      color: rgba(230,234,242,.92);
+      font-size:12px;
+    }
+    .footer{
+      margin-top:14px;
+      color:rgba(154,166,190,.92);
+      font-size:12px;
+      line-height:1.5;
+      padding:0 4px;
+    }
+    .footer a{
+      color:rgba(214,179,90,.95);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(214,179,90,.35);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="sigil" aria-hidden="true"></div>
+        <div>
+          <h1>APEX NDIS SIGNALS</h1>
+          <div class="sub">Compliance & Risk Intelligence • Automated</div>
+        </div>
+      </div>
+
+      <div class="pillrow">
+        <div class="pill"><span class="dot" id="liveDot"></span><span id="liveText">LIVE</span></div>
+        <div class="pill"><span class="mono" id="lastUpdated">Last updated: —</span></div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="heroInner">
+        <div class="heroTitle">
+          <h2><span>Watchtower</span> for Enforcement Signals</h2>
+        </div>
+        <p class="heroMeta">
+          This board ingests publicly released enforcement/compliance action data and converts it into a clean, searchable signal feed — updated automatically by the engine.
+        </p>
+        <div class="ctaRow">
+          <div class="ctaLeft">
+            <button class="btn" id="jumpBtn">View Live Signals</button>
+            <button class="btn2" id="refreshBtn">Force Refresh</button>
+          </div>
+          <div class="muted small">Mode: <span class="mono">Public Intelligence</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="board" id="board">
+      <div class="controls">
+        <div class="controlLeft">
+          <div class="search" role="search">
+            <span class="muted">⌕</span>
+            <input id="q" placeholder="Search provider, action type, state, keywords…" autocomplete="off" />
+          </div>
+
+          <select id="typeFilter" title="Filter by action type">
+            <option value="all">All Types</option>
+          </select>
+
+          <select id="riskFilter" title="Filter by risk level">
+            <option value="all">All Risk</option>
+            <option value="bad">High</option>
+            <option value="warn">Medium</option>
+            <option value="ok">Low</option>
+          </select>
+        </div>
+
+        <div class="stats">
+          <div class="stat">Rows: <b id="count">0</b></div>
+          <div class="stat">High: <b id="high">0</b></div>
+          <div class="stat">Med: <b id="med">0</b></div>
+          <div class="stat">Low: <b id="low">0</b></div>
+        </div>
+      </div>
+
+      <div style="overflow:auto; max-height: 64vh;">
+        <table id="tbl">
+          <thead>
+            <tr>
+              <th data-key="risk">Risk <span class="sort" id="s_risk">↕</span></th>
+              <th data-key="type">Type <span class="sort" id="s_type">↕</span></th>
+              <th data-key="name">Name <span class="sort" id="s_name">↕</span></th>
+              <th data-key="state">State <span class="sort" id="s_state">↕</span></th>
+              <th data-key="start" class="nowrap">Effective <span class="sort" id="s_start">↕</span></th>
+              <th data-key="end" class="nowrap">Ends <span class="sort" id="s_end">↕</span></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <div class="empty" id="empty" style="display:none;">
+          No signals match your filters.
+        </div>
+      </div>
+
+      <div class="error" id="err" style="display:none;"></div>
+    </section>
+
+    <div class="footer">
+      Data is sourced from publicly available releases by the NDIS Commission and rendered as a signal board.
+      <br/>
+      Built on GitHub Pages • <a id="dataLink" href="./docs/signals.json">View raw signals.json</a>
+    </div>
+
+  </div>
+
+<script>
+(() => {
+  const DATA_URL = "./docs/signals.json";
+
+  const el = (id) => document.getElementById(id);
+
+  const state = {
+    raw: [],
+    rows: [],
+    sortKey: "start",
+    sortDir: "desc",
+  };
+
+  function toDate(v){
+    if(!v) return null;
+    // Accept ISO strings or "YYYY-MM-DD HH:mm" etc.
+    const d = new Date(v);
+    if(!isNaN(d)) return d;
+
+    // Try common patterns
+    const s = String(v).trim();
+    // If "2025-08-13 17:00" => "2025-08-13T17:00:00"
+    const fix = s.replace(" ", "T");
+    const d2 = new Date(fix);
+    if(!isNaN(d2)) return d2;
+
+    return null;
+  }
+
+  function fmtDate(d){
+    if(!d) return "—";
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,"0");
+    const day = String(d.getDate()).padStart(2,"0");
+    return `${y}-${m}-${day}`;
+  }
+
+  function normStr(v){
+    if(v === null || v === undefined) return "";
+    return String(v).trim();
+  }
+
+  function pick(obj, keys){
+    for(const k of keys){
+      if(obj && Object.prototype.hasOwnProperty.call(obj, k) && obj[k] !== null && obj[k] !== undefined && String(obj[k]).trim() !== ""){
+        return obj[k];
+      }
+    }
+    return "";
+  }
+
+  function inferRisk(type){
+    const t = normStr(type).toLowerCase();
+    // High: banning/revocation
+    if(t.includes("banning") || t.includes("revocation")) return "bad";
+    // Medium: compliance / conditions
+    if(t.includes("compliance") || t.includes("condition") || t.includes("enforce")) return "warn";
+    // Default: low
+    return "ok";
+  }
+
+  function riskLabel(r){
+    if(r === "bad") return "High";
+    if(r === "warn") return "Medium";
+    return "Low";
+  }
+
+  function riskDotClass(r){
+    if(r === "bad") return "risk bad";
+    if(r === "warn") return "risk warn";
+    return "risk";
+  }
+
+  function sanitize(text){
+    return normStr(text)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function buildRow(o){
+    // Your updater might output keys like: changeType, date_effective, date_end, name, state
+    const type = pick(o, ["type","changeType","action","action_type","Type"]);
+    const name = pick(o, ["name","Name","provider","provider_name","entity","Entity"]);
+    const stateVal = pick(o, ["state","State","jurisdiction","Jurisdiction"]);
+    const startVal = pick(o, ["start","date_effective","date_effective_from","effective","effective_from","Date effective from","dateStart"]);
+    const endVal = pick(o, ["end","date_end","date_no_longer_in","expires","expiry","Date no longer in","dateEnd"]);
+
+    const start = toDate(startVal);
+    const end = toDate(endVal);
+
+    const risk = inferRisk(type);
+
+    return {
+      risk,
+      riskLabel: riskLabel(risk),
+      type: normStr(type) || "—",
+      name: normStr(name) || "—",
+      state: normStr(stateVal) || "—",
+      start,
+      end,
+      startText: fmtDate(start),
+      endText: fmtDate(end),
+      _search: `${normStr(type)} ${normStr(name)} ${normStr(stateVal)} ${normStr(startVal)} ${normStr(endVal)}`.toLowerCase()
+    };
+  }
+
+  function fillTypeFilter(rows){
+    const sel = el("typeFilter");
+    const set = new Set();
+    rows.forEach(r => set.add(r.type));
+    const types = Array.from(set).filter(Boolean).sort((a,b)=>a.localeCompare(b));
+    // Keep first option, then add
+    sel.innerHTML = `<option value="all">All Types</option>` + types.map(t => `<option value="${sanitize(t)}">${sanitize(t)}</option>`).join("");
+  }
+
+  function sortRows(rows){
+    const {sortKey, sortDir} = state;
+    const dir = sortDir === "asc" ? 1 : -1;
+
+    const val = (r) => {
+      if(sortKey === "risk") return r.risk;          // ok/warn/bad
+      if(sortKey === "type") return r.type;
+      if(sortKey === "name") return r.name;
+      if(sortKey === "state") return r.state;
+      if(sortKey === "start") return r.start ? r.start.getTime() : 0;
+      if(sortKey === "end") return r.end ? r.end.getTime() : 0;
+      return "";
+    };
+
+    // risk ordering: bad > warn > ok
+    const riskRank = (x) => x === "bad" ? 3 : (x === "warn" ? 2 : 1);
+
+    return rows.slice().sort((a,b) => {
+      const A = val(a);
+      const B = val(b);
+
+      if(sortKey === "risk"){
+        return (riskRank(A) - riskRank(B)) * dir;
+      }
+      if(typeof A === "number" && typeof B === "number"){
+        return (A - B) * dir;
+      }
+      return String(A).localeCompare(String(B)) * dir;
+    });
+  }
+
+  function applyFilters(){
+    const q = normStr(el("q").value).toLowerCase();
+    const t = el("typeFilter").value;
+    const rf = el("riskFilter").value;
+
+    let rows = state.rows;
+
+    if(q){
+      rows = rows.filter(r => r._search.includes(q));
+    }
+    if(t !== "all"){
+      rows = rows.filter(r => r.type === t);
+    }
+    if(rf !== "all"){
+      rows = rows.filter(r => r.risk === rf);
+    }
+
+    rows = sortRows(rows);
+
+    render(rows);
+    renderStats(rows);
+  }
+
+  function render(rows){
+    const tb = el("tbody");
+    const empty = el("empty");
+
+    if(!rows.length){
+      tb.innerHTML = "";
+      empty.style.display = "block";
+      return;
+    }
+    empty.style.display = "none";
+
+    tb.innerHTML = rows.map(r => `
+      <tr>
+        <td>
+          <span class="badge">
+            <span class="${riskDotClass(r.risk)}"></span>
+            <span>${sanitize(r.riskLabel)}</span>
+          </span>
+        </td>
+        <td>${sanitize(r.type)}</td>
+        <td>${sanitize(r.name)}</td>
+        <td class="muted">${sanitize(r.state)}</td>
+        <td class="nowrap mono">${sanitize(r.startText)}</td>
+        <td class="nowrap mono">${sanitize(r.endText)}</td>
+      </tr>
+    `).join("");
+  }
+
+  function renderStats(rows){
+    el("count").textContent = rows.length;
+
+    let hi=0, med=0, lo=0;
+    for(const r of rows){
+      if(r.risk === "bad") hi++;
+      else if(r.risk === "warn") med++;
+      else lo++;
+    }
+    el("high").textContent = hi;
+    el("med").textContent = med;
+    el("low").textContent = lo;
+
+    // Live dot state
+    const dot = el("liveDot");
+    const txt = el("liveText");
+    if(hi > 0){
+      dot.className = "dot bad";
+      txt.textContent = "HIGH SIGNALS";
+    }else if(med > 0){
+      dot.className = "dot warn";
+      txt.textContent = "ACTIVE";
+    }else{
+      dot.className = "dot";
+      txt.textContent = "CALM";
+    }
+  }
+
+  function setSort(key){
+    if(state.sortKey === key){
+      state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+    }else{
+      state.sortKey = key;
+      state.sortDir = (key === "name" || key === "type" || key === "state") ? "asc" : "desc";
+    }
+    applyFilters();
+  }
+
+  function wireSort(){
+    document.querySelectorAll("thead th[data-key]").forEach(th => {
+      th.addEventListener("click", () => setSort(th.dataset.key));
+    });
+  }
+
+  async function load(){
+    el("err").style.display = "none";
+    // Bust cache
+    const url = `${DATA_URL}?v=${Date.now()}`;
+    const res = await fetch(url, {cache:"no-store"});
+    if(!res.ok){
+      throw new Error(`Failed to fetch signals.json (${res.status})`);
+    }
+    const data = await res.json();
+
+    const raw = Array.isArray(data) ? data : (Array.isArray(data.signals) ? data.signals : []);
+    state.raw = raw;
+    state.rows = raw.map(buildRow);
+
+    fillTypeFilter(state.rows);
+
+    // Last updated: use newest start date, fallback to now
+    const newest = state.rows
+      .map(r => r.start ? r.start.getTime() : 0)
+      .reduce((a,b) => Math.max(a,b), 0);
+
+    const d = newest ? new Date(newest) : new Date();
+    el("lastUpdated").textContent = `Last updated: ${fmtDate(d)}`;
+
+    applyFilters();
+  }
+
+  function wireControls(){
+    el("q").addEventListener("input", applyFilters);
+    el("typeFilter").addEventListener("change", applyFilters);
+    el("riskFilter").addEventListener("change", applyFilters);
+
+    el("refreshBtn").addEventListener("click", async () => {
+      el("refreshBtn").textContent = "Refreshing…";
+      try{
+        await load();
+      }catch(e){
+        showError(e);
+      }finally{
+        el("refreshBtn").textContent = "Force Refresh";
+      }
+    });
+
+    el("jumpBtn").addEventListener("click", () => {
+      document.getElementById("board").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  }
+
+  function showError(e){
+    const box = el("err");
+    box.style.display = "block";
+    box.innerHTML = `
+      <b>Load error:</b> ${sanitize(e && e.message ? e.message : String(e))}
+      <div class="muted" style="margin-top:6px;">
+        If this is a new deploy, wait 30–60 seconds then refresh. If it persists, confirm <span class="mono">docs/signals.json</span> exists and is valid JSON.
+      </div>
+    `;
+  }
+
+  // Init
+  wireSort();
+  wireControls();
+  load().catch(showError);
+})();
+</script>
+</body>
+</html>
