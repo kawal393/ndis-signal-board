@@ -4,127 +4,192 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>APEX NDIS Watchtower</title>
+  <meta name="description" content="NDIS enforcement & compliance signal board. Searchable risk feed + premium access." />
+
   <style>
     :root{
-      --bg:#070a0f; --panel:#0b1220; --line:#1a2a3a;
-      --text:#e6edf6; --muted:#9bb0c9;
+      --bg:#05070c;
+      --panel:#0b1220;
+      --panel2:#08101c;
+      --text:#e6edf6;
+      --muted:#9bb0c9;
+      --line:rgba(255,255,255,.08);
       --gold:#d7b36a;
+      --bad:#ff5252;
+      --med:#ffb020;
+      --good:#4ee37b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-      background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(215,179,106,.10), transparent 60%),
-        radial-gradient(900px 600px at 80% 20%, rgba(120,180,255,.10), transparent 60%),
-        linear-gradient(180deg, #05070b, #070a0f 40%, #05070b);
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(80,120,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 80% 10%, rgba(215,179,106,.12), transparent 60%),
+        radial-gradient(900px 600px at 50% 120%, rgba(80,255,190,.08), transparent 60%),
+        linear-gradient(180deg, #04060b, #05070c 40%, #05070c);
+      min-height:100vh;
     }
+    a{color:inherit; text-decoration:none}
     .wrap{max-width:1100px; margin:0 auto; padding:14px}
     .top{
-      display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid var(--line); border-radius:16px; padding:12px 14px;
-      box-shadow:0 0 0 1px rgba(0,0,0,.35) inset;
-    }
-    .brand b{letter-spacing:.12em; font-size:12px}
-    .brand span{display:block; font-size:12px; color:var(--muted); margin-top:2px}
-    .pillrow{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
-    .pill{
-      font-size:12px; padding:6px 10px; border-radius:999px;
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      padding:10px 12px;
+      border-radius:14px;
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex; flex-direction:column; line-height:1.1}
+    .brand b{letter-spacing:.12em; font-size:13px}
+    .brand span{font-size:12px; color:var(--muted)}
+    .pillrow{display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      font-size:12px; padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.02);
       color:var(--muted);
     }
     .pill strong{color:var(--text)}
     .btn{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
+      display:inline-flex; align-items:center; justify-content:center;
+      font-size:12px;
       padding:8px 12px;
       border-radius:10px;
-      font-size:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
       cursor:pointer;
-      text-decoration:none;
-      display:inline-flex; align-items:center; gap:8px;
-      white-space:nowrap;
+      transition:.15s;
+      gap:8px;
+      user-select:none;
     }
-    .btn:hover{border-color:rgba(215,179,106,.55)}
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.16)}
+    .btn.gold{
+      border-color: rgba(215,179,106,.35);
+      background: radial-gradient(700px 200px at 20% 0%, rgba(215,179,106,.18), rgba(255,255,255,.03));
+    }
     .grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.35fr .65fr;
       gap:12px;
       margin-top:12px;
     }
-    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+    @media(max-width:900px){ .grid{grid-template-columns:1fr} }
     .panel{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      border-radius:14px;
       padding:14px;
-      box-shadow:0 0 0 1px rgba(0,0,0,.35) inset;
+      box-shadow: var(--shadow);
     }
-    h1{margin:0 0 8px; font-size:20px}
-    p{margin:0; color:var(--muted); line-height:1.4}
-    .kpis{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    h1{margin:0 0 8px; font-size:22px}
+    p{margin:0; color:var(--muted); line-height:1.35}
+    .kpis{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
     .kpi{
-      min-width:130px; padding:10px 12px; border-radius:14px;
-      border:1px solid var(--line); background:rgba(0,0,0,.18);
+      min-width:140px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.15);
     }
-    .kpi b{display:block; font-size:18px; color:var(--text)}
+    .kpi b{display:block; font-size:18px}
     .kpi span{font-size:12px; color:var(--muted)}
     .lockbox{
-      margin-top:12px; padding:12px;
-      border:1px solid rgba(215,179,106,.25);
+      margin-top:12px;
+      padding:12px;
       border-radius:14px;
-      background:radial-gradient(600px 280px at 20% 0%, rgba(215,179,106,.10), rgba(0,0,0,.15));
+      border:1px solid rgba(215,179,106,.28);
+      background: radial-gradient(800px 200px at 20% 0%, rgba(215,179,106,.12), rgba(0,0,0,.18));
     }
-    .lockrow{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:8px}
+    .lockbox .row{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px}
     input{
-      flex:1; min-width:220px;
-      background:rgba(255,255,255,.03);
+      flex:1;
+      min-width:220px;
+      background: rgba(255,255,255,.03);
       border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 10px;
       color:var(--text);
-      border-radius:10px; padding:10px 10px;
       outline:none;
     }
-    .hint{margin-top:8px; font-size:12px; color:var(--muted)}
+    .small{font-size:12px; color:var(--muted)}
     .tablewrap{margin-top:12px; overflow:auto; border-radius:14px; border:1px solid var(--line)}
-    table{width:100%; border-collapse:collapse; font-size:12px}
-    th,td{padding:10px 10px; border-bottom:1px solid rgba(255,255,255,.06); vertical-align:top}
-    th{position:sticky; top:0; background:#0a1220; color:var(--muted); text-align:left; font-weight:600; z-index:2}
-    tr:hover td{background:rgba(255,255,255,.03)}
-    .risk{display:inline-flex; align-items:center; gap:8px}
+    table{width:100%; border-collapse:collapse; min-width:760px; background: rgba(0,0,0,.12)}
+    th,td{padding:10px 10px; border-bottom:1px solid rgba(255,255,255,.06); font-size:12px; vertical-align:top}
+    th{position:sticky; top:0; background: rgba(10,16,28,.9); color:var(--muted); text-align:left; z-index:2}
+    tr:hover td{background: rgba(255,255,255,.02)}
+    .risk{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:4px 8px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.09);
+      background: rgba(0,0,0,.18);
+      font-weight:600;
+      letter-spacing:.04em;
+    }
     .dot{width:8px; height:8px; border-radius:50%}
-    .HIGH .dot{background:#ff5252}
-    .MED .dot{background:#ffb020}
-    .LOW .dot{background:#4ee37b}
-    .searchrow{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:12px}
-    .rightnote{font-size:12px; color:var(--muted); margin-left:auto}
-    .footer{margin-top:12px; font-size:12px; color:var(--muted)}
-    .gold{color:var(--gold)}
+    .HIGH .dot{background:var(--bad)}
+    .MED .dot{background:var(--med)}
+    .LOW .dot{background:var(--good)}
+    .foot{
+      margin-top:10px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .link{color: var(--gold); text-decoration:underline; text-underline-offset:3px}
+    .rightbox h2{margin:0 0 8px; font-size:14px; letter-spacing:.08em}
+    .rightbox ul{margin:0; padding-left:18px; color:var(--muted); font-size:12px; line-height:1.45}
+    .notice{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      font-size:12px;
+      color:var(--muted);
+    }
+    .alert{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,82,82,.18);
+      background: rgba(255,82,82,.06);
+      font-size:12px;
+      color:var(--muted);
+      display:none;
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
+
+    <!-- TOP BAR -->
     <div class="top">
       <div class="brand">
         <b>APEX NDIS WATCHTOWER</b>
         <span>Compliance & risk intelligence • Automated</span>
       </div>
+
       <div class="pillrow">
-        <span class="pill">Status: <strong id="statusText">—</strong></span>
-        <span class="pill">Last update: <strong id="updatedText">—</strong></span>
-        <button class="btn" id="refreshBtn" type="button">Force refresh</button>
+        <span class="pill">Status: <strong id="status">Loading</strong></span>
+        <span class="pill">Last update: <strong id="lastUpdate">—</strong></span>
+        <button class="btn" id="refreshBtn">Force refresh</button>
+        <!-- IMPORTANT: BUY BUTTON -->
+        <a class="btn gold" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Buy Premium</a>
       </div>
     </div>
 
     <div class="grid">
+
+      <!-- LEFT: MAIN PANEL -->
       <div class="panel">
         <h1>Signals of Enforcement Pressure</h1>
-        <p>
-          A single board that tracks publicly released enforcement actions so providers can detect compliance pressure early
-          — before audits, sanctions, or registration action.
-        </p>
+        <p>This board ingests publicly released NDIS enforcement/compliance actions and renders a clean, searchable risk feed.</p>
 
         <div class="kpis">
           <div class="kpi"><b id="k_total">—</b><span>Total records</span></div>
@@ -133,177 +198,250 @@
           <div class="kpi"><b id="k_low">—</b><span>Low risk</span></div>
         </div>
 
+        <!-- LEAD MAGNET BUTTON (no code complexity) -->
         <div class="lockbox">
-          <b class="gold">Subscriber Access</b>
-          <div class="hint">
-            Premium unlock = “Majestic Layer” (alerts + exports + deeper fields). Public view stays live.
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap">
+            <div>
+              <b style="letter-spacing:.08em">Subscriber Access</b>
+              <div class="small">Public view is live. Premium unlocks extended fields + premium page. (V1: key stored on this device.)</div>
+            </div>
+            <div class="row" style="margin:0">
+              <a class="btn gold" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Buy Premium on Gumroad</a>
+              <!-- OPTIONAL: replace # with your form link later -->
+              <a class="btn" href="#" id="leadBtn" target="_blank" rel="noreferrer">Get free weekly signals (email)</a>
+            </div>
           </div>
 
-          <div class="lockrow">
-            <a class="btn" id="gumroadBtn" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">
-              Subscribe on Gumroad
-            </a>
-            <input id="licenseInput" placeholder="Paste Gumroad license key (after purchase)" />
-            <button class="btn" id="unlockBtn" type="button">Unlock</button>
+          <div class="row">
+            <input id="license" placeholder="Paste Gumroad license key (optional)" />
+            <button class="btn" id="unlockBtn">Unlock</button>
           </div>
 
-          <div class="hint" id="unlockMsg"></div>
+          <div class="small" style="margin-top:8px">
+            After purchase, Gumroad emails your license key. Paste it once to unlock the premium page on this device.
+          </div>
+
+          <div class="alert" id="errBox"></div>
         </div>
 
-        <div class="searchrow">
-          <input id="search" placeholder="Search name, type, state, risk..." />
-          <div class="rightnote"><span id="shownCount">0</span> shown</div>
+        <!-- SEARCH -->
+        <div class="row" style="margin-top:12px">
+          <input id="search" placeholder="Search name, type, state, risk…" />
+          <span class="pill"><strong id="shownCount">0</strong> shown</span>
         </div>
 
+        <!-- TABLE -->
         <div class="tablewrap">
           <table>
             <thead>
               <tr>
-                <th style="width:130px">Risk</th>
-                <th style="width:260px">Type</th>
+                <th style="width:120px">Risk</th>
+                <th style="width:220px">Type</th>
                 <th>Name</th>
-                <th style="width:80px">State</th>
-                <th style="width:120px">Effective</th>
-                <th style="width:120px">End</th>
+                <th style="width:70px">State</th>
+                <th style="width:110px">Effective</th>
+                <th style="width:110px">End</th>
               </tr>
             </thead>
-            <tbody id="tbody"></tbody>
+            <tbody id="tbody">
+              <tr><td colspan="6" class="small">Loading…</td></tr>
+            </tbody>
           </table>
         </div>
 
-        <div class="footer">
-          Data source: public releases by the NDIS Commission. This is an information service, not advice.
+        <div class="foot">
+          <div class="small">
+            Data source: public releases by the NDIS Commission. This is information service, not advice.
+          </div>
+          <div class="small">
+            Premium: <a class="link" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Gumroad checkout</a>
+          </div>
         </div>
       </div>
 
-      <div class="panel">
-        <h1>What you get</h1>
-        <p>
-          Instant search + filtering, a risk lens, and continuous updates. Premium adds operational power:
-          alerts, exports, and deeper views for compliance teams and owners.
-        </p>
-        <div class="footer" style="margin-top:10px">
-          <span class="gold">Premium promise:</span> Don’t miss a risk signal again.
+      <!-- RIGHT: EXPLAINER -->
+      <div class="panel rightbox">
+        <h2>WHAT YOU GET</h2>
+        <ul>
+          <li>Instant search + filtering</li>
+          <li>Risk split (High / Med / Low)</li>
+          <li>Continuous refresh as the dataset updates</li>
+          <li>Premium page access (V1)</li>
+        </ul>
+
+        <div class="notice">
+          <b style="color:var(--text)">Who pays?</b><br/>
+          Owners, compliance managers, and consultants who need early warning of enforcement pressure and patterns.
+        </div>
+
+        <div class="notice">
+          <b style="color:var(--text)">What premium becomes next:</b><br/>
+          Alerts, exports, and state-specific intelligence packs. First: you get the buyer flow perfect.
         </div>
       </div>
+
     </div>
   </div>
 
-<script>
-  const META_URL = "./meta.json";
-  const SIGNALS_URL = "./signals.json";
+  <script>
+    // ====== CONFIG ======
+    const GUMROAD_URL = "https://apex888.gumroad.com/l/fouiu";
+    // OPTIONAL: set your Google Form link here later (leave "#" for now)
+    const LEAD_FORM_URL = "#";
 
-  let allSignals = [];
-  let filtered = [];
+    // Data files (GitHub Pages)
+    const SIGNALS_URL = "./signals.json";
+    const META_URL = "./meta.json";
 
-  function fmtDate(s){
-    if(!s) return "—";
-    try{
-      const d = new Date(s);
-      if (isNaN(d.getTime())) return s;
-      return d.toLocaleString();
-    }catch(e){ return s; }
-  }
+    const els = {
+      status: document.getElementById("status"),
+      lastUpdate: document.getElementById("lastUpdate"),
+      refreshBtn: document.getElementById("refreshBtn"),
+      tbody: document.getElementById("tbody"),
+      search: document.getElementById("search"),
+      shownCount: document.getElementById("shownCount"),
+      k_total: document.getElementById("k_total"),
+      k_high: document.getElementById("k_high"),
+      k_med: document.getElementById("k_med"),
+      k_low: document.getElementById("k_low"),
+      license: document.getElementById("license"),
+      unlockBtn: document.getElementById("unlockBtn"),
+      errBox: document.getElementById("errBox"),
+      leadBtn: document.getElementById("leadBtn")
+    };
 
-  function riskClass(r){
-    const x = (r||"").toUpperCase();
-    if(x.includes("HIGH")) return "HIGH";
-    if(x.includes("MED")) return "MED";
-    if(x.includes("LOW")) return "LOW";
-    return "MED";
-  }
+    els.leadBtn.href = LEAD_FORM_URL;
 
-  function render(){
-    const q = (document.getElementById("search").value || "").toLowerCase().trim();
-    filtered = allSignals.filter(s => {
-      if(!q) return true;
-      const hay = [s.risk,s.type,s.name,s.state,s.effective,s.end].join(" ").toLowerCase();
-      return hay.includes(q);
+    // ====== STATE ======
+    let allSignals = [];
+
+    function safeText(x){ return (x === null || x === undefined) ? "" : String(x); }
+
+    function riskClass(r){
+      const v = safeText(r).toUpperCase();
+      if (v.includes("HIGH")) return "HIGH";
+      if (v.includes("MED")) return "MED";
+      if (v.includes("LOW")) return "LOW";
+      if (v === "H") return "HIGH";
+      if (v === "M") return "MED";
+      if (v === "L") return "LOW";
+      return v || "MED";
+    }
+
+    function renderTable(rows){
+      if (!rows.length){
+        els.tbody.innerHTML = `<tr><td colspan="6" class="small">No matches.</td></tr>`;
+        els.shownCount.textContent = "0";
+        return;
+      }
+      const html = rows.slice(0, 500).map(s => {
+        const r = riskClass(s.risk);
+        return `
+          <tr>
+            <td><span class="risk ${r}"><span class="dot"></span>${r}</span></td>
+            <td>${safeText(s.type)}</td>
+            <td>${safeText(s.name)}</td>
+            <td>${safeText(s.state)}</td>
+            <td>${safeText(s.effective)}</td>
+            <td>${safeText(s.end)}</td>
+          </tr>
+        `;
+      }).join("");
+      els.tbody.innerHTML = html;
+      els.shownCount.textContent = String(Math.min(rows.length, 500));
+    }
+
+    function applyFilter(){
+      const q = safeText(els.search.value).trim().toLowerCase();
+      if (!q){ renderTable(allSignals); return; }
+      const filtered = allSignals.filter(s => {
+        const blob = [
+          s.risk, s.type, s.name, s.state, s.effective, s.end
+        ].map(safeText).join(" ").toLowerCase();
+        return blob.includes(q);
+      });
+      renderTable(filtered);
+    }
+
+    function setKPIs(rows){
+      const high = rows.filter(s => riskClass(s.risk) === "HIGH").length;
+      const med  = rows.filter(s => riskClass(s.risk) === "MED").length;
+      const low  = rows.filter(s => riskClass(s.risk) === "LOW").length;
+      els.k_total.textContent = String(rows.length);
+      els.k_high.textContent  = String(high);
+      els.k_med.textContent   = String(med);
+      els.k_low.textContent   = String(low);
+    }
+
+    function showError(msg){
+      els.errBox.style.display = "block";
+      els.errBox.textContent = msg;
+    }
+
+    async function loadJSON(url){
+      // cache-bust to avoid stale GitHub Pages cache
+      const bust = `?t=${Date.now()}`;
+      const r = await fetch(url + bust, { cache: "no-store" });
+      if (!r.ok) throw new Error(`Fetch failed: ${url} (${r.status})`);
+      return await r.json();
+    }
+
+    async function refresh(){
+      els.status.textContent = "Loading";
+      try {
+        // meta is optional (site still works without it)
+        try{
+          const meta = await loadJSON(META_URL);
+          if (meta && meta.updated_utc) els.lastUpdate.textContent = meta.updated_utc;
+          else if (meta && meta.last_update) els.lastUpdate.textContent = meta.last_update;
+        } catch(e){
+          // ignore meta errors
+        }
+
+        const data = await loadJSON(SIGNALS_URL);
+
+        // Accept both formats:
+        // A) { updated_utc, count, signals:[...] }
+        // B) { signals:[...] }
+        const signals = Array.isArray(data.signals) ? data.signals : [];
+        allSignals = signals;
+
+        // Update last update if present
+        if (data.updated_utc) els.lastUpdate.textContent = data.updated_utc;
+        els.status.textContent = "OK";
+
+        setKPIs(allSignals);
+        applyFilter();
+      } catch(e){
+        els.status.textContent = "Error";
+        showError("Data load error. Check signals.json exists and is valid JSON.");
+        els.tbody.innerHTML = `<tr><td colspan="6" class="small">${safeText(e.message)}</td></tr>`;
+      }
+    }
+
+    // ====== PREMIUM UNLOCK (V1: store key locally and open unlocked.html) ======
+    function unlock(){
+      const key = safeText(els.license.value).trim();
+      if (!key){
+        showError("Paste your Gumroad license key (from Gumroad email) then press Unlock.");
+        return;
+      }
+      localStorage.setItem("apex_watchtower_license", key);
+      window.location.href = "./unlocked.html";
+    }
+
+    // ====== EVENTS ======
+    els.search.addEventListener("input", applyFilter);
+    els.refreshBtn.addEventListener("click", refresh);
+    els.unlockBtn.addEventListener("click", unlock);
+
+    // Also allow Enter on license input
+    els.license.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") unlock();
     });
 
-    document.getElementById("shownCount").textContent = String(filtered.length);
-
-    const tbody = document.getElementById("tbody");
-    tbody.innerHTML = "";
-
-    for(const s of filtered){
-      const rc = riskClass(s.risk);
-      const tr = document.createElement("tr");
-
-      const tdRisk = document.createElement("td");
-      tdRisk.className = rc;
-      tdRisk.innerHTML = `<span class="risk"><span class="dot"></span><span>${s.risk || rc}</span></span>`;
-
-      const tdType = document.createElement("td");
-      tdType.textContent = s.type || "";
-
-      const tdName = document.createElement("td");
-      tdName.textContent = s.name || "";
-
-      const tdState = document.createElement("td");
-      tdState.textContent = s.state || "";
-
-      const tdEff = document.createElement("td");
-      tdEff.textContent = s.effective || "";
-
-      const tdEnd = document.createElement("td");
-      tdEnd.textContent = s.end || "";
-
-      tr.append(tdRisk, tdType, tdName, tdState, tdEff, tdEnd);
-      tbody.appendChild(tr);
-    }
-
-    // KPIs
-    const total = allSignals.length;
-    const high = allSignals.filter(s => riskClass(s.risk) === "HIGH").length;
-    const med  = allSignals.filter(s => riskClass(s.risk) === "MED").length;
-    const low  = allSignals.filter(s => riskClass(s.risk) === "LOW").length;
-
-    document.getElementById("k_total").textContent = total;
-    document.getElementById("k_high").textContent = high;
-    document.getElementById("k_med").textContent = med;
-    document.getElementById("k_low").textContent = low;
-  }
-
-  async function load(){
-    // meta (safe fallback)
-    try{
-      const m = await fetch(META_URL, {cache:"no-store"});
-      const meta = await m.json();
-      document.getElementById("statusText").textContent = meta.status || "OK";
-      document.getElementById("updatedText").textContent = fmtDate(meta.updated_at || meta.updated_utc || meta.updated || "");
-    }catch(e){
-      document.getElementById("statusText").textContent = "OK";
-      document.getElementById("updatedText").textContent = "—";
-    }
-
-    // signals
-    const r = await fetch(SIGNALS_URL, {cache:"no-store"});
-    const data = await r.json();
-
-    // supports: { signals:[...] } OR [...] directly
-    const arr = Array.isArray(data) ? data : (data.signals || []);
-    allSignals = arr.slice(0, 500); // keep mobile fast
-    render();
-  }
-
-  document.getElementById("search").addEventListener("input", render);
-  document.getElementById("refreshBtn").addEventListener("click", () => load());
-
-  document.getElementById("unlockBtn").addEventListener("click", () => {
-    const key = (document.getElementById("licenseInput").value || "").trim();
-    const msg = document.getElementById("unlockMsg");
-    if(!key){
-      msg.textContent = "Paste your Gumroad license key (after purchase).";
-      return;
-    }
-    msg.textContent = "Key received. Opening Majestic Layer…";
-    setTimeout(() => {
-      window.location.href = "./unlocked.html?license=" + encodeURIComponent(key);
-    }, 250);
-  });
-
-  load();
-</script>
+    // Start
+    refresh();
+  </script>
 </body>
 </html>
