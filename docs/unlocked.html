@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apex NDIS Signals — Subscriber Access</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1>✅ Access Granted</h1>
+  <p>Welcome to Apex NDIS Signals — live enforcement intelligence.</p>
+
+  <div id="signals">Loading signals…</div>
+
+  <script>
+    fetch("signals.json")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("signals").innerHTML =
+          "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+      });
+  </script>
+</body>
+</html>
