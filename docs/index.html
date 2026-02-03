@@ -4,170 +4,107 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>APEX NDIS Watchtower</title>
-  <meta name="description" content="NDIS enforcement & compliance signal board. Searchable risk feed + premium access." />
-
   <style>
     :root{
-      --bg:#05070c;
+      --bg:#070a0f;
       --panel:#0b1220;
-      --panel2:#08101c;
+      --panel2:#0a1020;
       --text:#e6edf6;
       --muted:#9bb0c9;
-      --line:rgba(255,255,255,.08);
+      --line:rgba(255,255,255,.10);
       --gold:#d7b36a;
-      --bad:#ff5252;
-      --med:#ffb020;
-      --good:#4ee37b;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --glow:rgba(215,179,106,.18);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
       background:
-        radial-gradient(1200px 800px at 20% -10%, rgba(80,120,255,.18), transparent 60%),
-        radial-gradient(900px 600px at 80% 10%, rgba(215,179,106,.12), transparent 60%),
-        radial-gradient(900px 600px at 50% 120%, rgba(80,255,190,.08), transparent 60%),
-        linear-gradient(180deg, #04060b, #05070c 40%, #05070c);
-      min-height:100vh;
+        radial-gradient(1200px 600px at 20% -10%, rgba(120,160,255,.14), transparent 55%),
+        radial-gradient(900px 500px at 80% 0%, rgba(215,179,106,.12), transparent 55%),
+        radial-gradient(900px 700px at 50% 110%, rgba(0,140,255,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1100px; margin:0 auto; padding:14px}
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:16px}
     .top{
-      display:flex; gap:12px; align-items:center; justify-content:space-between;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-      padding:10px 12px;
-      border-radius:14px;
-      box-shadow: var(--shadow);
+      display:flex;gap:12px;align-items:center;justify-content:space-between;
+      padding:14px 14px;border:1px solid var(--line);
+      border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow:0 0 0 1px rgba(255,255,255,.03), 0 20px 60px rgba(0,0,0,.35);
     }
-    .brand{display:flex; flex-direction:column; line-height:1.1}
-    .brand b{letter-spacing:.12em; font-size:13px}
-    .brand span{font-size:12px; color:var(--muted)}
-    .pillrow{display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .brand{display:flex;flex-direction:column;gap:2px}
+    .brand b{letter-spacing:.10em;font-size:13px}
+    .brand span{font-size:12px;color:var(--muted)}
+    .pillrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
     .pill{
-      font-size:12px; padding:6px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background: rgba(255,255,255,.02);
-      color:var(--muted);
+      font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);
+      background:rgba(255,255,255,.03);color:var(--muted)
     }
     .pill strong{color:var(--text)}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      font-size:12px;
-      padding:8px 12px;
-      border-radius:10px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color:var(--text);
-      cursor:pointer;
-      transition:.15s;
-      gap:8px;
-      user-select:none;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      font-size:12px;padding:8px 12px;border-radius:12px;border:1px solid var(--line);
+      background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;text-decoration:none;
     }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.16)}
-    .btn.gold{
-      border-color: rgba(215,179,106,.35);
-      background: radial-gradient(700px 200px at 20% 0%, rgba(215,179,106,.18), rgba(255,255,255,.03));
+    .btn:hover{border-color:rgba(255,255,255,.18)}
+    .btn-gold{
+      border-color:rgba(215,179,106,.35);
+      background:linear-gradient(180deg, rgba(215,179,106,.18), rgba(215,179,106,.08));
+      box-shadow:0 0 0 1px rgba(215,179,106,.12), 0 18px 40px rgba(0,0,0,.25);
     }
-    .grid{
-      display:grid;
-      grid-template-columns: 1.35fr .65fr;
-      gap:12px;
-      margin-top:12px;
-    }
-    @media(max-width:900px){ .grid{grid-template-columns:1fr} }
+
+    .grid{display:grid;grid-template-columns:1.3fr .7fr;gap:12px;margin-top:12px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
     .panel{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-      border-radius:14px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
       padding:14px;
-      box-shadow: var(--shadow);
     }
-    h1{margin:0 0 8px; font-size:22px}
-    p{margin:0; color:var(--muted); line-height:1.35}
-    .kpis{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    h1{margin:0 0 8px;font-size:22px}
+    p{margin:0;color:var(--muted);line-height:1.5}
+    .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .kpi{
-      min-width:140px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.15);
+      min-width:130px;padding:10px 12px;border-radius:16px;border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
     }
-    .kpi b{display:block; font-size:18px}
-    .kpi span{font-size:12px; color:var(--muted)}
+    .kpi b{display:block;font-size:18px}
+    .kpi span{font-size:12px;color:var(--muted)}
     .lockbox{
-      margin-top:12px;
-      padding:12px;
-      border-radius:14px;
-      border:1px solid rgba(215,179,106,.28);
-      background: radial-gradient(800px 200px at 20% 0%, rgba(215,179,106,.12), rgba(0,0,0,.18));
+      margin-top:12px;padding:12px;border-radius:18px;border:1px solid rgba(215,179,106,.25);
+      background:radial-gradient(600px 200px at 20% 0%, var(--glow), rgba(0,0,0,.25));
     }
-    .lockbox .row{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px}
+    .lockbox h2{margin:0 0 4px;font-size:16px}
+    .lockbox .sub{font-size:12px;color:var(--muted);margin-bottom:10px}
+    .lockrow{display:flex;gap:8px;flex-wrap:wrap}
     input{
-      flex:1;
-      min-width:220px;
-      background: rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:10px 10px;
-      color:var(--text);
-      outline:none;
+      flex:1;min-width:220px;padding:10px;border-radius:12px;border:1px solid var(--line);
+      background:rgba(255,255,255,.03);color:var(--text);outline:none
     }
-    .small{font-size:12px; color:var(--muted)}
-    .tablewrap{margin-top:12px; overflow:auto; border-radius:14px; border:1px solid var(--line)}
-    table{width:100%; border-collapse:collapse; min-width:760px; background: rgba(0,0,0,.12)}
-    th,td{padding:10px 10px; border-bottom:1px solid rgba(255,255,255,.06); font-size:12px; vertical-align:top}
-    th{position:sticky; top:0; background: rgba(10,16,28,.9); color:var(--muted); text-align:left; z-index:2}
-    tr:hover td{background: rgba(255,255,255,.02)}
-    .risk{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:4px 8px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.09);
-      background: rgba(0,0,0,.18);
-      font-weight:600;
-      letter-spacing:.04em;
-    }
-    .dot{width:8px; height:8px; border-radius:50%}
-    .HIGH .dot{background:var(--bad)}
-    .MED .dot{background:var(--med)}
-    .LOW .dot{background:var(--good)}
-    .foot{
-      margin-top:10px;
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      color:var(--muted);
-      font-size:12px;
-    }
-    .link{color: var(--gold); text-decoration:underline; text-underline-offset:3px}
-    .rightbox h2{margin:0 0 8px; font-size:14px; letter-spacing:.08em}
-    .rightbox ul{margin:0; padding-left:18px; color:var(--muted); font-size:12px; line-height:1.45}
-    .notice{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.12);
-      font-size:12px;
-      color:var(--muted);
-    }
-    .alert{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,82,82,.18);
-      background: rgba(255,82,82,.06);
-      font-size:12px;
-      color:var(--muted);
-      display:none;
-    }
+    .helper{margin-top:8px;font-size:12px;color:var(--muted)}
+    .tablewrap{margin-top:12px;overflow:auto;border-radius:16px;border:1px solid var(--line)}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th,td{padding:10px 10px;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top}
+    th{color:var(--muted);font-weight:600;text-align:left;background:rgba(255,255,255,.02);position:sticky;top:0}
+    tr:hover td{background:rgba(255,255,255,.02)}
+    .risk{display:inline-flex;align-items:center;gap:8px}
+    .dot{width:8px;height:8px;border-radius:50%}
+    .HIGH .dot{background:#ff5252}
+    .MED .dot{background:#ffb020}
+    .LOW .dot{background:#4ee37b}
+    .small{font-size:12px;color:var(--muted)}
+    .searchbar{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .countpill{white-space:nowrap}
+    .footer{margin-top:14px;font-size:12px;color:var(--muted)}
+    .footer a{color:var(--gold);text-decoration:none}
+    .footer a:hover{text-decoration:underline}
   </style>
 </head>
 
 <body>
   <div class="wrap">
-
     <div class="top">
       <div class="brand">
         <b>APEX NDIS WATCHTOWER</b>
@@ -175,18 +112,16 @@
       </div>
 
       <div class="pillrow">
-        <span class="pill">Status: <strong id="status">Loading</strong></span>
-        <span class="pill">Last update: <strong id="lastUpdate">—</strong></span>
-        <button class="btn" id="refreshBtn">Force refresh</button>
-        <a class="btn gold" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Buy Premium</a>
+        <span class="pill">Status: <strong id="status">OK</strong></span>
+        <span class="pill">Last update: <strong id="last">—</strong></span>
+        <a class="btn" href="#" id="refreshBtn">Force refresh</a>
       </div>
     </div>
 
     <div class="grid">
-
       <div class="panel">
         <h1>Signals of Enforcement Pressure</h1>
-        <p>This board ingests publicly released NDIS enforcement/compliance actions and renders a clean, searchable risk feed.</p>
+        <p>This board ingests publicly released NDIS enforcement data and renders it as a clean, searchable risk feed.</p>
 
         <div class="kpis">
           <div class="kpi"><b id="k_total">—</b><span>Total records</span></div>
@@ -196,227 +131,213 @@
         </div>
 
         <div class="lockbox">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap">
-            <div>
-              <b style="letter-spacing:.08em">Subscriber Access</b>
-              <div class="small">Public view is live. Premium unlocks extended fields + premium page. (V1: key stored on this device.)</div>
-            </div>
-            <div class="row" style="margin:0">
-              <a class="btn gold" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Buy Premium on Gumroad</a>
-              <a class="btn" href="#" id="leadBtn" target="_blank" rel="noreferrer">Get free weekly signals (email)</a>
-            </div>
+          <h2>Subscriber Access</h2>
+          <div class="sub">Public view is live. Premium unlocks extended fields + premium refresh.</div>
+
+          <div class="lockrow">
+            <!-- ✅ Gumroad payment link -->
+            <a class="btn btn-gold" target="_blank" rel="noopener"
+               href="https://apex888.gumroad.com/l/fouiu">
+              Buy Premium on Gumroad
+            </a>
+
+            <!-- ✅ Google Form link (NO JS, NO GLITCH) -->
+            <a class="btn" target="_blank" rel="noopener"
+               href="https://docs.google.com/forms/d/e/1FAIpQLSdhnh-zwjYvPsqLw9cgSKO33_pvhUsB5WrkSkUOhGmNiO_RYQ/viewform">
+              Get free weekly signals (email)
+            </a>
           </div>
 
-          <div class="row">
+          <div class="helper">
+            Optional: if you sell license keys later, you can keep this field. Leaving it does not break anything.
+          </div>
+          <div class="lockrow" style="margin-top:8px">
             <input id="license" placeholder="Paste Gumroad license key (optional)" />
-            <button class="btn" id="unlockBtn">Unlock</button>
+            <a class="btn" href="#" id="unlockBtn">Unlock</a>
           </div>
-
-          <div class="small" style="margin-top:8px">
-            After purchase, Gumroad emails your license key. Paste it once to unlock the premium page on this device.
-          </div>
-
-          <div class="alert" id="errBox"></div>
+          <div class="helper" id="unlockMsg"></div>
         </div>
 
-        <div class="row" style="margin-top:12px">
-          <input id="search" placeholder="Search name, type, state, risk…" />
-          <span class="pill"><strong id="shownCount">0</strong> shown</span>
+        <div class="searchbar">
+          <input id="q" placeholder="Search name, type, state, risk..." />
+          <span class="pill countpill"><strong id="shown">0</strong> shown</span>
         </div>
 
-        <div class="tablewrap">
+        <div class="tablewrap" style="margin-top:10px">
           <table>
             <thead>
               <tr>
-                <th style="width:120px">Risk</th>
-                <th style="width:220px">Type</th>
-                <th>Name</th>
-                <th style="width:70px">State</th>
-                <th style="width:110px">Effective</th>
-                <th style="width:110px">End</th>
+                <th style="min-width:120px">Risk</th>
+                <th style="min-width:220px">Type</th>
+                <th style="min-width:280px">Name</th>
+                <th style="min-width:80px">State</th>
+                <th style="min-width:120px">Effective</th>
+                <th style="min-width:120px">End</th>
               </tr>
             </thead>
-            <tbody id="tbody">
+            <tbody id="rows">
               <tr><td colspan="6" class="small">Loading…</td></tr>
             </tbody>
           </table>
         </div>
 
-        <div class="foot">
-          <div class="small">
-            Data source: public releases by the NDIS Commission. This is information service, not advice.
-          </div>
-          <div class="small">
-            Premium: <a class="link" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Gumroad checkout</a>
-          </div>
+        <div class="footer">
+          Data source: public releases by the NDIS Commission. This is an information service, not advice.
         </div>
       </div>
 
-      <div class="panel rightbox">
-        <h2>WHAT YOU GET</h2>
-        <ul>
-          <li>Instant search + filtering</li>
-          <li>Risk split (High / Med / Low)</li>
-          <li>Continuous refresh as the dataset updates</li>
-          <li>Premium page access (V1)</li>
-        </ul>
-
-        <div class="notice">
-          <b style="color:var(--text)">Who pays?</b><br/>
-          Owners, compliance managers, and consultants who need early warning of enforcement pressure and patterns.
-        </div>
-
-        <div class="notice">
-          <b style="color:var(--text)">What premium becomes next:</b><br/>
-          Alerts, exports, and state-specific intelligence packs. First: you get the buyer flow perfect.
-        </div>
+      <div class="panel">
+        <h2 style="margin:0 0 6px;font-size:16px">What you get</h2>
+        <p class="small" style="margin:0 0 10px">
+          Instant search + filtering, risk visualization, and continuous updates.
+        </p>
+        <p class="small">
+          Premium is for providers, consultants, and compliance roles who want *early warning* and a cleaner workflow than manual browsing.
+        </p>
+        <div style="height:10px"></div>
+        <p class="small">
+          If you want a private “Majestic Layer” later, we can route paid users there using a simple password page.
+        </p>
       </div>
-
     </div>
   </div>
 
-  <script>
-    // ====== CONFIG ======
-    const GUMROAD_URL = "https://apex888.gumroad.com/l/fouiu";
+<script>
+  // ===== Config =====
+  const DATA_URLS = [
+    "public/signals.json", // bot output
+    "docs/signals.json",   // legacy fallback
+    "signals.json"         // direct docs root fallback
+  ];
+  const META_URLS = [
+    "public/meta.json",
+    "docs/meta.json",
+    "meta.json"
+  ];
 
-    // FIX: this must NOT be "#". "#" will bounce back to the same page.
-    // Temporary zero-setup version: email signup.
-    const LEAD_FORM_URL = "mailto:apex888@proton.me?subject=Free%20Weekly%20Signals%20Signup&body=Business%20name%3A%0AState%3A%0ARole%20(owner%2Fcompliance%2Fconsultant)%3A%0AEmail%3A";
-
-    const SIGNALS_URL = "./signals.json";
-    const META_URL = "./meta.json";
-
-    const els = {
-      status: document.getElementById("status"),
-      lastUpdate: document.getElementById("lastUpdate"),
-      refreshBtn: document.getElementById("refreshBtn"),
-      tbody: document.getElementById("tbody"),
-      search: document.getElementById("search"),
-      shownCount: document.getElementById("shownCount"),
-      k_total: document.getElementById("k_total"),
-      k_high: document.getElementById("k_high"),
-      k_med: document.getElementById("k_med"),
-      k_low: document.getElementById("k_low"),
-      license: document.getElementById("license"),
-      unlockBtn: document.getElementById("unlockBtn"),
-      errBox: document.getElementById("errBox"),
-      leadBtn: document.getElementById("leadBtn")
-    };
-
-    els.leadBtn.href = LEAD_FORM_URL;
-
-    let allSignals = [];
-
-    function safeText(x){ return (x === null || x === undefined) ? "" : String(x); }
-
-    function riskClass(r){
-      const v = safeText(r).toUpperCase();
-      if (v.includes("HIGH")) return "HIGH";
-      if (v.includes("MED")) return "MED";
-      if (v.includes("LOW")) return "LOW";
-      if (v === "H") return "HIGH";
-      if (v === "M") return "MED";
-      if (v === "L") return "LOW";
-      return v || "MED";
+  // ===== Helpers =====
+  async function fetchJsonWithFallback(urls){
+    let lastErr;
+    for (const u of urls){
+      try{
+        const r = await fetch(u, { cache: "no-store" });
+        if(!r.ok) throw new Error(u + " HTTP " + r.status);
+        return await r.json();
+      } catch(e){ lastErr = e; }
     }
+    throw lastErr;
+  }
 
-    function renderTable(rows){
-      if (!rows.length){
-        els.tbody.innerHTML = `<tr><td colspan="6" class="small">No matches.</td></tr>`;
-        els.shownCount.textContent = "0";
-        return;
+  function safeText(x){ return (x === null || x === undefined) ? "" : String(x); }
+
+  // ===== Render =====
+  let ALL = [];
+
+  function renderRows(list){
+    const tbody = document.getElementById("rows");
+    if(!list.length){
+      tbody.innerHTML = `<tr><td colspan="6" class="small">No results.</td></tr>`;
+      document.getElementById("shown").textContent = "0";
+      return;
+    }
+    const html = list.map(s => {
+      const risk = safeText(s.risk || "").toUpperCase() || "MED";
+      const cls = (risk === "HIGH" || risk === "MED" || risk === "LOW") ? risk : "MED";
+      return `
+        <tr class="${cls}">
+          <td><span class="risk"><span class="dot"></span><strong>${cls}</strong></span></td>
+          <td>${safeText(s.type)}</td>
+          <td>${safeText(s.name)}</td>
+          <td>${safeText(s.state)}</td>
+          <td>${safeText(s.effective)}</td>
+          <td>${safeText(s.end)}</td>
+        </tr>
+      `;
+    }).join("");
+    tbody.innerHTML = html;
+    document.getElementById("shown").textContent = String(list.length);
+  }
+
+  function updateKpis(list){
+    const total = list.length;
+    const high = list.filter(x => (x.risk || "").toUpperCase() === "HIGH").length;
+    const med  = list.filter(x => (x.risk || "").toUpperCase() === "MED").length;
+    const low  = list.filter(x => (x.risk || "").toUpperCase() === "LOW").length;
+
+    document.getElementById("k_total").textContent = total;
+    document.getElementById("k_high").textContent = high;
+    document.getElementById("k_med").textContent = med;
+    document.getElementById("k_low").textContent = low;
+  }
+
+  function applySearch(){
+    const q = document.getElementById("q").value.trim().toLowerCase();
+    if(!q){
+      renderRows(ALL.slice(0, 500));
+      return;
+    }
+    const filtered = ALL.filter(s => {
+      const blob = [
+        s.risk, s.type, s.name, s.state, s.effective, s.end
+      ].map(v => safeText(v).toLowerCase()).join(" | ");
+      return blob.includes(q);
+    });
+    renderRows(filtered.slice(0, 500));
+  }
+
+  // ===== Unlock (optional placeholder) =====
+  function unlock(){
+    const key = document.getElementById("license").value.trim();
+    const msg = document.getElementById("unlockMsg");
+    if(!key){
+      msg.textContent = "No license key entered. Premium access is handled by Gumroad purchase for now.";
+      return;
+    }
+    msg.textContent = "License keys are not enabled yet. (Safe placeholder — does not break site.)";
+  }
+
+  // ===== Boot =====
+  async function boot(){
+    try{
+      // meta
+      try{
+        const meta = await fetchJsonWithFallback(META_URLS);
+        if(meta && meta.updated_utc){
+          document.getElementById("last").textContent = new Date(meta.updated_utc).toLocaleString();
+        }
+      }catch(e){
+        document.getElementById("last").textContent = "—";
       }
-      const html = rows.slice(0, 500).map(s => {
-        const r = riskClass(s.risk);
-        return `
-          <tr>
-            <td><span class="risk ${r}"><span class="dot"></span>${r}</span></td>
-            <td>${safeText(s.type)}</td>
-            <td>${safeText(s.name)}</td>
-            <td>${safeText(s.state)}</td>
-            <td>${safeText(s.effective)}</td>
-            <td>${safeText(s.end)}</td>
-          </tr>
-        `;
-      }).join("");
-      els.tbody.innerHTML = html;
-      els.shownCount.textContent = String(Math.min(rows.length, 500));
+
+      // signals
+      const data = await fetchJsonWithFallback(DATA_URLS);
+
+      // supports BOTH shapes:
+      // A) { updated_utc, count, signals:[...] }
+      // B) [ ...signals ]
+      const signals = Array.isArray(data) ? data : (data.signals || []);
+      ALL = signals;
+
+      updateKpis(ALL);
+      renderRows(ALL.slice(0, 500));
+      document.getElementById("status").textContent = "OK";
+    }catch(e){
+      document.getElementById("status").textContent = "ERROR";
+      document.getElementById("rows").innerHTML =
+        `<tr><td colspan="6" class="small">Failed to load data. Check public/signals.json and docs/signals.json.</td></tr>`;
     }
+  }
 
-    function applyFilter(){
-      const q = safeText(els.search.value).trim().toLowerCase();
-      if (!q){ renderTable(allSignals); return; }
-      const filtered = allSignals.filter(s => {
-        const blob = [s.risk, s.type, s.name, s.state, s.effective, s.end]
-          .map(safeText).join(" ").toLowerCase();
-        return blob.includes(q);
-      });
-      renderTable(filtered);
-    }
+  document.getElementById("q").addEventListener("input", applySearch);
+  document.getElementById("unlockBtn").addEventListener("click", (e)=>{ e.preventDefault(); unlock(); });
 
-    function setKPIs(rows){
-      const high = rows.filter(s => riskClass(s.risk) === "HIGH").length;
-      const med  = rows.filter(s => riskClass(s.risk) === "MED").length;
-      const low  = rows.filter(s => riskClass(s.risk) === "LOW").length;
-      els.k_total.textContent = String(rows.length);
-      els.k_high.textContent  = String(high);
-      els.k_med.textContent   = String(med);
-      els.k_low.textContent   = String(low);
-    }
+  document.getElementById("refreshBtn").addEventListener("click", (e)=>{
+    e.preventDefault();
+    // hard refresh without cache
+    location.reload(true);
+  });
 
-    function showError(msg){
-      els.errBox.style.display = "block";
-      els.errBox.textContent = msg;
-    }
-
-    async function loadJSON(url){
-      const bust = `?t=${Date.now()}`;
-      const r = await fetch(url + bust, { cache: "no-store" });
-      if (!r.ok) throw new Error(`Fetch failed: ${url} (${r.status})`);
-      return await r.json();
-    }
-
-    async function refresh(){
-      els.status.textContent = "Loading";
-      try {
-        try{
-          const meta = await loadJSON(META_URL);
-          if (meta && meta.updated_utc) els.lastUpdate.textContent = meta.updated_utc;
-          else if (meta && meta.last_update) els.lastUpdate.textContent = meta.last_update;
-        } catch(e){}
-
-        const data = await loadJSON(SIGNALS_URL);
-        const signals = Array.isArray(data.signals) ? data.signals : [];
-        allSignals = signals;
-
-        if (data.updated_utc) els.lastUpdate.textContent = data.updated_utc;
-        els.status.textContent = "OK";
-
-        setKPIs(allSignals);
-        applyFilter();
-      } catch(e){
-        els.status.textContent = "Error";
-        showError("Data load error. Check signals.json exists and is valid JSON.");
-        els.tbody.innerHTML = `<tr><td colspan="6" class="small">${safeText(e.message)}</td></tr>`;
-      }
-    }
-
-    function unlock(){
-      const key = safeText(els.license.value).trim();
-      if (!key){
-        showError("Paste your Gumroad license key (from Gumroad email) then press Unlock.");
-        return;
-      }
-      localStorage.setItem("apex_watchtower_license", key);
-      window.location.href = "./unlocked.html";
-    }
-
-    els.search.addEventListener("input", applyFilter);
-    els.refreshBtn.addEventListener("click", refresh);
-    els.unlockBtn.addEventListener("click", unlock);
-    els.license.addEventListener("keydown", (e) => { if (e.key === "Enter") unlock(); });
-
-    refresh();
-  </script>
+  boot();
+</script>
 </body>
 </html>
