@@ -1,13 +1,4006 @@
 {
-  "updated_utc": "2026-02-03T04:26:11Z",
+  "updated_utc": "2026-02-03T05:35:07Z",
+  "count": 2286,
   "signals": [
     {
-      "risk": "HIGH",
-      "type": "Banning Order",
-      "name": "Example Provider Pty Ltd",
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Acclaimed Community Support Services Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Integrated Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Dane Eric Cran",
       "state": "NSW",
-      "effective": "2026-01-15",
-      "end": "2027-01-15"
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "K & M Healthcare Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Lara Sarmad Admon Al Sarraf",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Mandy Miller",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Martha Akiech Kur",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Reuwin Medical Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ultimate Healthcare Services Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "1 Primary Care  Service Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "1 Primary Care Service Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "1st Call Home Care Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "24 Family Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "24hours Disability Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "274 Homebound Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "3:16 Paramount Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "3lo Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "3ME Trading Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "3ME Trading Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "5 Stars Care Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "7GN SERVICES PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "@HANDS2HELP PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "A & G Aged Care Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A & I Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A Askandar & A Askandar & B Nissan t/as NISSAN'S HEALTH CARE PROVIDERS",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A Plus Provider Pty Ltd t/as A PLUS PROVIDER PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A&M Support Services Proprietary Ltd.",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A&S Disability Care Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A.A Bedasso & H Eggu",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A.A Ogungbenro & I.O Osazenomwan-Obanor",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "A.C.N 647 616 144 Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "A.C.N. 615 641 079 Pty Ltd trading as Australian Home and Community Care; SIL Finder",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A.C.N. 650 739 754 Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A.J & F.A Ajetomobi Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "A.J BLACK & C.M CHITTENDEN",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A.S Nanda & S.S Pasricha",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A.S Rana & A Rana",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A.U Oraekwuotu & G.C Oraekwuotu",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "A2z Community Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "A4 Education Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "AAA Care Services Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Aaa Caring Hub Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Aaa Independent Quality Care Pty Ltd t/as AAA INDEPENDENT QUALITY CARE PTY LTD",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "AAR Victoria Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Aaroha Community Service Pty Ltd t/as AAROHA COMMUNITY SERVICE PTY LTD",
+      "state": "ACT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Aaron Mark Berney",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "ABBA CARE SERVICES PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Abbas Ali Askari",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Abdifatah Osman",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Abdul Aboud",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Abham Investment Pty Ltd t/as ABHAM CARE",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Abiel Asmerom",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ability Accelerators Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ability Beyond Boundaries Ltd t/as ABILITY BEYOND BOUNDARIES LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ability Bliss Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ability Care Australia Pty Ltd (formerly Metro Plumbing and Services Pty Ltd)",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Ability Care Australia Pty Ltd (formerly Metro Plumbing and Services Pty Ltd)",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ability To Support Health Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Abir Jalalaty",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "ABL CARE PTY LTD",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Able Life Group Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "ABORIGINAL SOBRIETY GROUP INDIGENOUS CORPORATION",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Above Limits Disability Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Abraham Kourouma",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Absolute Better Care Services Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Access 2 Goals Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Access Community Services Limited",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "ACCESS PLUS WA DEAF INC",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Accessibility Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ace Community Care Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Achan Anyar",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Achan Care Disability Services Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Achieve Australia Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Action Care Services Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Active Funplay Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Active Recovery & Advocacy Consultancy Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adachi Disability Services Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Adachi Disability Services Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adam James Pearce",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adam Ledgerwood",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adam Mason",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adam Morris",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adel Al Shamare",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Adelaide Community Options Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Adem, Abdulkadir Jama",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Adept Care & Continence Equipment Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Adept Care Services Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Admiral Care Pty Ltd t/as ADMIRAL CARE PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Adom Enterprise Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adonis Zane, also known as Adam Tiba and Adam Zain",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adrian Baker",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adrian Bembrick",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Adrian Metly",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "ADS Care PTY. LTD.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "ADS CARE PTY. LTD.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Advance  Accessibility  Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Advance Accessibility Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Advanced Care Continence And Nursing Service Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Advent Hope Disability Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Advocacy And Beyond Care Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Af Disability Services Pty Ltd t/as A&F Centred Care",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "AFFINITY SUPPORT PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Afford Healthcare Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Afro-Oz Nurse Care Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "AFTERHOURS KID PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Agora Home & Community Care Services Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ahaan Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "AHH Lifeskills Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ahmad Rashad Nadir",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ahmed Sharif",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Aj Care Support Service Pty Ltd t/as AJ CARE SUPPORT SERVICE",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "AJM SMART PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ake Ulutui",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "AL-BAGHDADI, YASIR HAMID HUSSEIN",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alaedine Rifai",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alan MacDonald",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Albany Worklink Inc.",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Alert Health Care Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Alexander & Co International Pty Ltd Trading as My Care Melbourne",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alexander Trewin",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alexandra Jane Elizabeth Edward-Jenke",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alhassane Hilmi",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Alhassane Hilmi  t/a Reliance  Disability Services",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ali Abdul Rahman",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ali Abdul-Rahman",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ali Falih Abed",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Align Aid Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alija Magjarraj",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alisha Ahmet",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alison O\u2019Driscoll also known as Alison Keely O\u2019Driscoll",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "ALL 4 OT PTY LTD",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "All Care Provided",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "All Care Provided",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "All Care Sydney Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "All Hopes Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "All Round Care And Support Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "All That Matters Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Allawah Care (Qld) Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Allcare Disability  Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Allcare Disability  Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Allcare Disability  Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Allied Media  Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Allied Media Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "AlliedHealth  Cleaning Services  Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "AlliedHealth Cleaning  Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "AlliedHealth Cleaning Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "ALLROUNDCARE PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Alltime Care Pty  Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "ALLURE CARE SERVICES PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Allyson Rochelle Coleman",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Alpha Psychological Solutions Pty. Ltd.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Alta Care Pty Ltd t/as ALTA CARE PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Altum-Meam Care Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Aluel Deng Mawiir",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Alura Lifestyle Solutions Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Alyssum Support Pty. Ltd.",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Alzavian Chicken",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amable Community Services Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Amal Hilmi",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amal Lauron",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Aman Manyok Thiak",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Amanda  Kathrine HOLT",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Amanda Cranfield",
+      "state": "TAS",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Amanda McDonnell",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amanda Zodwa Madinya",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Amara Jaroudi",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amaya & Bahanag Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amazing Adventures Ability Services Pty Ltd t/as AMAZING ADVENTURES ABILITY SERVICES PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amazing Disability Care Service Pty Ltd.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "AMAZING PRESTIGE PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ambition Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ambrose Mareng",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amc - Integrated Disability Services Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amini Care Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "AMINI HOME AND COMMUNITY CARE PTY LTD",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amira Awad Almsallam t/as SPECIAL CARE COMMUNITY SERVICES",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Amit Sharma",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "AMOR CARE PTY LTD.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amplify Care Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Amy Jane Prince",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Amy June Collins",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Amy Louise Newitt",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anastasia Beth Kalpakis, also known as Anastasia Arthandi and Anastasia Beth Holani",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anastasia Moutsos",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anatole John Hudson",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "ANCCARE",
+      "state": "NT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Anderson Neurological And Developmental Services Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Andrea Cooper",
+      "state": "NT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Andreas Gerasimos Strepelias",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Andrew Abdelmalek",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Andrew Blair",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Andrew Florentzou",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Angel Ability Support Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Angel Disability Supports Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Angel House Australia Foundation Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Angelea Wright",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Angels Care (Australia) Pty. Ltd.",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Angels Care Australia Pty. Ltd.",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "ANGELS CARE PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Anglicare Tasmania Inc.",
+      "state": "TAS",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anh Quoc Vuong",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anisa Osman",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anitah Mukundane",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anja Wesenick",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Anna Louise Roger-Jones",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Anne's Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anthony Grech",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anthony John Francis Ward",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Anthony O\u2019Meley",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Apack Partners Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Araf And Araf Care Pty Ltd t/as ARAF AND ARAF CARE PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Araluen Centre Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ario Care Group Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "ARISE AUSTRALIA PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Arjun Kandel",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ark Providence Pty Ltd",
+      "state": "ACT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Arkways Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Arlie Gibson",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Armidale Centacare New England North West Limited",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Art Health Enterprises Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Aruma Foundation Ltd.",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Aruma Services Limited",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "As4p Care Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ashley David Liddicoat",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ashpreet Kaur",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ashram Australia Pty Ltd",
+      "state": "ACT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Aspire Independence Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Assad Care NT Pty Ltd",
+      "state": "NT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Assist Disability Service Victoria Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Assistance 2 Thrive Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Assistcare Services Australia Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Assisting Your Life To Achieve (Ayla) Inc",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Assistive Disability Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Asunta Ajack WEIL",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "At Home Healthcare 24 Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ata Connections-Jireh Support Services Pty. Ltd.",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Athiang Chan Bol",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "ATONG JOSEPH",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "AURORA CARE GROUP PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Auspicare Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australasia Jhg Group Pty. Ltd.",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australia I Care Nursing Pty. Ltd.",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian  Foundation for  Disability (Afford)",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Allied Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Carers Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Community Home Care Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Australian Connect Recruitment Agency Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Disability Health Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Disability Integrated Support Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Foundation for Disability",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Foundation For Disability (Afford)",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Foundation for Disability (Afford)",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Foundation for Disability (Afford)",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Global Health Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "AUSTRALIAN HEALTH AND SUPPORT SERVICES PTY LTD",
+      "state": "NT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Australian Instant Care Pty Ltd t/as AUSTRALIAN INSTANT CARE",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Australian Institute of Health & Management Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Australian Quality Care & Support Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "AUSTRALIAN SOCIETY FOR SOCIAL INCLUSION AND SKILL TRANSITION PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ausvij Care Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Autism & Disability Support Coordination Australia Pty Ltd t/as AUTISM & DISABILITY SUPPORT COORDINATION AUSTRALIA PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Autumn of Life  Disability And Home Care Pty  Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Auxiliary Care Pty Ltd t/as AUXILIARY CARE PTY LTD",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Avidity Care Pty Ltd t/as AVIDITY CARE PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "AWANA DISABILITY SERVICES PTY LTD",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ba Care Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bachar Wilio",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "BALFOUR, JENNIE SUZANNE",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ballina Shire Council",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Bamboo Healthcare Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Bandaar Walaaybaa Community Hub.Aboriginal Corporations.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Barbi-Jade Aubrey",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Barbi-Jade Aubrey",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Bartrise Pty. Limited",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bayside Nursing Services Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bcak Physio Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Be A Blessing Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Be One Care Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Be Ur Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Beeya Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bega Valley Shire Council",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Behaviour Insights Pty Ltd t/as BEHAVIOUR INSIGHTS PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Being Human Disability Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "BEING YOU MENTAL HEALTH PTY LTD",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Belinda Annette Insall",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Belinda Stevens Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Bellabode Projects Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "BELLONA CARE PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Beloved Disability Support Services Pty Ltd.",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Beneficent Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Benjamin Carter",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Benjamin Kulman",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Berivan Khalil",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bernadette Elsie Cole",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Berridge, Tamara Gai t/a Magic Maid Possible Cleaning Services",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bespoke Caring Pty. Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bespoke Home Care Pty Ltd.",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Best Friend Care Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Best Nursing Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bethwel Koech",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "BETT, WINNIE JERUTO",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Better Disability Australia Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Better Soltuions Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Better Together Support Pty Ltd t/as BETTER TOGETHER SUPPORT PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Betterchance Disability Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Betty Menoudakis",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Beverley Faith Rita Duffin",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bharat TIMSINA",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bianca Hawkins",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bianca Leigh BARBATO",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bideri At Your Service Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bikash Singh Shrestha",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Billie Jo Neale-Hamilton",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bintu Holistic Care Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Blossom Collaborative Pty Ltd t/as Just Better Care Melbourne Metro North",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Blossom Support Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Blossoming Goals Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Blue Bird Paradise Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Blue Nursing Agency Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Blue Sky Pelican Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bluebell Community Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Blueshell Lifestyle Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "BMC DISABILITY SERVICES PTY LTD",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Boiz Holdings Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Boldstep Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bonza Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Boundless Supports Pty Limited",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Boutique Disability Consulting Pty. Ltd.",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bowen Flexi Care Inc",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bradley Jenkins",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bradley Vine",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Brain Mugoronji",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bramble, Wendy Helen Trading as A \u2018Positive Approach\u2019 Support Services",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Brandon Chesney",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Braydon Hamilton (Brayden Hamilton)",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Break Free Health Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Breaking Free Therapy",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Breaking Free Therapy",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Breaking Free Therapy",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Breakthrough Coaching And Consulting Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Brendan Hudson-Miller",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Brett William Gilroy",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Briarsha Lewis",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bridge 2 Disability Care Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bridge Care Disability Services Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bridgecare Group Pty. Ltd.",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bright Ability Pty. Limited",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bright Future Disability Care Pty Ltd.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bright Horizon Care Pty. Ltd.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bright Skies Careers Limited",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bright Sunshine Disability Care Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Brighter Days Australia Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Brighter Days Community Care Pty Ltd t/as BRIGHTER DAYS COMMUNITY CARE",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Brighter Journey Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Brightify Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Brightside Disability Support & Respite Pty. Ltd.",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bring It On Sports Pty. Ltd.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Brittany Webster",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Brodie Baxter",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bronwyn Molloy",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Brooke Bos",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Bryce Tupling trading as Tupling, Bryce Nicholas",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Buddy 4 Me Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Buildbourne Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Builders Unite Construction & Landscaping Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Building Supports Ability Pty Ltd t/as BUILDING SUPPORTS ABILITY PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Bungree Aboriginal Association Limited",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Burrun Dalai Aboriginal Corporation",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Butter Fish Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Butter Fish Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Byson James Kete Turner",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "C Kane & L Pearson",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "C.H.J.J Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "C.J Bostock & N Bostock",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "C.M Mccarthy & D.F Ormsby",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "C.M Wicks & C.P Wicks",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "C2G Compassionate Groups Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Cadre Group Behaviour Services Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Caitlin Claire Murphy",
+      "state": "TAS",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Caitlin Kusabs",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Calvary Wisdom Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Camp Kiah Pty. Limited",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Campbell, Glenn Raymond",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Candice Dixie Tennant Dover",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Candice\u2019s House  Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CAPEABILITY PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Active Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care and Concern Australia Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care And Grace Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care And Support Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Care and Support Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Aunz Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Care Central Pty  Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Connex Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CARE DISABILITY SERVICES PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care In Need Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Link Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Logic Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Nest Pty Ltd t/as CARE NEST PTY LTD",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Passion Pty. Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Plus Services Pty Ltd.",
+      "state": "ACT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care Prestige Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Care United Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Care With Hope Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Careara Life Australia Pty Ltd t/as CAREARA LIFE AUSTRALIA PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CAREBUDDIES QLD1 PTY LTD",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Careland Service Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CARELINX PTY LTD",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Carewing Pty Ltd t/as CAREWING PTY LTD",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Caring Ability Australia Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CARING ANGELS PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CARING COMMUNITY SERVICES PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Caring For You @ Home Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "CARING HEARTS SUPPORT SERVICES PTY LTD",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Carl Bailey",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Carla Judith Smith",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Carlos Adelino Henrique Ferreira",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Carmel Group Pty Ltd",
+      "state": "ACT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Carmelo Davide Graziano",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Casa Services Limited",
+      "state": "NT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CASILS SUPPORT SERVICES PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Cassie Ingrid Capobus-Thorpe",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Casson Homes Inc",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Casson Homes Inc",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Caswell Health Care Pty Limited",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Catena Programs And Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Catherine Lynn Driver",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Catherine Mary Timmins",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "CCS Plan Management Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "CDNI Care Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ceav Career Counselling Australia Limited",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Celestial Care Australia Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Centacare Catholic Family Services",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Central Bayside Community Health Services Limited",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Centre For Behaviour Support Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Challenge Community Services",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CHALLENGE FOUNDATION GOULBURN INC",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Champion Mentors Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CHANCE NDUME",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Chance NDUME trading as Everyone has a story to tell",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Chanelles Helping Hands Recruitment Pty Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Chantelle Veronica Roberts",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Charlene Joy Gatt",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Charlestown Caring Group Incorporated",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CHEMAISSEM, SARAH",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Cheryle Anne Coppleman",
+      "state": "TAS",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Chidiebele Emmanuel OLIAKU",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Chikelue Solomon Nwangwu t/as Good Care ,Family and Friends",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Children Access Disability Services Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Chipadza, Kulecha",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Chloe Flemming",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Chloe Hart",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Choice Community Consultancy Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Choice Disability Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CHOICE PERSONNEL PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CHRISBURN PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Christine Coop",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Christopher  Palmares Sy",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Christopher Brown",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Christopher Harrison",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Christopher Sy",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Suspension of registration",
+      "name": "Christopher Sy  t/a Processing  Plus Therapy",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "LOW",
+      "type": "ER - Refusal to re-register",
+      "name": "Chukwudi Cletus Ikekwere",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "CHUKWUEMEKA, ENEKWACHI DAVID",
+      "state": "NT",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Cigma Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Cindy Barrie",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Cinita McGrath",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Circle of Hope Pty Ltd trading as Circle of Hope Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Cj Felkai Pty Ltd t/as EverCare Enterprises",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Ck Infinity Plus Support Services Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Clairie Wu",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Clarity Connect Group Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Clark, Leanne",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Enforceable Undertaking",
+      "name": "Claro Disability Services Pty Ltd (trading as Claro Aged Care and Disability Services) (formerly known as Australian  Home Care  Services Pty Ltd)",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Claro Disability Services Pty Ltd (trading as Claro Aged Care and Disability Services) (formerly known as Australian Home Care Services Pty Ltd)",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Clarrissa Louise Mcfarlane t/as CLM SUPPORT SERVICES",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Claudio Osvaldo Martinez",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "CLIENT CARE FIRST PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Clinical Skills Academy Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Clinton James Mcentyre t/as WEDGETAIL DISABILITY SERVICES",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "Coastal  Protection Pty  Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Coastal Residential Service Inc.",
+      "state": "TAS",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Colin Russell Hawes",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Collecting Solutions Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Collective Hope Community Services Ltd",
+      "state": "WA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Collette May",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Comfort and Care Respite Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Comfort Care Foundation Inc",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Comfort Care Support Services Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Comfort Community Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Revocation of registration",
+      "name": "COMFORT DISABILITY SOLUTIONS PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Comfort Support Services Pty Ltd t/as COMFORT SUPPORT SERVICES PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Comfortplus Care Pty Ltd t/as COMFORTPLUS CARE PTY LTD",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Comity Support Services Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Common Aged And Disability Care Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community & Home Services Pty Ltd t/as COMMUNITY & HOME SERVICES PTY LTD",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Accommodation and Respite Agency Inc (CARA)",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Care Hub Pty. Ltd.",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Health Group Pty Ltd",
+      "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Integrated Care Pty Ltd",
+      "state": "VIC",
+      "effective": "",
+      "end": ""
     }
   ]
 }
