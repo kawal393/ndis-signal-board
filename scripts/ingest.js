@@ -1,37 +1,72 @@
-// scripts/Ingest.js
-// Minimal working ingest script (CommonJS – guaranteed to run)
+// scripts/ingest.js
+// STEP 1: Real NDIS enforcement source (CSV) + safe output
 
 const fs = require("fs");
 const path = require("path");
+const https = require("https");
 
-// Where the website reads data from
+const SOURCE_URL =
+  "https://www.ndiscommission.gov.au/sites/default/files/documents/2024-07/Enforcement-register.csv";
+// ↑ If this URL ever changes, only this line is updated.
+
 const OUT_DIR = "public";
 const OUT_FILE = path.join(OUT_DIR, "signals.json");
 
-// Dummy data (temporary – proves automation)
-const signals = [
-  {
-    risk: "HIGH",
-    type: "ER - Banning Order",
-    name: "Example Provider Pty Ltd",
-    state: "VIC",
-    effective: "2026-02-03",
-    end: "",
-  },
-  {
-    risk: "MED",
-    type: "ER - Compliance Notice",
-    name: "Second Example Care Pty Ltd",
-    state: "NSW",
-    effective: "2026-02-01",
-    end: "",
-  }
-];
+function fetchCsv(url) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (res) => {
+        if (res.statusCode !== 200) {
+          reject(new Error("Fetch failed: " + res.statusCode));
+          return;
+        }
+        let data = "";
+        res.on("data", (chunk) => (data += chunk));
+        res.on("end", () => resolve(data));
+      })
+      .on("error", reject);
+  });
+}
 
-// Ensure output directory exists
-fs.mkdirSync(OUT_DIR, { recursive: true });
+function parseCsv(csv) {
+  const lines = csv.split(/\r?\n/).filter(Boolean);
+  const headers = lines.shift().split(",").map((h) => h.trim());
 
-// Write signals.json
-fs.writeFileSync(OUT_FILE, JSON.stringify(signals, null, 2));
+  return lines.map((line) => {
+    const cols = line.split(",").map((c) => c.trim());
+    const row = {};
+    headers.forEach((h, i) => (row[h] = cols[i] || ""));
+    return row;
+  });
+}
 
-console.log("signals.json written successfully");
+function riskFromAction(action) {
+  const a = action.toLowerCase();
+  if (a.includes("banning") || a.includes("revocation")) return "HIGH";
+  if (a.includes("compliance") || a.includes("notice")) return "MED";
+  return "LOW";
+}
+
+async function run() {
+  const csv = await fetchCsv(SOURCE_URL);
+  const rows = parseCsv(csv);
+
+  const signals = rows.map((r) => ({
+    risk: riskFromAction(r["Action type"] || ""),
+    type: r["Action type"] || "",
+    name: r["Provider name"] || r["Individual name"] || "",
+    state: r["State"] || "",
+    effective: r["Effective date"] || "",
+    end: r["End date"] || "",
+  }));
+
+  fs.mkdirSync(OUT_DIR, { recursive: true });
+  fs.writeFileSync(OUT_FILE, JSON.stringify(signals, null, 2));
+
+  console.log("NDIS enforcement data ingested:", signals.length);
+}
+
+run().catch((err) => {
+  console.error(err.message);
+  process.exit(1);
+});
