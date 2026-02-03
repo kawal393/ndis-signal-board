@@ -168,7 +168,6 @@
 <body>
   <div class="wrap">
 
-    <!-- TOP BAR -->
     <div class="top">
       <div class="brand">
         <b>APEX NDIS WATCHTOWER</b>
@@ -179,14 +178,12 @@
         <span class="pill">Status: <strong id="status">Loading</strong></span>
         <span class="pill">Last update: <strong id="lastUpdate">—</strong></span>
         <button class="btn" id="refreshBtn">Force refresh</button>
-        <!-- IMPORTANT: BUY BUTTON -->
         <a class="btn gold" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Buy Premium</a>
       </div>
     </div>
 
     <div class="grid">
 
-      <!-- LEFT: MAIN PANEL -->
       <div class="panel">
         <h1>Signals of Enforcement Pressure</h1>
         <p>This board ingests publicly released NDIS enforcement/compliance actions and renders a clean, searchable risk feed.</p>
@@ -198,7 +195,6 @@
           <div class="kpi"><b id="k_low">—</b><span>Low risk</span></div>
         </div>
 
-        <!-- LEAD MAGNET BUTTON (no code complexity) -->
         <div class="lockbox">
           <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap">
             <div>
@@ -207,7 +203,6 @@
             </div>
             <div class="row" style="margin:0">
               <a class="btn gold" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noreferrer">Buy Premium on Gumroad</a>
-              <!-- OPTIONAL: replace # with your form link later -->
               <a class="btn" href="#" id="leadBtn" target="_blank" rel="noreferrer">Get free weekly signals (email)</a>
             </div>
           </div>
@@ -224,13 +219,11 @@
           <div class="alert" id="errBox"></div>
         </div>
 
-        <!-- SEARCH -->
         <div class="row" style="margin-top:12px">
           <input id="search" placeholder="Search name, type, state, risk…" />
           <span class="pill"><strong id="shownCount">0</strong> shown</span>
         </div>
 
-        <!-- TABLE -->
         <div class="tablewrap">
           <table>
             <thead>
@@ -259,7 +252,6 @@
         </div>
       </div>
 
-      <!-- RIGHT: EXPLAINER -->
       <div class="panel rightbox">
         <h2>WHAT YOU GET</h2>
         <ul>
@@ -286,10 +278,11 @@
   <script>
     // ====== CONFIG ======
     const GUMROAD_URL = "https://apex888.gumroad.com/l/fouiu";
-    // OPTIONAL: set your Google Form link here later (leave "#" for now)
-    const LEAD_FORM_URL = "#";
 
-    // Data files (GitHub Pages)
+    // FIX: this must NOT be "#". "#" will bounce back to the same page.
+    // Temporary zero-setup version: email signup.
+    const LEAD_FORM_URL = "mailto:apex888@proton.me?subject=Free%20Weekly%20Signals%20Signup&body=Business%20name%3A%0AState%3A%0ARole%20(owner%2Fcompliance%2Fconsultant)%3A%0AEmail%3A";
+
     const SIGNALS_URL = "./signals.json";
     const META_URL = "./meta.json";
 
@@ -312,7 +305,6 @@
 
     els.leadBtn.href = LEAD_FORM_URL;
 
-    // ====== STATE ======
     let allSignals = [];
 
     function safeText(x){ return (x === null || x === undefined) ? "" : String(x); }
@@ -355,9 +347,8 @@
       const q = safeText(els.search.value).trim().toLowerCase();
       if (!q){ renderTable(allSignals); return; }
       const filtered = allSignals.filter(s => {
-        const blob = [
-          s.risk, s.type, s.name, s.state, s.effective, s.end
-        ].map(safeText).join(" ").toLowerCase();
+        const blob = [s.risk, s.type, s.name, s.state, s.effective, s.end]
+          .map(safeText).join(" ").toLowerCase();
         return blob.includes(q);
       });
       renderTable(filtered);
@@ -379,7 +370,6 @@
     }
 
     async function loadJSON(url){
-      // cache-bust to avoid stale GitHub Pages cache
       const bust = `?t=${Date.now()}`;
       const r = await fetch(url + bust, { cache: "no-store" });
       if (!r.ok) throw new Error(`Fetch failed: ${url} (${r.status})`);
@@ -389,24 +379,16 @@
     async function refresh(){
       els.status.textContent = "Loading";
       try {
-        // meta is optional (site still works without it)
         try{
           const meta = await loadJSON(META_URL);
           if (meta && meta.updated_utc) els.lastUpdate.textContent = meta.updated_utc;
           else if (meta && meta.last_update) els.lastUpdate.textContent = meta.last_update;
-        } catch(e){
-          // ignore meta errors
-        }
+        } catch(e){}
 
         const data = await loadJSON(SIGNALS_URL);
-
-        // Accept both formats:
-        // A) { updated_utc, count, signals:[...] }
-        // B) { signals:[...] }
         const signals = Array.isArray(data.signals) ? data.signals : [];
         allSignals = signals;
 
-        // Update last update if present
         if (data.updated_utc) els.lastUpdate.textContent = data.updated_utc;
         els.status.textContent = "OK";
 
@@ -419,7 +401,6 @@
       }
     }
 
-    // ====== PREMIUM UNLOCK (V1: store key locally and open unlocked.html) ======
     function unlock(){
       const key = safeText(els.license.value).trim();
       if (!key){
@@ -430,17 +411,11 @@
       window.location.href = "./unlocked.html";
     }
 
-    // ====== EVENTS ======
     els.search.addEventListener("input", applyFilter);
     els.refreshBtn.addEventListener("click", refresh);
     els.unlockBtn.addEventListener("click", unlock);
+    els.license.addEventListener("keydown", (e) => { if (e.key === "Enter") unlock(); });
 
-    // Also allow Enter on license input
-    els.license.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") unlock();
-    });
-
-    // Start
     refresh();
   </script>
 </body>
