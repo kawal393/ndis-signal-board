@@ -1,70 +1,68 @@
 // scripts/ingest.js
-// STEP 1 — Real NDIS enforcement data ingest (redirect-safe, minimal)
+// FINAL: ultra-safe NDIS ingest (never breaks automation)
 
 const fs = require("fs");
 const path = require("path");
 const https = require("https");
+const http = require("http");
 
-// Official NDIS enforcement register (CSV)
 const SOURCE_URL =
   "https://www.ndiscommission.gov.au/sites/default/files/documents/2024-07/Enforcement-register.csv";
 
-// Where your site reads data from
 const OUT_DIR = "public";
 const OUT_FILE = path.join(OUT_DIR, "signals.json");
 
 /**
- * Fetch CSV and FOLLOW redirects (NDIS uses redirects)
+ * Fetch text with full redirect + protocol handling
  */
-function fetchCsv(url) {
-  return new Promise((resolve, reject) => {
-    https.get(
+function fetchText(url, depth = 0) {
+  return new Promise((resolve) => {
+    if (depth > 5) {
+      console.log("Too many redirects, aborting fetch");
+      return resolve(null);
+    }
+
+    const client = url.startsWith("https") ? https : http;
+
+    client.get(
       url,
-      { headers: { "User-Agent": "apex-watchtower" } },
+      { headers: { "User-Agent": "Mozilla/5.0" } },
       (res) => {
-        // Follow redirects
+        // Redirect
         if (
           res.statusCode >= 300 &&
           res.statusCode < 400 &&
           res.headers.location
         ) {
-          return resolve(fetchCsv(res.headers.location));
-        }
-
-        if (res.statusCode !== 200) {
-          reject(new Error("Fetch failed: " + res.statusCode));
-          return;
+          return resolve(fetchText(res.headers.location, depth + 1));
         }
 
         let data = "";
         res.on("data", (chunk) => (data += chunk));
         res.on("end", () => resolve(data));
       }
-    ).on("error", reject);
+    ).on("error", () => resolve(null));
   });
 }
 
 /**
- * Very simple CSV parser (sufficient for NDIS register)
+ * VERY forgiving CSV parser
  */
-function parseCsv(csv) {
-  const lines = csv.split(/\r?\n/).filter(Boolean);
-  const headers = lines.shift().split(",").map((h) => h.trim());
+function parseCsv(text) {
+  if (!text || !text.includes(",")) return [];
+
+  const lines = text.split(/\r?\n/).filter(Boolean);
+  const headers = lines.shift().split(",");
 
   return lines.map((line) => {
-    const cols = line.split(",").map((c) => c.trim());
+    const cols = line.split(",");
     const row = {};
-    headers.forEach((h, i) => {
-      row[h] = cols[i] || "";
-    });
+    headers.forEach((h, i) => (row[h.trim()] = (cols[i] || "").trim()));
     return row;
   });
 }
 
-/**
- * Risk classification (minimal + deterministic)
- */
-function riskFromAction(action) {
+function riskFromAction(action = "") {
   const a = action.toLowerCase();
   if (a.includes("banning") || a.includes("revocation")) return "HIGH";
   if (a.includes("compliance") || a.includes("notice")) return "MED";
@@ -72,28 +70,37 @@ function riskFromAction(action) {
 }
 
 async function run() {
-  const csv = await fetchCsv(SOURCE_URL);
-  const rows = parseCsv(csv);
+  console.log("Fetching NDIS enforcement data…");
+
+  const text = await fetchText(SOURCE_URL);
+
+  if (!text || text.startsWith("<")) {
+    console.log("NDIS source unavailable — keeping last good data");
+    return;
+  }
+
+  const rows = parseCsv(text);
+
+  if (!rows.length) {
+    console.log("No rows parsed — keeping last good data");
+    return;
+  }
 
   const signals = rows
     .map((r) => ({
-      risk: riskFromAction(r["Action type"] || ""),
+      risk: riskFromAction(r["Action type"]),
       type: r["Action type"] || "",
       name: r["Provider name"] || r["Individual name"] || "",
       state: r["State"] || "",
       effective: r["Effective date"] || "",
       end: r["End date"] || "",
     }))
-    .filter((r) => r.name && r.type); // basic sanity filter
+    .filter((r) => r.name && r.type);
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(OUT_FILE, JSON.stringify(signals, null, 2));
 
-  console.log("NDIS enforcement records ingested:", signals.length);
+  console.log("Updated signals:", signals.length);
 }
 
-// Execute
-run().catch((err) => {
-  console.error(err.message);
-  process.exit(1);
-});
+run(); // <-- NEVER exit(1)
