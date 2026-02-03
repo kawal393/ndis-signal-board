@@ -1,138 +1,664 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>APEX NDIS Signals</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Apex NDIS Watchtower — Signals</title>
+  <meta name="description" content="Apex NDIS Watchtower: automated compliance & enforcement signals, risk intelligence, and a clean searchable signal feed." />
+  <meta name="theme-color" content="#0b1020" />
 
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont;
-      background: #0b0f14;
-      color: #e6e6e6;
-      margin: 0;
-      padding: 40px;
+    :root{
+      --bg0:#060913;
+      --bg1:#0b1020;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.10);
+      --stroke2:rgba(255,255,255,.14);
+      --txt:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.52);
+      --gold:#f5d07a;
+      --gold2:#caa24a;
+      --cyan:#7bf0ff;
+      --green:#74ffb3;
+      --red:#ff6b6b;
+      --amber:#ffcd4a;
+      --shadow:0 20px 70px rgba(0,0,0,.55);
+      --shadow2:0 10px 40px rgba(0,0,0,.45);
+      --r:18px;
+      --r2:26px;
+      --max:1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--txt);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(245,208,122,.22), transparent 60%),
+        radial-gradient(900px 600px at 85% 10%, rgba(123,240,255,.14), transparent 55%),
+        radial-gradient(900px 700px at 60% 90%, rgba(116,255,179,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
     }
 
-    .locked .full {
-      display: none;
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 16px 80px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 16px;
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius:var(--r2);
+      box-shadow:var(--shadow2);
+      backdrop-filter: blur(14px);
+      position:sticky; top:12px; z-index:10;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:0}
+    .logo{
+      width:36px; height:36px; border-radius:14px;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(135deg, rgba(245,208,122,.35), rgba(123,240,255,.20)),
+        rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      flex:0 0 auto;
+    }
+    .brand h1{margin:0; font-size:14px; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .right{display:flex; align-items:center; gap:10px; flex:0 0 auto}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:12px;
+      user-select:none;
+    }
+    .dot{width:8px; height:8px; border-radius:50%}
+    .dot.calm{background:var(--green); box-shadow:0 0 18px rgba(116,255,179,.45)}
+    .dot.hot{background:var(--red); box-shadow:0 0 18px rgba(255,107,107,.45)}
+    .dot.warn{background:var(--amber); box-shadow:0 0 18px rgba(255,205,74,.40)}
+
+    .btn{
+      appearance:none;
+      border:1px solid var(--stroke2);
+      background:rgba(255,255,255,.06);
+      color:var(--txt);
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:600;
+      font-size:12px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.22)}
+    .btn.primary{
+      border-color:rgba(245,208,122,.45);
+      background:linear-gradient(180deg, rgba(245,208,122,.22), rgba(245,208,122,.10));
+      color:rgba(255,255,255,.95);
+      box-shadow: 0 10px 35px rgba(245,208,122,.12);
+    }
+    .btn.primary:hover{border-color:rgba(245,208,122,.65)}
+
+    .hero{
+      margin-top:18px;
+      border-radius:var(--r2);
+      border:1px solid var(--stroke);
+      background:
+        radial-gradient(900px 500px at 10% 10%, rgba(245,208,122,.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(123,240,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow:var(--shadow);
+      padding:22px 18px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(650px 220px at 40% -10%, rgba(255,255,255,.08), transparent 65%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      display:grid; gap:16px;
+      grid-template-columns: 1.4fr .6fr;
+      align-items:start;
+    }
+    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
+    .hero h2{
+      margin:0 0 8px;
+      font-size:26px;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .hero p{
+      margin:0 0 14px;
+      color:var(--muted);
+      line-height:1.55;
+      max-width:60ch;
     }
 
-    .unlocked .locked-only {
-      display: none;
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+    @media (max-width:700px){ .kpis{grid-template-columns:1fr} }
+    .kpi{
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.18);
+      border-radius:16px;
+      padding:12px 12px;
+      backdrop-filter: blur(12px);
+    }
+    .kpi .label{font-size:11px; color:var(--muted2); letter-spacing:.14em; text-transform:uppercase}
+    .kpi .value{margin-top:6px; font-size:18px; font-weight:800}
+    .kpi .sub{margin-top:2px; font-size:12px; color:var(--muted)}
+    .value.gold{color:var(--gold)}
+    .value.cyan{color:var(--cyan)}
+    .value.green{color:var(--green)}
+
+    .sidecard{
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.18);
+      border-radius:18px;
+      padding:14px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+    }
+    .sidecard h3{margin:0 0 8px; font-size:14px; letter-spacing:.12em; text-transform:uppercase}
+    .sidecard ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.55}
+    .sidecard li{margin:6px 0}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+    .section{
+      margin-top:18px;
+      border:1px solid var(--stroke);
+      border-radius:var(--r2);
+      background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow2);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+    .sectionHead{
+      padding:14px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    }
+    .sectionHead .title{
+      display:flex; align-items:center; gap:10px; min-width:0;
+    }
+    .sectionHead h3{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .sectionHead .meta{
+      font-size:12px; color:var(--muted2);
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    .sectionBody{padding:14px 16px}
+
+    .controls{
+      display:grid; gap:10px;
+      grid-template-columns: 1.6fr .7fr .7fr .7fr;
+      align-items:center;
+    }
+    @media (max-width:900px){
+      .controls{grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:520px){
+      .controls{grid-template-columns:1fr; }
     }
 
-    .box {
-      border: 1px solid #2a2f3a;
-      padding: 20px;
-      border-radius: 8px;
-      margin-top: 20px;
-      background: #121826;
+    .input, .select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.20);
+      color:var(--txt);
+      outline:none;
+      font-size:13px;
+    }
+    .input::placeholder{color:rgba(255,255,255,.38)}
+    .row{
+      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+      margin-top:12px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.18);
+      font-size:12px;
+      color:var(--muted);
+    }
+    .badge b{color:var(--txt)}
+    .badge .miniDot{width:7px; height:7px; border-radius:50%}
+
+    table{width:100%; border-collapse:collapse; overflow:hidden}
+    th,td{padding:12px 10px; text-align:left; border-bottom:1px solid rgba(255,255,255,.07); font-size:13px}
+    th{
+      font-size:11px;
+      color:var(--muted2);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:700;
+      white-space:nowrap;
+    }
+    tbody tr:hover{background:rgba(255,255,255,.04)}
+    .risk{
+      display:inline-flex; align-items:center; gap:8px;
+      font-weight:800;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      font-size:12px;
+    }
+    .risk .rDot{width:8px; height:8px; border-radius:50%}
+    .risk.high .rDot{background:var(--red); box-shadow:0 0 14px rgba(255,107,107,.45)}
+    .risk.med .rDot{background:var(--amber); box-shadow:0 0 14px rgba(255,205,74,.35)}
+    .risk.low .rDot{background:var(--green); box-shadow:0 0 14px rgba(116,255,179,.35)}
+    .mono{font-family:var(--mono)}
+    .muted{color:var(--muted)}
+    .muted2{color:var(--muted2)}
+
+    .lockBanner{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      padding:14px 16px;
+      border:1px solid rgba(245,208,122,.30);
+      background:linear-gradient(180deg, rgba(245,208,122,.12), rgba(0,0,0,.18));
+      border-radius:var(--r2);
+      margin-top:16px;
+      box-shadow: 0 18px 60px rgba(245,208,122,.10);
+      backdrop-filter: blur(12px);
+    }
+    .lockBanner h4{margin:0 0 6px; font-size:13px; letter-spacing:.14em; text-transform:uppercase}
+    .lockBanner p{margin:0; color:var(--muted); line-height:1.5}
+    .lockActions{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
+
+    .divider{
+      height:1px; background:rgba(255,255,255,.08);
+      margin:16px 0;
     }
 
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: none;
+    .footer{
+      margin-top:18px;
+      color:var(--muted2);
+      font-size:12px;
+      line-height:1.55;
+      text-align:center;
     }
+    .footer a{color:var(--muted)}
+    .smallLink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
 
-    button {
-      margin-top: 10px;
-      padding: 12px 20px;
-      background: #4f8cff;
-      border: none;
-      border-radius: 6px;
-      color: white;
-      cursor: pointer;
-      font-size: 1rem;
-    }
+    .fadeIn{animation:fadeIn .35s ease both}
+    @keyframes fadeIn{from{opacity:.0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)}}
 
-    a {
-      color: #4f8cff;
-      text-decoration: none;
-    }
-
-    .signal {
-      padding: 10px;
-      border-bottom: 1px solid #2a2f3a;
-    }
+    /* Mobile table scroll */
+    .tableWrap{overflow:auto; border-radius:18px; border:1px solid rgba(255,255,255,.08)}
+    .tableWrap table{min-width:820px}
+    @media (max-width:900px){ .tableWrap table{min-width:860px} }
   </style>
 </head>
 
-<body class="locked">
+<body>
+  <div class="wrap">
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div style="min-width:0">
+          <h1>APEX NDIS WATCHTOWER</h1>
+          <p>Compliance & Risk Intelligence • Automated</p>
+        </div>
+      </div>
 
-  <h1>APEX NDIS Signals</h1>
-  <p>Automated compliance & enforcement intelligence for NDIS providers.</p>
+      <div class="right">
+        <span class="pill" id="heatPill"><span class="dot calm" id="heatDot"></span><span id="heatText">CALM</span></span>
+        <span class="pill"><span class="muted2">Last updated:</span> <span id="updatedText">—</span></span>
+        <button class="btn" id="forceBtn">Force Refresh</button>
+      </div>
+    </div>
 
-  <!-- LOCKED VIEW -->
-  <div class="locked-only box">
-    <h2>🔒 Locked</h2>
-    <p>This intelligence feed is for subscribers only.</p>
+    <!-- HERO -->
+    <div class="hero fadeIn">
+      <div class="hero-grid">
+        <div>
+          <h2>Signals of Enforcement Pressure</h2>
+          <p>
+            This board continuously ingests publicly released enforcement/compliance action data and renders it
+            into a clean, searchable signal feed — designed for operators who cannot afford blind spots.
+          </p>
 
-    <a href="https://apex888.gumroad.com/l/bjivdq" target="_blank">
-      👉 Subscribe on Gumroad
-    </a>
+          <div class="kpis">
+            <div class="kpi">
+              <div class="label">Rows</div>
+              <div class="value gold" id="kpiRows">0</div>
+              <div class="sub muted">Signals in current view</div>
+            </div>
+            <div class="kpi">
+              <div class="label">High Risk</div>
+              <div class="value" id="kpiHigh">0</div>
+              <div class="sub muted">Priority enforcement</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Mode</div>
+              <div class="value cyan" id="kpiMode">Public</div>
+              <div class="sub muted">Intelligence feed</div>
+            </div>
+          </div>
 
-    <p style="margin-top:20px;">After purchase, paste your license key:</p>
-    <input id="licenseInput" placeholder="Paste Gumroad license key">
-    <button onclick="unlock()">Unlock</button>
-  </div>
+          <div class="lockBanner" id="lockBanner">
+            <div>
+              <h4>🔒 Subscriber Access</h4>
+              <p>
+                You can view the public intelligence feed right now. Subscribers receive the
+                “Majestic Layer” — premium formatting + faster iteration + expanded signal fields as we ship them.
+              </p>
+            </div>
+            <div class="lockActions">
+              <a class="btn primary" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noopener">Unlock — Gumroad</a>
+              <a class="btn" href="https://gumroad.com/library" target="_blank" rel="noopener">I already bought</a>
+            </div>
+          </div>
+        </div>
 
-  <!-- FULL VIEW -->
-  <div class="full box">
-    <h2>📡 Live Signals</h2>
-    <div id="signals">Loading signals…</div>
+        <div class="sidecard">
+          <h3>What you get</h3>
+          <ul>
+            <li>Instant search + filtering by provider, state, action type</li>
+            <li>Risk visualisation & counts (High / Medium / Low)</li>
+            <li>One-click refresh + “last updated” timestamp</li>
+            <li>Built for mobile, fast, no login friction</li>
+          </ul>
+          <div class="ctaRow">
+            <button class="btn" id="viewBtn">View Live Signals</button>
+            <button class="btn" id="copyBtn">Copy Site Link</button>
+          </div>
+          <div class="divider"></div>
+          <div class="muted2" style="font-size:12px">
+            Data source: publicly available releases by the NDIS Commission. This is a rendering layer.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="section fadeIn" style="animation-delay:.04s">
+      <div class="sectionHead">
+        <div class="title">
+          <span class="pill"><span class="dot warn"></span> Signals</span>
+          <h3>Signal Board</h3>
+        </div>
+        <div class="meta">
+          <span class="pill"><span class="muted2">Status:</span> <span id="statusText">Loading…</span></span>
+          <a class="pill smallLink" id="rawLink" href="signals.json" target="_blank" rel="noopener">View raw signals.json</a>
+        </div>
+      </div>
+
+      <div class="sectionBody">
+        <div class="controls">
+          <input class="input" id="q" placeholder="Search provider, action type, state, keywords…" />
+          <select class="select" id="typeSel">
+            <option value="">All types</option>
+          </select>
+          <select class="select" id="riskSel">
+            <option value="">All risk</option>
+            <option value="HIGH">HIGH</option>
+            <option value="MED">MED</option>
+            <option value="LOW">LOW</option>
+          </select>
+          <select class="select" id="stateSel">
+            <option value="">All states</option>
+            <option value="NSW">NSW</option><option value="VIC">VIC</option><option value="QLD">QLD</option>
+            <option value="SA">SA</option><option value="WA">WA</option><option value="TAS">TAS</option>
+            <option value="ACT">ACT</option><option value="NT">NT</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <span class="badge"><span class="miniDot" style="background:var(--green)"></span> Rows: <b id="rowsCount">0</b></span>
+          <span class="badge"><span class="miniDot" style="background:var(--red)"></span> High: <b id="highCount">0</b></span>
+          <span class="badge"><span class="miniDot" style="background:var(--amber)"></span> Med: <b id="medCount">0</b></span>
+          <span class="badge"><span class="miniDot" style="background:var(--green)"></span> Low: <b id="lowCount">0</b></span>
+        </div>
+
+        <div style="margin-top:12px" class="tableWrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Risk</th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>State</th>
+                <th>Effective</th>
+                <th>Ends</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr><td colspan="6" class="muted">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="footer">
+          Built on GitHub Pages. <a class="smallLink" href="https://apex888.gumroad.com/l/fouiu" target="_blank" rel="noopener">Subscribe via Gumroad</a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="mono">Apex NDIS Watchtower</span> • Signal intelligence layer •
+      <a class="smallLink" href="signals.json" target="_blank" rel="noopener">signals.json</a>
+    </div>
   </div>
 
   <script>
-    async function verifyLicense(key) {
-      const res = await fetch("https://api.gumroad.com/v2/licenses/verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          product_permalink: "bjivdq",
-          license_key: key
-        })
+    // ---- CONFIG ----
+    const SIGNALS_URL = "signals.json"; // in /docs
+    const GumroadURL = "https://apex888.gumroad.com/l/fouiu";
+
+    // ---- STATE ----
+    let ALL = [];
+    let VIEW = [];
+
+    // ---- DOM ----
+    const $ = (id) => document.getElementById(id);
+    const tbody = $("tbody");
+    const q = $("q"), typeSel = $("typeSel"), riskSel = $("riskSel"), stateSel = $("stateSel");
+
+    function setStatus(t){ $("statusText").textContent = t; }
+    function setUpdated(t){ $("updatedText").textContent = t || "—"; }
+
+    function riskClass(r){
+      const x = String(r||"").toUpperCase();
+      if (x.includes("HIGH")) return "high";
+      if (x.includes("MED")) return "med";
+      if (x.includes("LOW")) return "low";
+      return "med";
+    }
+
+    function heatFromCounts(h, m, l){
+      // very simple heat heuristic
+      if (h >= 3) return {text:"HIGH SIGNALS", dot:"hot"};
+      if (h >= 1) return {text:"ELEVATED", dot:"warn"};
+      return {text:"CALM", dot:"calm"};
+    }
+
+    function escapeHtml(s){
+      return String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function normalizeSignals(payload){
+      // Supports:
+      // 1) { updated_utc, signals:[...] }  <-- your current structured shape
+      // 2) { updated_utc, raw_preview:"csv..." } <-- your earlier preview shape
+      if (!payload) return { updated:"—", signals:[] };
+
+      const updated = payload.updated_utc ? String(payload.updated_utc).replace("T"," ").replace("Z"," UTC") : "—";
+
+      if (Array.isArray(payload.signals)) {
+        return { updated, signals: payload.signals };
+      }
+
+      // If only raw_preview exists, render as single placeholder row (still looks clean)
+      if (payload.raw_preview) {
+        return {
+          updated,
+          signals: [{
+            risk:"MED",
+            type:"Raw Preview",
+            name:"NDIS Export fetched (preview)",
+            state:"—",
+            effective:"—",
+            end:"—"
+          }]
+        };
+      }
+
+      return { updated, signals:[] };
+    }
+
+    function renderTypeOptions(signals){
+      const types = new Set();
+      signals.forEach(s => { if (s.type) types.add(String(s.type)); });
+      const arr = Array.from(types).sort((a,b)=>a.localeCompare(b));
+      typeSel.innerHTML = `<option value="">All types</option>` + arr.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join("");
+    }
+
+    function applyFilters(){
+      const needle = (q.value || "").trim().toLowerCase();
+      const t = (typeSel.value || "").trim();
+      const r = (riskSel.value || "").trim().toUpperCase();
+      const st = (stateSel.value || "").trim().toUpperCase();
+
+      VIEW = ALL.filter(s => {
+        const risk = String(s.risk || "").toUpperCase();
+        const okRisk = !r || risk.includes(r);
+        const okType = !t || String(s.type||"") === t;
+        const okState = !st || String(s.state||"").toUpperCase() === st;
+
+        const blob = (
+          String(s.type||"") + " " +
+          String(s.name||"") + " " +
+          String(s.state||"") + " " +
+          String(s.effective||"") + " " +
+          String(s.end||"")
+        ).toLowerCase();
+        const okQ = !needle || blob.includes(needle);
+
+        return okRisk && okType && okState && okQ;
       });
-      const data = await res.json();
-      return data.success;
+
+      updateCounts();
+      renderTable();
     }
 
-    async function unlock() {
-      const key = document.getElementById("licenseInput").value;
-      if (!key) return alert("Paste license key");
+    function updateCounts(){
+      const high = VIEW.filter(s => String(s.risk||"").toUpperCase().includes("HIGH")).length;
+      const med  = VIEW.filter(s => String(s.risk||"").toUpperCase().includes("MED")).length;
+      const low  = VIEW.filter(s => String(s.risk||"").toUpperCase().includes("LOW")).length;
 
-      const valid = await verifyLicense(key);
-      if (!valid) return alert("Invalid license");
+      $("rowsCount").textContent = VIEW.length;
+      $("highCount").textContent = high;
+      $("medCount").textContent  = med;
+      $("lowCount").textContent  = low;
 
-      localStorage.setItem("gumroad_key", key);
-      location.reload();
+      $("kpiRows").textContent = VIEW.length;
+      $("kpiHigh").textContent = high;
+
+      const heat = heatFromCounts(high, med, low);
+      $("heatText").textContent = heat.text;
+      const dot = $("heatDot");
+      dot.className = "dot " + heat.dot;
     }
 
-    async function boot() {
-      const key = localStorage.getItem("gumroad_key");
-      if (key && await verifyLicense(key)) {
-        document.body.classList.remove("locked");
-        document.body.classList.add("unlocked");
+    function renderTable(){
+      if (!VIEW.length){
+        tbody.innerHTML = `<tr><td colspan="6" class="muted">No signals match your filters.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = VIEW.map(s => {
+        const rc = riskClass(s.risk);
+        const riskLabel = String(s.risk||"").toUpperCase() || "MED";
+        return `
+          <tr>
+            <td><span class="risk ${rc}"><span class="rDot"></span>${escapeHtml(riskLabel)}</span></td>
+            <td>${escapeHtml(s.type || "—")}</td>
+            <td>${escapeHtml(s.name || "—")}</td>
+            <td class="mono">${escapeHtml(s.state || "—")}</td>
+            <td class="mono">${escapeHtml(s.effective || "—")}</td>
+            <td class="mono">${escapeHtml(s.end || s.ends || "—")}</td>
+          </tr>
+        `;
+      }).join("");
+    }
 
-        fetch("signals.json")
-          .then(r => r.json())
-          .then(d => {
-            document.getElementById("signals").innerHTML =
-              "<pre>" + JSON.stringify(d, null, 2) + "</pre>";
-          });
+    async function loadSignals({bustCache=false} = {}){
+      try{
+        setStatus("Fetching…");
+        const url = bustCache ? `${SIGNALS_URL}?t=${Date.now()}` : SIGNALS_URL;
+        const res = await fetch(url, {cache: "no-store"});
+        if(!res.ok) throw new Error(`HTTP ${res.status}`);
+        const payload = await res.json();
+
+        const norm = normalizeSignals(payload);
+        setUpdated(norm.updated);
+
+        ALL = Array.isArray(norm.signals) ? norm.signals : [];
+        renderTypeOptions(ALL);
+        applyFilters();
+        setStatus("Ready");
+      }catch(e){
+        console.error(e);
+        setStatus("Failed to load");
+        tbody.innerHTML = `<tr><td colspan="6" class="muted">Could not load signals.json. Check the file exists in /docs and is valid JSON.</td></tr>`;
       }
     }
 
-    boot();
-  </script>
+    // Buttons
+    $("forceBtn").addEventListener("click", () => loadSignals({bustCache:true}));
+    $("viewBtn").addEventListener("click", () => {
+      document.querySelector(".section")?.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+    $("copyBtn").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(location.href);
+        $("copyBtn").textContent = "Copied ✔";
+        setTimeout(()=> $("copyBtn").textContent = "Copy Site Link", 900);
+      }catch{
+        alert("Copy failed. Long-press the URL bar and copy manually.");
+      }
+    });
 
+    // Filters
+    [q, typeSel, riskSel, stateSel].forEach(el => el.addEventListener("input", applyFilters));
+
+    // Raw link points correctly even on GitHub Pages subpath
+    (function(){
+      const base = location.href.endsWith("/") ? location.href : location.href.replace(/\/[^\/]*$/, "/");
+      $("rawLink").href = base + "signals.json";
+    })();
+
+    // Initial load
+    loadSignals();
+  </script>
 </body>
 </html>
