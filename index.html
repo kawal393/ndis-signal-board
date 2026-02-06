@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>APEX NDIS SIGNALS</title>
   <meta name="description" content="Real-time Compliance & Risk Intelligence for the NDIS Ecosystem." />
+
   <style>
     :root{
-      --bg0:#070A0F;
+      --bg0:#05070C;
       --bg1:#0B1120;
       --card:#0D162B;
       --card2:#0A1328;
@@ -25,7 +26,6 @@
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -37,8 +37,8 @@
         radial-gradient(900px 700px at 50% 120%, rgba(106,168,255,.10), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       min-height:100vh;
+      overflow-x:hidden;
     }
-
     a{color:inherit}
     .wrap{
       max-width:1120px;
@@ -46,7 +46,237 @@
       padding:28px 18px 60px;
     }
 
-    /* Top bar */
+    /* =========================
+       GATE (RITUAL ENTRY)
+    ========================== */
+    .gate{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 18px;
+      background:
+        radial-gradient(1100px 700px at 20% 10%, rgba(214,179,90,.12), transparent 55%),
+        radial-gradient(900px 650px at 80% 20%, rgba(106,168,255,.10), transparent 60%),
+        radial-gradient(800px 650px at 50% 120%, rgba(214,179,90,.06), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.92), rgba(8,10,16,.92));
+      backdrop-filter: blur(6px);
+      animation: gateIn 1.2s ease forwards;
+    }
+    @keyframes gateIn{
+      from{opacity:0; transform:translateY(10px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+
+    .gate::before{
+      content:"";
+      position:absolute;
+      inset:-20%;
+      background:
+        conic-gradient(from 180deg,
+          rgba(214,179,90,.0),
+          rgba(214,179,90,.10),
+          rgba(106,168,255,.10),
+          rgba(214,179,90,.0)
+        );
+      filter: blur(18px);
+      opacity:.55;
+      animation: gateSpin 18s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes gateSpin{to{transform:rotate(360deg)}}
+
+    .gateCore{
+      position:relative;
+      max-width:860px;
+      width:100%;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;
+      background:
+        radial-gradient(900px 420px at 20% 10%, rgba(214,179,90,.14), transparent 55%),
+        radial-gradient(900px 460px at 85% 15%, rgba(106,168,255,.12), transparent 55%),
+        linear-gradient(180deg, rgba(13,22,43,.75), rgba(10,19,40,.62));
+      box-shadow: 0 30px 120px rgba(0,0,0,.65);
+      overflow:hidden;
+    }
+    .gateCore::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, rgba(214,179,90,.0), rgba(214,179,90,.08), rgba(106,168,255,.08), rgba(214,179,90,.0));
+      opacity:.55;
+      transform: translateX(-45%);
+      animation: sweep 9s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes sweep{
+      0%,100%{transform:translateX(-45%)}
+      50%{transform:translateX(45%)}
+    }
+
+    .gateInner{
+      padding:26px 22px 20px;
+    }
+    .gateTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      padding-bottom:14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .gateBrand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .sigil{
+      width:44px; height:44px; border-radius:16px;
+      background:
+        linear-gradient(135deg, rgba(214,179,90,.25), rgba(106,168,255,.18)),
+        radial-gradient(circle at 35% 30%, rgba(214,179,90,.35), transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(106,168,255,.35), transparent 55%);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .sigil:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: conic-gradient(from 180deg, rgba(214,179,90,.0), rgba(214,179,90,.35), rgba(106,168,255,.35), rgba(214,179,90,.0));
+      animation: spin 12s linear infinite;
+      opacity:.9;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .gateTitle{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(230,234,242,.92);
+      line-height:1.2;
+    }
+    .gateSub{
+      margin-top:4px;
+      font-size:12px;
+      color:rgba(154,166,190,.92);
+      letter-spacing:.02em;
+    }
+
+    .gateBadge{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      background: rgba(7,10,15,.18);
+      backdrop-filter: blur(10px);
+      font-size:12px;
+      color:rgba(230,234,242,.9);
+      user-select:none;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--warn);
+      box-shadow: 0 0 0 4px rgba(251,191,36,.12);
+    }
+
+    .gateMain{
+      padding:18px 2px 8px;
+    }
+    .quote{
+      font-size:28px;
+      line-height:1.18;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      margin:0;
+      background: linear-gradient(90deg, var(--gold), rgba(230,234,242,.96), var(--blue));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      text-shadow: 0 0 26px rgba(214,179,90,.18);
+    }
+    .gateCopy{
+      margin-top:12px;
+      color:rgba(230,234,242,.85);
+      font-size:13px;
+      line-height:1.55;
+      max-width:760px;
+    }
+    .gateCopy b{color:rgba(230,234,242,.95)}
+
+    .gateActions{
+      margin-top:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      border:none;
+      cursor:pointer;
+      border-radius: 16px;
+      padding:12px 16px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:12px;
+      color:rgba(7,10,15,.95);
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      box-shadow: 0 18px 46px rgba(214,179,90,.20);
+      transition: transform .08s ease, filter .08s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.03);}
+    .btn:active{transform: translateY(0px); filter: brightness(.98);}
+
+    .btn2{
+      border:1px solid rgba(255,255,255,.16);
+      cursor:pointer;
+      border-radius: 16px;
+      padding:12px 16px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:12px;
+      color:rgba(230,234,242,.92);
+      background: rgba(7,10,15,.14);
+      backdrop-filter: blur(10px);
+      transition: transform .08s ease, border-color .08s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn2:hover{transform: translateY(-1px); border-color: rgba(214,179,90,.35);}
+    .btn2:active{transform: translateY(0px);}
+
+    .gateNote{
+      margin-top:10px;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(154,166,190,.85);
+      opacity:.9;
+    }
+
+    /* Fade gate out */
+    .gate.hide{
+      animation: gateOut .55s ease forwards;
+    }
+    @keyframes gateOut{
+      to{opacity:0; transform:translateY(10px); pointer-events:none;}
+    }
+
+    /* =========================
+       EXISTING BOARD (YOUR UI)
+    ========================== */
+
     .topbar{
       display:flex;
       align-items:center;
@@ -57,27 +287,6 @@
     .brand{
       display:flex; align-items:center; gap:12px;
     }
-    .sigil{
-      width:40px; height:40px; border-radius:14px;
-      background:
-        linear-gradient(135deg, rgba(214,179,90,.25), rgba(106,168,255,.18)),
-        radial-gradient(circle at 35% 30%, rgba(214,179,90,.35), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(106,168,255,.35), transparent 55%);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 35px rgba(0,0,0,.35);
-      position:relative;
-      overflow:hidden;
-    }
-    .sigil:after{
-      content:"";
-      position:absolute; inset:-40%;
-      background: conic-gradient(from 180deg, rgba(214,179,90,.0), rgba(214,179,90,.35), rgba(106,168,255,.35), rgba(214,179,90,.0));
-      animation: spin 12s linear infinite;
-      filter: blur(0px);
-      opacity:.9;
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
-
     .brand h1{
       margin:0;
       font-size:14px;
@@ -107,15 +316,7 @@
       color:rgba(230,234,242,.9);
       user-select:none;
     }
-    .dot{
-      width:8px; height:8px; border-radius:50%;
-      background: var(--ok);
-      box-shadow: 0 0 0 4px rgba(52,211,153,.12);
-    }
-    .dot.warn{background:var(--warn); box-shadow: 0 0 0 4px rgba(251,191,36,.12);}
-    .dot.bad{background:var(--bad); box-shadow: 0 0 0 4px rgba(251,113,133,.12);}
 
-    /* Hero */
     .hero{
       margin-top:14px;
       border-radius: var(--radius);
@@ -139,20 +340,8 @@
       animation: sweep 8s ease-in-out infinite;
       pointer-events:none;
     }
-    @keyframes sweep{
-      0%,100%{transform:translateX(-45%)}
-      50%{transform:translateX(45%)}
-    }
-    .heroInner{
-      padding:24px 20px 18px;
-    }
-    .heroTitle{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
+    .heroInner{ padding:24px 20px 18px; }
+    .heroTitle{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; }
     .heroTitle h2{
       margin:0;
       font-size:28px;
@@ -181,42 +370,11 @@
       align-items:center;
       justify-content:space-between;
     }
-    .ctaLeft{
-      display:flex; gap:10px; flex-wrap:wrap;
-      align-items:center;
-    }
-    .btn{
-      border:none;
-      cursor:pointer;
-      border-radius: 14px;
-      padding:11px 14px;
-      font-weight:700;
-      letter-spacing:.02em;
-      font-size:13px;
-      color:rgba(7,10,15,.95);
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      box-shadow: 0 14px 30px rgba(214,179,90,.18);
-      transition: transform .08s ease, filter .08s ease;
-    }
-    .btn:hover{transform: translateY(-1px); filter: brightness(1.02);}
-    .btn:active{transform: translateY(0px); filter: brightness(.98);}
+    .ctaLeft{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .small{font-size:12px}
+    .muted{color:rgba(154,166,190,.92)}
+    .mono{font-family:var(--mono)}
 
-    .btn2{
-      border:1px solid rgba(255,255,255,.16);
-      cursor:pointer;
-      border-radius: 14px;
-      padding:11px 14px;
-      font-weight:700;
-      font-size:13px;
-      color:rgba(230,234,242,.92);
-      background: rgba(7,10,15,.15);
-      backdrop-filter: blur(10px);
-      transition: transform .08s ease, border-color .08s ease;
-    }
-    .btn2:hover{transform: translateY(-1px); border-color: rgba(214,179,90,.35);}
-    .btn2:active{transform: translateY(0px);}
-
-    /* Controls + Board */
     .board{
       margin-top:16px;
       border-radius: var(--radius);
@@ -234,12 +392,7 @@
       align-items:center;
       justify-content:space-between;
     }
-    .controlLeft{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
+    .controlLeft{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
     .search{
       display:flex;
       align-items:center;
@@ -286,7 +439,6 @@
       background: rgba(7,10,15,.12);
     }
     .stat b{color:rgba(230,234,242,.95)}
-    .mono{font-family:var(--mono)}
 
     table{
       width:100%;
@@ -308,20 +460,14 @@
       cursor:pointer;
       user-select:none;
     }
-    thead th .sort{
-      opacity:.5;
-      margin-left:6px;
-      font-size:10px;
-    }
+    thead th .sort{ opacity:.5; margin-left:6px; font-size:10px; }
     tbody td{
       padding:12px 14px;
       border-bottom:1px solid rgba(255,255,255,.06);
       color:rgba(230,234,242,.90);
       vertical-align:top;
     }
-    tbody tr:hover{
-      background: rgba(106,168,255,.06);
-    }
+    tbody tr:hover{ background: rgba(106,168,255,.06); }
 
     .badge{
       display:inline-flex;
@@ -340,10 +486,6 @@
     }
     .risk.warn{background:var(--warn); box-shadow: 0 0 0 4px rgba(251,191,36,.10);}
     .risk.bad{background:var(--bad); box-shadow: 0 0 0 4px rgba(251,113,133,.10);}
-
-    .muted{color:rgba(154,166,190,.92)}
-    .small{font-size:12px}
-    .right{text-align:right}
     .nowrap{white-space:nowrap}
 
     .empty{
@@ -371,9 +513,56 @@
       text-decoration:none;
       border-bottom:1px dashed rgba(214,179,90,.35);
     }
+
+    /* Tiny portal link */
+    .portalLink{
+      text-decoration:none;
+      border-bottom:1px dashed rgba(214,179,90,.35);
+      color:rgba(214,179,90,.95);
+    }
   </style>
 </head>
+
 <body>
+  <!-- GATE -->
+  <div class="gate" id="gate">
+    <div class="gateCore">
+      <div class="gateInner">
+        <div class="gateTop">
+          <div class="gateBrand">
+            <div class="sigil" aria-hidden="true"></div>
+            <div>
+              <div class="gateTitle">APEX</div>
+              <div class="gateSub">Observer Gate • Public Layer</div>
+            </div>
+          </div>
+          <div class="gateBadge"><span class="dot"></span> ENTRY RITUAL</div>
+        </div>
+
+        <div class="gateMain">
+          <h1 class="quote">Truth does not need to be sold.<br/>It just sells.</h1>
+          <div class="gateCopy">
+            This is not a normal website. It is a <b>Watchtower surface</b>.
+            <br/>Enter only if you want <b>certainty</b>, not noise.
+          </div>
+
+          <div class="gateActions">
+            <button class="btn" id="enterBtn">ENTER</button>
+            <a class="btn2" href="https://kawal393.github.io/apex-corporate-translator/" target="_blank" rel="noopener">
+              APEX CORPORATE TRANSLATOR ↗
+            </a>
+            <a class="btn2" href="https://kawal393.github.io/-APEX-GHOST-PROTOCOL/" target="_blank" rel="noopener">
+              APEX GHOST PROTOCOL ↗
+            </a>
+          </div>
+
+          <div class="gateNote">OBSERVATION BEGINS AFTER ENTRY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXISTING PAGE (BOARD) -->
   <div class="wrap">
 
     <div class="topbar">
@@ -381,7 +570,7 @@
         <div class="sigil" aria-hidden="true"></div>
         <div>
           <h1>APEX NDIS SIGNALS</h1>
-          <div class="sub">Compliance & Risk Intelligence • Automated</div>
+          <div class="sub">Compliance & Risk Intelligence • Automated • <a class="portalLink" href="https://kawal393.github.io/apex-corporate-translator/" target="_blank" rel="noopener">APEX PORTAL</a></div>
         </div>
       </div>
 
@@ -441,12 +630,12 @@
         <table id="tbl">
           <thead>
             <tr>
-              <th data-key="risk">Risk <span class="sort" id="s_risk">↕</span></th>
-              <th data-key="type">Type <span class="sort" id="s_type">↕</span></th>
-              <th data-key="name">Name <span class="sort" id="s_name">↕</span></th>
-              <th data-key="state">State <span class="sort" id="s_state">↕</span></th>
-              <th data-key="start" class="nowrap">Effective <span class="sort" id="s_start">↕</span></th>
-              <th data-key="end" class="nowrap">Ends <span class="sort" id="s_end">↕</span></th>
+              <th data-key="risk">Risk <span class="sort">↕</span></th>
+              <th data-key="type">Type <span class="sort">↕</span></th>
+              <th data-key="name">Name <span class="sort">↕</span></th>
+              <th data-key="state">State <span class="sort">↕</span></th>
+              <th data-key="start" class="nowrap">Effective <span class="sort">↕</span></th>
+              <th data-key="end" class="nowrap">Ends <span class="sort">↕</span></th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -469,8 +658,34 @@
 
 <script>
 (() => {
-  const DATA_URL = "./docs/signals.json";
+  // ===== Gate logic =====
+  const gate = document.getElementById("gate");
+  const enterBtn = document.getElementById("enterBtn");
 
+  function openGate(){
+    // store a tiny session flag so refresh doesn't keep showing gate
+    try { sessionStorage.setItem("apex_gate_open","1"); } catch(e){}
+    gate.classList.add("hide");
+    setTimeout(() => { gate.style.display = "none"; }, 560);
+  }
+
+  // If already opened this session, skip gate
+  try{
+    if(sessionStorage.getItem("apex_gate_open") === "1"){
+      gate.style.display = "none";
+    }
+  }catch(e){}
+
+  enterBtn.addEventListener("click", openGate);
+  // Allow Enter key
+  window.addEventListener("keydown", (e) => {
+    if(e.key === "Enter" && gate.style.display !== "none"){
+      openGate();
+    }
+  });
+
+  // ===== Existing board logic =====
+  const DATA_URL = "./docs/signals.json";
   const el = (id) => document.getElementById(id);
 
   const state = {
@@ -482,17 +697,12 @@
 
   function toDate(v){
     if(!v) return null;
-    // Accept ISO strings or "YYYY-MM-DD HH:mm" etc.
     const d = new Date(v);
     if(!isNaN(d)) return d;
-
-    // Try common patterns
     const s = String(v).trim();
-    // If "2025-08-13 17:00" => "2025-08-13T17:00:00"
     const fix = s.replace(" ", "T");
     const d2 = new Date(fix);
     if(!isNaN(d2)) return d2;
-
     return null;
   }
 
@@ -520,11 +730,8 @@
 
   function inferRisk(type){
     const t = normStr(type).toLowerCase();
-    // High: banning/revocation
     if(t.includes("banning") || t.includes("revocation")) return "bad";
-    // Medium: compliance / conditions
     if(t.includes("compliance") || t.includes("condition") || t.includes("enforce")) return "warn";
-    // Default: low
     return "ok";
   }
 
@@ -550,7 +757,6 @@
   }
 
   function buildRow(o){
-    // Your updater might output keys like: changeType, date_effective, date_end, name, state
     const type = pick(o, ["type","changeType","action","action_type","Type"]);
     const name = pick(o, ["name","Name","provider","provider_name","entity","Entity"]);
     const stateVal = pick(o, ["state","State","jurisdiction","Jurisdiction"]);
@@ -559,7 +765,6 @@
 
     const start = toDate(startVal);
     const end = toDate(endVal);
-
     const risk = inferRisk(type);
 
     return {
@@ -581,7 +786,6 @@
     const set = new Set();
     rows.forEach(r => set.add(r.type));
     const types = Array.from(set).filter(Boolean).sort((a,b)=>a.localeCompare(b));
-    // Keep first option, then add
     sel.innerHTML = `<option value="all">All Types</option>` + types.map(t => `<option value="${sanitize(t)}">${sanitize(t)}</option>`).join("");
   }
 
@@ -590,7 +794,7 @@
     const dir = sortDir === "asc" ? 1 : -1;
 
     const val = (r) => {
-      if(sortKey === "risk") return r.risk;          // ok/warn/bad
+      if(sortKey === "risk") return r.risk;
       if(sortKey === "type") return r.type;
       if(sortKey === "name") return r.name;
       if(sortKey === "state") return r.state;
@@ -599,7 +803,6 @@
       return "";
     };
 
-    // risk ordering: bad > warn > ok
     const riskRank = (x) => x === "bad" ? 3 : (x === "warn" ? 2 : 1);
 
     return rows.slice().sort((a,b) => {
@@ -623,15 +826,9 @@
 
     let rows = state.rows;
 
-    if(q){
-      rows = rows.filter(r => r._search.includes(q));
-    }
-    if(t !== "all"){
-      rows = rows.filter(r => r.type === t);
-    }
-    if(rf !== "all"){
-      rows = rows.filter(r => r.risk === rf);
-    }
+    if(q) rows = rows.filter(r => r._search.includes(q));
+    if(t !== "all") rows = rows.filter(r => r.type === t);
+    if(rf !== "all") rows = rows.filter(r => r.risk === rf);
 
     rows = sortRows(rows);
 
@@ -680,7 +877,6 @@
     el("med").textContent = med;
     el("low").textContent = lo;
 
-    // Live dot state
     const dot = el("liveDot");
     const txt = el("liveText");
     if(hi > 0){
@@ -713,12 +909,9 @@
 
   async function load(){
     el("err").style.display = "none";
-    // Bust cache
     const url = `${DATA_URL}?v=${Date.now()}`;
     const res = await fetch(url, {cache:"no-store"});
-    if(!res.ok){
-      throw new Error(`Failed to fetch signals.json (${res.status})`);
-    }
+    if(!res.ok) throw new Error(`Failed to fetch signals.json (${res.status})`);
     const data = await res.json();
 
     const raw = Array.isArray(data) ? data : (Array.isArray(data.signals) ? data.signals : []);
@@ -727,7 +920,6 @@
 
     fillTypeFilter(state.rows);
 
-    // Last updated: use newest start date, fallback to now
     const newest = state.rows
       .map(r => r.start ? r.start.getTime() : 0)
       .reduce((a,b) => Math.max(a,b), 0);
@@ -745,13 +937,9 @@
 
     el("refreshBtn").addEventListener("click", async () => {
       el("refreshBtn").textContent = "Refreshing…";
-      try{
-        await load();
-      }catch(e){
-        showError(e);
-      }finally{
-        el("refreshBtn").textContent = "Force Refresh";
-      }
+      try{ await load(); }
+      catch(e){ showError(e); }
+      finally{ el("refreshBtn").textContent = "Force Refresh"; }
     });
 
     el("jumpBtn").addEventListener("click", () => {
@@ -770,7 +958,6 @@
     `;
   }
 
-  // Init
   wireSort();
   wireControls();
   load().catch(showError);
