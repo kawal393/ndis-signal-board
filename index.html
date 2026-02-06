@@ -3,112 +3,201 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>APEX NDIS SIGNALS</title>
+  <title>APEX NDIS SIGNALS — Watchtower</title>
   <meta name="description" content="Real-time Compliance & Risk Intelligence for the NDIS Ecosystem." />
 
   <style>
     :root{
-      --bg0:#05070C;
-      --bg1:#0B1120;
-      --card:#0D162B;
-      --card2:#0A1328;
-      --text:#E6EAF2;
-      --muted:#9AA6BE;
-      --line:rgba(255,255,255,.08);
+      --bg0:#05070B;
+      --bg1:#070A12;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.035);
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(214,179,90,.22);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --muted2: rgba(255,255,255,.45);
       --gold:#D6B35A;
       --gold2:#B99233;
       --blue:#6AA8FF;
       --ok:#34D399;
       --warn:#FBBF24;
       --bad:#FB7185;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --shadow: 0 22px 80px rgba(0,0,0,.55);
       --radius: 22px;
+      --radius2: 16px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
+
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family:var(--sans);
-      color:var(--text);
+      font-family: var(--sans);
+      color: var(--text);
       background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(106,168,255,.18), transparent 55%),
-        radial-gradient(900px 600px at 90% 0%, rgba(214,179,90,.14), transparent 55%),
-        radial-gradient(900px 700px at 50% 120%, rgba(106,168,255,.10), transparent 55%),
+        radial-gradient(1200px 700px at 10% -10%, rgba(106,168,255,.16), transparent 60%),
+        radial-gradient(1000px 700px at 95% 5%, rgba(214,179,90,.14), transparent 60%),
+        radial-gradient(1000px 800px at 50% 120%, rgba(106,168,255,.10), transparent 60%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
-      min-height:100vh;
       overflow-x:hidden;
     }
-    a{color:inherit}
-    .wrap{
-      max-width:1120px;
-      margin:0 auto;
-      padding:28px 18px 60px;
-    }
 
-    /* =========================
-       GATE (RITUAL ENTRY)
-    ========================== */
-    .gate{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:28px 18px;
-      background:
-        radial-gradient(1100px 700px at 20% 10%, rgba(214,179,90,.12), transparent 55%),
-        radial-gradient(900px 650px at 80% 20%, rgba(106,168,255,.10), transparent 60%),
-        radial-gradient(800px 650px at 50% 120%, rgba(214,179,90,.06), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.92), rgba(8,10,16,.92));
-      backdrop-filter: blur(6px);
-      animation: gateIn 1.2s ease forwards;
-    }
-    @keyframes gateIn{
-      from{opacity:0; transform:translateY(10px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-
-    .gate::before{
+    /* Sigil + star haze */
+    body:before{
       content:"";
-      position:absolute;
+      position:fixed;
       inset:-20%;
       background:
-        conic-gradient(from 180deg,
-          rgba(214,179,90,.0),
-          rgba(214,179,90,.10),
-          rgba(106,168,255,.10),
-          rgba(214,179,90,.0)
-        );
-      filter: blur(18px);
-      opacity:.55;
-      animation: gateSpin 18s linear infinite;
+        radial-gradient(circle at 30% 20%, rgba(214,179,90,.12), transparent 45%),
+        radial-gradient(circle at 70% 30%, rgba(106,168,255,.10), transparent 45%),
+        radial-gradient(circle at 50% 60%, rgba(255,255,255,.06), transparent 55%),
+        url("apex-sigil.png");
+      background-repeat:no-repeat;
+      background-size: 1100px auto;
+      background-position: 50% 22%;
+      opacity:.22;
+      filter: blur(0.2px) saturate(1.1);
       pointer-events:none;
+      z-index:-2;
+      transform: translateZ(0);
     }
-    @keyframes gateSpin{to{transform:rotate(360deg)}}
-
-    .gateCore{
-      position:relative;
-      max-width:860px;
-      width:100%;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:28px;
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
       background:
-        radial-gradient(900px 420px at 20% 10%, rgba(214,179,90,.14), transparent 55%),
-        radial-gradient(900px 460px at 85% 15%, rgba(106,168,255,.12), transparent 55%),
-        linear-gradient(180deg, rgba(13,22,43,.75), rgba(10,19,40,.62));
-      box-shadow: 0 30px 120px rgba(0,0,0,.65);
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.08) 1px, transparent 1.2px),
+        radial-gradient(circle at 65% 55%, rgba(255,255,255,.06) 1px, transparent 1.2px),
+        radial-gradient(circle at 80% 25%, rgba(255,255,255,.05) 1px, transparent 1.2px);
+      background-size: 220px 220px, 260px 260px, 320px 320px;
+      opacity:.22;
+      pointer-events:none;
+      z-index:-1;
+      animation: drift 18s linear infinite;
+    }
+    @keyframes drift{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(-120px, 80px,0)}
+    }
+
+    a{color:inherit}
+    .wrap{
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 26px 16px 70px;
+    }
+
+    /* Unified topbar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+    .sig{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(circle at 35% 30%, rgba(214,179,90,.35), transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(106,168,255,.35), transparent 55%),
+        linear-gradient(135deg, rgba(214,179,90,.18), rgba(106,168,255,.12));
+      box-shadow: 0 12px 34px rgba(0,0,0,.35);
+      position:relative;
       overflow:hidden;
     }
-    .gateCore::after{
+    .sig:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: conic-gradient(from 180deg,
+        rgba(214,179,90,.0),
+        rgba(214,179,90,.38),
+        rgba(106,168,255,.32),
+        rgba(214,179,90,.0)
+      );
+      animation: spin 12s linear infinite;
+      opacity:.85;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .brand h1{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand .sub{
+      margin-top:3px;
+      font-size:12px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .pillrow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 26px rgba(0,0,0,.30);
+      font-size:12px;
+      user-select:none;
+    }
+    .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(52,211,153,.12)}
+    .dot.warn{background:var(--warn);box-shadow:0 0 0 4px rgba(251,191,36,.12)}
+    .dot.bad{background:var(--bad);box-shadow:0 0 0 4px rgba(251,113,133,.12)}
+    .mono{font-family:var(--mono)}
+
+    /* Cinematic panels */
+    .panel{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 340px at 15% 15%, rgba(214,179,90,.16), transparent 60%),
+        radial-gradient(900px 360px at 88% 20%, rgba(106,168,255,.14), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .panel:before{
       content:"";
       position:absolute; inset:0;
-      background:
-        linear-gradient(90deg, rgba(214,179,90,.0), rgba(214,179,90,.08), rgba(106,168,255,.08), rgba(214,179,90,.0));
-      opacity:.55;
+      background: linear-gradient(90deg,
+        rgba(214,179,90,.0),
+        rgba(214,179,90,.10),
+        rgba(106,168,255,.10),
+        rgba(214,179,90,.0)
+      );
+      opacity:.45;
       transform: translateX(-45%);
-      animation: sweep 9s ease-in-out infinite;
+      animation: sweep 8s ease-in-out infinite;
       pointer-events:none;
     }
     @keyframes sweep{
@@ -116,494 +205,250 @@
       50%{transform:translateX(45%)}
     }
 
-    .gateInner{
-      padding:26px 22px 20px;
-    }
-    .gateTop{
+    .hero{padding:22px 18px 16px}
+    .heroTop{
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-      padding-bottom:14px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .gateBrand{
-      display:flex; align-items:center; gap:12px;
-    }
-    .sigil{
-      width:44px; height:44px; border-radius:16px;
-      background:
-        linear-gradient(135deg, rgba(214,179,90,.25), rgba(106,168,255,.18)),
-        radial-gradient(circle at 35% 30%, rgba(214,179,90,.35), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(106,168,255,.35), transparent 55%);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 10px 35px rgba(0,0,0,.35);
-      position:relative;
-      overflow:hidden;
-      flex:0 0 auto;
-    }
-    .sigil:after{
-      content:"";
-      position:absolute; inset:-40%;
-      background: conic-gradient(from 180deg, rgba(214,179,90,.0), rgba(214,179,90,.35), rgba(106,168,255,.35), rgba(214,179,90,.0));
-      animation: spin 12s linear infinite;
-      opacity:.9;
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
-
-    .gateTitle{
-      margin:0;
-      font-size:13px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:rgba(230,234,242,.92);
-      line-height:1.2;
-    }
-    .gateSub{
-      margin-top:4px;
-      font-size:12px;
-      color:rgba(154,166,190,.92);
-      letter-spacing:.02em;
-    }
-
-    .gateBadge{
-      display:flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:999px;
-      background: rgba(7,10,15,.18);
-      backdrop-filter: blur(10px);
-      font-size:12px;
-      color:rgba(230,234,242,.9);
-      user-select:none;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:50%;
-      background: var(--warn);
-      box-shadow: 0 0 0 4px rgba(251,191,36,.12);
-    }
-
-    .gateMain{
-      padding:18px 2px 8px;
-    }
-    .quote{
-      font-size:28px;
-      line-height:1.18;
-      letter-spacing:.03em;
-      text-transform:uppercase;
-      margin:0;
-      background: linear-gradient(90deg, var(--gold), rgba(230,234,242,.96), var(--blue));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      text-shadow: 0 0 26px rgba(214,179,90,.18);
-    }
-    .gateCopy{
-      margin-top:12px;
-      color:rgba(230,234,242,.85);
-      font-size:13px;
-      line-height:1.55;
-      max-width:760px;
-    }
-    .gateCopy b{color:rgba(230,234,242,.95)}
-
-    .gateActions{
-      margin-top:18px;
-      display:flex;
-      align-items:center;
+      align-items:flex-end;
       justify-content:space-between;
       gap:12px;
       flex-wrap:wrap;
     }
-    .btn{
-      border:none;
-      cursor:pointer;
-      border-radius: 16px;
-      padding:12px 16px;
-      font-weight:800;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:rgba(7,10,15,.95);
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      box-shadow: 0 18px 46px rgba(214,179,90,.20);
-      transition: transform .08s ease, filter .08s ease;
-      position:relative;
-      overflow:hidden;
-    }
-    .btn:hover{transform: translateY(-1px); filter: brightness(1.03);}
-    .btn:active{transform: translateY(0px); filter: brightness(.98);}
-
-    .btn2{
-      border:1px solid rgba(255,255,255,.16);
-      cursor:pointer;
-      border-radius: 16px;
-      padding:12px 16px;
-      font-weight:800;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:rgba(230,234,242,.92);
-      background: rgba(7,10,15,.14);
-      backdrop-filter: blur(10px);
-      transition: transform .08s ease, border-color .08s ease;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .btn2:hover{transform: translateY(-1px); border-color: rgba(214,179,90,.35);}
-    .btn2:active{transform: translateY(0px);}
-
-    .gateNote{
-      margin-top:10px;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:rgba(154,166,190,.85);
-      opacity:.9;
-    }
-
-    /* Fade gate out */
-    .gate.hide{
-      animation: gateOut .55s ease forwards;
-    }
-    @keyframes gateOut{
-      to{opacity:0; transform:translateY(10px); pointer-events:none;}
-    }
-
-    /* =========================
-       EXISTING BOARD (YOUR UI)
-    ========================== */
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:18px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-    }
-    .brand h1{
-      margin:0;
-      font-size:14px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:rgba(230,234,242,.92);
-    }
-    .brand .sub{
-      margin-top:3px;
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .pillrow{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .pill{
-      padding:10px 12px;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:999px;
-      background: rgba(13,22,43,.55);
-      backdrop-filter: blur(10px);
-      display:flex; align-items:center; gap:10px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.25);
-      font-size:12px;
-      color:rgba(230,234,242,.9);
-      user-select:none;
-    }
-
-    .hero{
-      margin-top:14px;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(800px 320px at 20% 10%, rgba(214,179,90,.18), transparent 55%),
-        radial-gradient(800px 360px at 85% 15%, rgba(106,168,255,.16), transparent 55%),
-        linear-gradient(180deg, rgba(13,22,43,.78), rgba(10,19,40,.65));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(214,179,90,.0), rgba(214,179,90,.08), rgba(106,168,255,.08), rgba(214,179,90,.0));
-      opacity:.55;
-      transform: translateX(-40%);
-      animation: sweep 8s ease-in-out infinite;
-      pointer-events:none;
-    }
-    .heroInner{ padding:24px 20px 18px; }
-    .heroTitle{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-    .heroTitle h2{
+    .hero h2{
       margin:0;
       font-size:28px;
       letter-spacing:.06em;
       text-transform:uppercase;
-      line-height:1.1;
+      line-height:1.05;
     }
-    .heroTitle h2 span{
-      background: linear-gradient(90deg, var(--gold), rgba(230,234,242,.95), var(--blue));
+    .hero h2 span{
+      background: linear-gradient(90deg, var(--gold), rgba(255,255,255,.96), var(--blue));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
-    .heroMeta{
+    .hero p{
       margin:10px 0 0;
-      color:rgba(230,234,242,.85);
+      color: rgba(255,255,255,.82);
       font-size:13px;
       line-height:1.45;
-      max-width:720px;
+      max-width: 780px;
     }
-    .ctaRow{
-      margin-top:14px;
+    .row{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
+      margin-top:14px;
     }
-    .ctaLeft{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    .small{font-size:12px}
-    .muted{color:rgba(154,166,190,.92)}
-    .mono{font-family:var(--mono)}
+    .btn{
+      border:none;
+      cursor:pointer;
+      border-radius: 14px;
+      padding:11px 14px;
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.02em;
+      color: rgba(10,12,16,.95);
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      box-shadow: 0 16px 34px rgba(214,179,90,.18);
+      transition: transform .10s ease, filter .10s ease;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.03)}
+    .btn:active{transform: translateY(0px); filter: brightness(.98)}
+    .btn2{
+      cursor:pointer;
+      border-radius: 14px;
+      padding:11px 14px;
+      font-weight:800;
+      font-size:13px;
+      color: rgba(255,255,255,.90);
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      transition: transform .10s ease, border-color .10s ease;
+    }
+    .btn2:hover{transform: translateY(-1px); border-color: rgba(214,179,90,.35)}
+    .btn2:active{transform: translateY(0px)}
+    .small{font-size:12px;color:var(--muted)}
+    .chip{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+    }
 
-    .board{
-      margin-top:16px;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(13,22,43,.78), rgba(10,19,40,.62));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
+    /* Board */
+    .board{margin-top:14px}
     .controls{
       padding:14px 14px 12px;
-      border-bottom:1px solid var(--line);
+      border-bottom:1px solid rgba(255,255,255,.08);
       display:flex;
       gap:10px;
       flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
     }
-    .controlLeft{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .controlLeft{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
     .search{
       display:flex;
       align-items:center;
       gap:10px;
       padding:10px 12px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(7,10,15,.18);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
       min-width:min(520px, 92vw);
-      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+      box-shadow: 0 10px 24px rgba(0,0,0,.24);
     }
     .search input{
       width:100%;
       background:transparent;
       border:none;
       outline:none;
-      color:rgba(230,234,242,.92);
+      color: rgba(255,255,255,.90);
       font-size:13px;
     }
-    .search input::placeholder{color:rgba(154,166,190,.78)}
-
+    .search input::placeholder{color: rgba(255,255,255,.45)}
     select{
       appearance:none;
       -webkit-appearance:none;
-      -moz-appearance:none;
-      background: rgba(7,10,15,.18);
-      border:1px solid rgba(255,255,255,.10);
-      color:rgba(230,234,242,.92);
+      background: rgba(0,0,0,.20);
+      border:1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.90);
       padding:10px 12px;
       border-radius:14px;
       font-size:13px;
       cursor:pointer;
     }
+    .stats{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-end;font-size:12px}
+    .stat{padding:9px 11px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background: rgba(0,0,0,.14)}
+    .stat b{color: rgba(255,255,255,.95)}
 
-    .stats{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
-      color:rgba(230,234,242,.86);
-      font-size:12px;
-    }
-    .stat{
-      padding:9px 11px;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:14px;
-      background: rgba(7,10,15,.12);
-    }
-    .stat b{color:rgba(230,234,242,.95)}
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:13px;
-    }
+    table{width:100%;border-collapse:collapse;font-size:13px}
     thead th{
       text-align:left;
       font-size:11px;
       letter-spacing:.14em;
       text-transform:uppercase;
-      color:rgba(154,166,190,.95);
+      color: rgba(255,255,255,.58);
       padding:14px 14px;
-      border-bottom:1px solid var(--line);
-      background: rgba(7,10,15,.12);
-      position:sticky;
-      top:0;
-      z-index:5;
-      cursor:pointer;
-      user-select:none;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+      position:sticky; top:0; z-index:5;
+      cursor:pointer; user-select:none;
     }
-    thead th .sort{ opacity:.5; margin-left:6px; font-size:10px; }
     tbody td{
       padding:12px 14px;
       border-bottom:1px solid rgba(255,255,255,.06);
-      color:rgba(230,234,242,.90);
+      color: rgba(255,255,255,.88);
       vertical-align:top;
     }
-    tbody tr:hover{ background: rgba(106,168,255,.06); }
-
+    tbody tr:hover{background: rgba(106,168,255,.06)}
     .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
-      background: rgba(7,10,15,.15);
+      background: rgba(0,0,0,.16);
       white-space:nowrap;
     }
-    .risk{
-      width:8px; height:8px; border-radius:50%;
-      background: var(--ok);
-      box-shadow: 0 0 0 4px rgba(52,211,153,.10);
-    }
-    .risk.warn{background:var(--warn); box-shadow: 0 0 0 4px rgba(251,191,36,.10);}
-    .risk.bad{background:var(--bad); box-shadow: 0 0 0 4px rgba(251,113,133,.10);}
+    .risk{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(52,211,153,.10)}
+    .risk.warn{background:var(--warn);box-shadow:0 0 0 4px rgba(251,191,36,.10)}
+    .risk.bad{background:var(--bad);box-shadow:0 0 0 4px rgba(251,113,133,.10)}
+    .muted{color: var(--muted)}
     .nowrap{white-space:nowrap}
+    .right{text-align:right}
 
     .empty{
       padding:26px 16px;
-      color:rgba(154,166,190,.92);
+      color: var(--muted);
       text-align:center;
       line-height:1.5;
     }
     .error{
       padding:16px;
-      border-top:1px solid var(--line);
+      border-top:1px solid rgba(255,255,255,.08);
       background: rgba(251,113,133,.06);
-      color: rgba(230,234,242,.92);
+      color: rgba(255,255,255,.90);
       font-size:12px;
     }
     .footer{
       margin-top:14px;
-      color:rgba(154,166,190,.92);
+      color: var(--muted);
       font-size:12px;
       line-height:1.5;
       padding:0 4px;
     }
     .footer a{
-      color:rgba(214,179,90,.95);
+      color: rgba(214,179,90,.95);
       text-decoration:none;
       border-bottom:1px dashed rgba(214,179,90,.35);
     }
 
-    /* Tiny portal link */
-    .portalLink{
-      text-decoration:none;
-      border-bottom:1px dashed rgba(214,179,90,.35);
-      color:rgba(214,179,90,.95);
+    /* subtle 3D hover */
+    .panel, .pill, .btn2, .search, .stat{
+      transform-style:preserve-3d;
+    }
+    .tilt:hover{
+      transform: perspective(900px) rotateX(1.2deg) rotateY(-1.4deg);
+    }
+
+    @media (max-width: 520px){
+      .hero h2{font-size:22px}
+      .search{min-width: 100%}
+      .pillrow{justify-content:flex-start}
     }
   </style>
 </head>
 
 <body>
-  <!-- GATE -->
-  <div class="gate" id="gate">
-    <div class="gateCore">
-      <div class="gateInner">
-        <div class="gateTop">
-          <div class="gateBrand">
-            <div class="sigil" aria-hidden="true"></div>
-            <div>
-              <div class="gateTitle">APEX</div>
-              <div class="gateSub">Observer Gate • Public Layer</div>
-            </div>
-          </div>
-          <div class="gateBadge"><span class="dot"></span> ENTRY RITUAL</div>
-        </div>
-
-        <div class="gateMain">
-          <h1 class="quote">Truth does not need to be sold.<br/>It just sells.</h1>
-          <div class="gateCopy">
-            This is not a normal website. It is a <b>Watchtower surface</b>.
-            <br/>Enter only if you want <b>certainty</b>, not noise.
-          </div>
-
-          <div class="gateActions">
-            <button class="btn" id="enterBtn">ENTER</button>
-            <a class="btn2" href="https://kawal393.github.io/apex-corporate-translator/" target="_blank" rel="noopener">
-              APEX CORPORATE TRANSLATOR ↗
-            </a>
-            <a class="btn2" href="https://kawal393.github.io/-APEX-GHOST-PROTOCOL/" target="_blank" rel="noopener">
-              APEX GHOST PROTOCOL ↗
-            </a>
-          </div>
-
-          <div class="gateNote">OBSERVATION BEGINS AFTER ENTRY</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- EXISTING PAGE (BOARD) -->
   <div class="wrap">
 
     <div class="topbar">
       <div class="brand">
-        <div class="sigil" aria-hidden="true"></div>
-        <div>
+        <div class="sig" aria-hidden="true"></div>
+        <div style="min-width:0">
           <h1>APEX NDIS SIGNALS</h1>
-          <div class="sub">Compliance & Risk Intelligence • Automated • <a class="portalLink" href="https://kawal393.github.io/apex-corporate-translator/" target="_blank" rel="noopener">APEX PORTAL</a></div>
+          <div class="sub">Watchtower • Compliance & Risk Intelligence</div>
         </div>
       </div>
 
       <div class="pillrow">
-        <div class="pill"><span class="dot" id="liveDot"></span><span id="liveText">LIVE</span></div>
-        <div class="pill"><span class="mono" id="lastUpdated">Last updated: —</span></div>
+        <div class="pill tilt"><span class="dot" id="liveDot"></span><span id="liveText">LIVE</span></div>
+        <div class="pill tilt"><span class="mono" id="lastUpdated">Last updated: —</span></div>
+        <a class="pill tilt" href="https://kawal393.github.io/" style="text-decoration:none">
+          <span class="muted">APEX</span>&nbsp;<span style="color:rgba(214,179,90,.95);font-weight:800">PORTAL</span>
+        </a>
       </div>
     </div>
 
-    <section class="hero">
-      <div class="heroInner">
-        <div class="heroTitle">
-          <h2><span>Watchtower</span> for Enforcement Signals</h2>
+    <section class="panel hero tilt">
+      <div class="heroTop">
+        <h2><span>Watchtower</span> for Enforcement Signals</h2>
+      </div>
+      <p>
+        Public enforcement/compliance action data — transmuted into a clean, searchable signal feed.
+        The surface is calm. The intelligence is not.
+      </p>
+      <div class="row">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <button class="btn" id="jumpBtn">View Live Signals</button>
+          <button class="btn2" id="refreshBtn">Force Refresh</button>
         </div>
-        <p class="heroMeta">
-          This board ingests publicly released enforcement/compliance action data and converts it into a clean, searchable signal feed — updated automatically by the engine.
-        </p>
-        <div class="ctaRow">
-          <div class="ctaLeft">
-            <button class="btn" id="jumpBtn">View Live Signals</button>
-            <button class="btn2" id="refreshBtn">Force Refresh</button>
-          </div>
-          <div class="muted small">Mode: <span class="mono">Public Intelligence</span></div>
-        </div>
+        <div class="chip small">Mode: <span class="mono" style="color:rgba(255,255,255,.88)">Public Intelligence</span></div>
       </div>
     </section>
 
-    <section class="board" id="board">
+    <section class="panel board tilt" id="board" style="margin-top:14px">
       <div class="controls">
         <div class="controlLeft">
           <div class="search" role="search">
             <span class="muted">⌕</span>
-            <input id="q" placeholder="Search provider, action type, state, keywords…" autocomplete="off" />
+            <input id="q" placeholder="Search provider, type, state, keywords…" autocomplete="off" />
           </div>
 
           <select id="typeFilter" title="Filter by action type">
@@ -630,16 +475,17 @@
         <table id="tbl">
           <thead>
             <tr>
-              <th data-key="risk">Risk <span class="sort">↕</span></th>
-              <th data-key="type">Type <span class="sort">↕</span></th>
-              <th data-key="name">Name <span class="sort">↕</span></th>
-              <th data-key="state">State <span class="sort">↕</span></th>
-              <th data-key="start" class="nowrap">Effective <span class="sort">↕</span></th>
-              <th data-key="end" class="nowrap">Ends <span class="sort">↕</span></th>
+              <th data-key="risk">Risk</th>
+              <th data-key="type">Type</th>
+              <th data-key="name">Name</th>
+              <th data-key="state">State</th>
+              <th data-key="start" class="nowrap">Effective</th>
+              <th data-key="end" class="nowrap">Ends</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
         </table>
+
         <div class="empty" id="empty" style="display:none;">
           No signals match your filters.
         </div>
@@ -649,8 +495,7 @@
     </section>
 
     <div class="footer">
-      Data is sourced from publicly available releases by the NDIS Commission and rendered as a signal board.
-      <br/>
+      Data is sourced from publicly available releases and rendered as a signal board.<br/>
       Built on GitHub Pages • <a id="dataLink" href="./docs/signals.json">View raw signals.json</a>
     </div>
 
@@ -658,52 +503,18 @@
 
 <script>
 (() => {
-  // ===== Gate logic =====
-  const gate = document.getElementById("gate");
-  const enterBtn = document.getElementById("enterBtn");
-
-  function openGate(){
-    // store a tiny session flag so refresh doesn't keep showing gate
-    try { sessionStorage.setItem("apex_gate_open","1"); } catch(e){}
-    gate.classList.add("hide");
-    setTimeout(() => { gate.style.display = "none"; }, 560);
-  }
-
-  // If already opened this session, skip gate
-  try{
-    if(sessionStorage.getItem("apex_gate_open") === "1"){
-      gate.style.display = "none";
-    }
-  }catch(e){}
-
-  enterBtn.addEventListener("click", openGate);
-  // Allow Enter key
-  window.addEventListener("keydown", (e) => {
-    if(e.key === "Enter" && gate.style.display !== "none"){
-      openGate();
-    }
-  });
-
-  // ===== Existing board logic =====
   const DATA_URL = "./docs/signals.json";
   const el = (id) => document.getElementById(id);
 
-  const state = {
-    raw: [],
-    rows: [],
-    sortKey: "start",
-    sortDir: "desc",
-  };
+  const state = { raw: [], rows: [], sortKey: "start", sortDir: "desc" };
 
   function toDate(v){
     if(!v) return null;
     const d = new Date(v);
     if(!isNaN(d)) return d;
-    const s = String(v).trim();
-    const fix = s.replace(" ", "T");
-    const d2 = new Date(fix);
-    if(!isNaN(d2)) return d2;
-    return null;
+    const s = String(v).trim().replace(" ", "T");
+    const d2 = new Date(s);
+    return isNaN(d2) ? null : d2;
   }
 
   function fmtDate(d){
@@ -714,15 +525,13 @@
     return `${y}-${m}-${day}`;
   }
 
-  function normStr(v){
-    if(v === null || v === undefined) return "";
-    return String(v).trim();
-  }
+  function normStr(v){ return (v===null || v===undefined) ? "" : String(v).trim(); }
 
   function pick(obj, keys){
     for(const k of keys){
-      if(obj && Object.prototype.hasOwnProperty.call(obj, k) && obj[k] !== null && obj[k] !== undefined && String(obj[k]).trim() !== ""){
-        return obj[k];
+      if(obj && Object.prototype.hasOwnProperty.call(obj, k)){
+        const val = obj[k];
+        if(val !== null && val !== undefined && String(val).trim() !== "") return val;
       }
     }
     return "";
@@ -735,17 +544,8 @@
     return "ok";
   }
 
-  function riskLabel(r){
-    if(r === "bad") return "High";
-    if(r === "warn") return "Medium";
-    return "Low";
-  }
-
-  function riskDotClass(r){
-    if(r === "bad") return "risk bad";
-    if(r === "warn") return "risk warn";
-    return "risk";
-  }
+  function riskLabel(r){ return r==="bad" ? "High" : (r==="warn" ? "Medium" : "Low"); }
+  function riskDotClass(r){ return r==="bad" ? "risk bad" : (r==="warn" ? "risk warn" : "risk"); }
 
   function sanitize(text){
     return normStr(text)
@@ -789,6 +589,8 @@
     sel.innerHTML = `<option value="all">All Types</option>` + types.map(t => `<option value="${sanitize(t)}">${sanitize(t)}</option>`).join("");
   }
 
+  function riskRank(x){ return x==="bad" ? 3 : (x==="warn" ? 2 : 1); }
+
   function sortRows(rows){
     const {sortKey, sortDir} = state;
     const dir = sortDir === "asc" ? 1 : -1;
@@ -803,18 +605,10 @@
       return "";
     };
 
-    const riskRank = (x) => x === "bad" ? 3 : (x === "warn" ? 2 : 1);
-
     return rows.slice().sort((a,b) => {
-      const A = val(a);
-      const B = val(b);
-
-      if(sortKey === "risk"){
-        return (riskRank(A) - riskRank(B)) * dir;
-      }
-      if(typeof A === "number" && typeof B === "number"){
-        return (A - B) * dir;
-      }
+      const A = val(a), B = val(b);
+      if(sortKey === "risk") return (riskRank(A) - riskRank(B)) * dir;
+      if(typeof A === "number" && typeof B === "number") return (A - B) * dir;
       return String(A).localeCompare(String(B)) * dir;
     });
   }
@@ -825,13 +619,11 @@
     const rf = el("riskFilter").value;
 
     let rows = state.rows;
-
     if(q) rows = rows.filter(r => r._search.includes(q));
     if(t !== "all") rows = rows.filter(r => r.type === t);
     if(rf !== "all") rows = rows.filter(r => r.risk === rf);
 
     rows = sortRows(rows);
-
     render(rows);
     renderStats(rows);
   }
@@ -839,7 +631,6 @@
   function render(rows){
     const tb = el("tbody");
     const empty = el("empty");
-
     if(!rows.length){
       tb.innerHTML = "";
       empty.style.display = "block";
@@ -866,7 +657,6 @@
 
   function renderStats(rows){
     el("count").textContent = rows.length;
-
     let hi=0, med=0, lo=0;
     for(const r of rows){
       if(r.risk === "bad") hi++;
@@ -880,14 +670,11 @@
     const dot = el("liveDot");
     const txt = el("liveText");
     if(hi > 0){
-      dot.className = "dot bad";
-      txt.textContent = "HIGH SIGNALS";
+      dot.className = "dot bad"; txt.textContent = "HIGH SIGNALS";
     }else if(med > 0){
-      dot.className = "dot warn";
-      txt.textContent = "ACTIVE";
+      dot.className = "dot warn"; txt.textContent = "ACTIVE";
     }else{
-      dot.className = "dot";
-      txt.textContent = "CALM";
+      dot.className = "dot"; txt.textContent = "CALM";
     }
   }
 
@@ -920,10 +707,7 @@
 
     fillTypeFilter(state.rows);
 
-    const newest = state.rows
-      .map(r => r.start ? r.start.getTime() : 0)
-      .reduce((a,b) => Math.max(a,b), 0);
-
+    const newest = state.rows.map(r => r.start ? r.start.getTime() : 0).reduce((a,b)=>Math.max(a,b), 0);
     const d = newest ? new Date(newest) : new Date();
     el("lastUpdated").textContent = `Last updated: ${fmtDate(d)}`;
 
@@ -936,10 +720,11 @@
     el("riskFilter").addEventListener("change", applyFilters);
 
     el("refreshBtn").addEventListener("click", async () => {
-      el("refreshBtn").textContent = "Refreshing…";
+      const b = el("refreshBtn");
+      b.textContent = "Refreshing…";
       try{ await load(); }
       catch(e){ showError(e); }
-      finally{ el("refreshBtn").textContent = "Force Refresh"; }
+      finally{ b.textContent = "Force Refresh"; }
     });
 
     el("jumpBtn").addEventListener("click", () => {
@@ -952,8 +737,8 @@
     box.style.display = "block";
     box.innerHTML = `
       <b>Load error:</b> ${sanitize(e && e.message ? e.message : String(e))}
-      <div class="muted" style="margin-top:6px;">
-        If this is a new deploy, wait 30–60 seconds then refresh. If it persists, confirm <span class="mono">docs/signals.json</span> exists and is valid JSON.
+      <div style="margin-top:6px;color:rgba(255,255,255,.65)">
+        If this is a new deploy, wait ~60 seconds then refresh. Confirm <span class="mono">docs/signals.json</span> exists and is valid JSON.
       </div>
     `;
   }
