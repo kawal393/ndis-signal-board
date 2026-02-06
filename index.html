@@ -32,6 +32,7 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
       font-family: var(--sans);
@@ -44,7 +45,17 @@
       overflow-x:hidden;
     }
 
-    /* Sigil + star haze */
+    /* Moving particles canvas */
+    #apexParticles{
+      position:fixed;
+      inset:0;
+      z-index:4;             /* under logo */
+      pointer-events:none;
+      opacity:.40;
+      mix-blend-mode:screen;
+    }
+
+    /* ✅ Sigil + haze (ABSOLUTE URL so it always loads) */
     body:before{
       content:"";
       position:fixed;
@@ -53,33 +64,29 @@
         radial-gradient(circle at 30% 20%, rgba(214,179,90,.12), transparent 45%),
         radial-gradient(circle at 70% 30%, rgba(106,168,255,.10), transparent 45%),
         radial-gradient(circle at 50% 60%, rgba(255,255,255,.06), transparent 55%),
-        url("apex-sigil.png");
+        url("https://kawal393.github.io/apex-corporate-translator/apex-sigil.png");
       background-repeat:no-repeat;
       background-size: 1100px auto;
       background-position: 50% 22%;
-      opacity:.22;
-      filter: blur(0.2px) saturate(1.1);
+      opacity:.28;
+      filter: saturate(1.08) contrast(1.05);
       pointer-events:none;
-      z-index:-2;
+      z-index:5;             /* above particles */
       transform: translateZ(0);
     }
+
+    /* Mist film */
     body:after{
       content:"";
       position:fixed;
       inset:0;
       background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.08) 1px, transparent 1.2px),
-        radial-gradient(circle at 65% 55%, rgba(255,255,255,.06) 1px, transparent 1.2px),
-        radial-gradient(circle at 80% 25%, rgba(255,255,255,.05) 1px, transparent 1.2px);
-      background-size: 220px 220px, 260px 260px, 320px 320px;
-      opacity:.22;
+        radial-gradient(900px 420px at 50% 15%, rgba(214,179,90,.06), transparent 62%),
+        radial-gradient(900px 520px at 55% 65%, rgba(106,168,255,.05), transparent 62%),
+        linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.34));
+      opacity:.45;
       pointer-events:none;
-      z-index:-1;
-      animation: drift 18s linear infinite;
-    }
-    @keyframes drift{
-      from{transform:translate3d(0,0,0)}
-      to{transform:translate3d(-120px, 80px,0)}
+      z-index:6;
     }
 
     a{color:inherit}
@@ -87,6 +94,8 @@
       max-width: 1120px;
       margin: 0 auto;
       padding: 26px 16px 70px;
+      position:relative;
+      z-index:30;            /* content above background layers */
     }
 
     /* Unified topbar */
@@ -167,11 +176,13 @@
       box-shadow: 0 12px 26px rgba(0,0,0,.30);
       font-size:12px;
       user-select:none;
+      text-decoration:none;
     }
     .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(52,211,153,.12)}
     .dot.warn{background:var(--warn);box-shadow:0 0 0 4px rgba(251,191,36,.12)}
     .dot.bad{background:var(--bad);box-shadow:0 0 0 4px rgba(251,113,133,.12)}
     .mono{font-family:var(--mono)}
+    .muted{color: var(--muted)}
 
     /* Cinematic panels */
     .panel{
@@ -359,7 +370,6 @@
     .risk{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(52,211,153,.10)}
     .risk.warn{background:var(--warn);box-shadow:0 0 0 4px rgba(251,191,36,.10)}
     .risk.bad{background:var(--bad);box-shadow:0 0 0 4px rgba(251,113,133,.10)}
-    .muted{color: var(--muted)}
     .nowrap{white-space:nowrap}
     .right{text-align:right}
 
@@ -406,8 +416,9 @@
 </head>
 
 <body>
-  <div class="wrap">
+  <canvas id="apexParticles" aria-hidden="true"></canvas>
 
+  <div class="wrap">
     <div class="topbar">
       <div class="brand">
         <div class="sig" aria-hidden="true"></div>
@@ -498,14 +509,12 @@
       Data is sourced from publicly available releases and rendered as a signal board.<br/>
       Built on GitHub Pages • <a id="dataLink" href="./docs/signals.json">View raw signals.json</a>
     </div>
-
   </div>
 
 <script>
 (() => {
   const DATA_URL = "./docs/signals.json";
   const el = (id) => document.getElementById(id);
-
   const state = { raw: [], rows: [], sortKey: "start", sortDir: "desc" };
 
   function toDate(v){
@@ -748,5 +757,123 @@
   load().catch(showError);
 })();
 </script>
+
+<script>
+(() => {
+  const canvas = document.getElementById("apexParticles");
+  if(!canvas) return;
+
+  const ctx = canvas.getContext("2d", { alpha: true });
+  let W=0,H=0,DPR=1;
+  let particles=[];
+  let raf=0;
+
+  const css = getComputedStyle(document.documentElement);
+  const GOLD = (css.getPropertyValue("--gold").trim() || "#D6B35A");
+  const BLUE = (css.getPropertyValue("--blue").trim() || "#6AA8FF");
+
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce){
+    canvas.style.opacity = ".16";
+    return;
+  }
+
+  function rand(min,max){ return min + Math.random()*(max-min); }
+
+  const settings = { count: 86, speed: 0.22, linkDist: 150, starSize: 1.35, twinkle: 0.33 };
+
+  function resize(){
+    DPR = Math.min(2, window.devicePixelRatio || 1);
+    W = Math.floor(innerWidth);
+    H = Math.floor(innerHeight);
+    canvas.width = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+
+    const target = Math.max(52, Math.min(140, Math.floor((W*H)/16000)));
+    settings.count = target;
+    seed();
+  }
+
+  function seed(){
+    particles = [];
+    for(let i=0;i<settings.count;i++){
+      particles.push({
+        x: rand(0,W), y: rand(0,H),
+        vx: rand(-settings.speed, settings.speed),
+        vy: rand(-settings.speed, settings.speed),
+        r: rand(0.65, settings.starSize),
+        a: rand(0.25, 0.95),
+        hue: Math.random() < 0.62 ? "gold" : "blue",
+        phase: rand(0, Math.PI*2)
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    for(let i=0;i<particles.length;i++){
+      const p = particles[i];
+      for(let j=i+1;j<particles.length;j++){
+        const q = particles[j];
+        const dx = p.x-q.x, dy=p.y-q.y;
+        const d = Math.hypot(dx,dy);
+        if(d < settings.linkDist){
+          const t = 1 - (d/settings.linkDist);
+          ctx.globalAlpha = t*0.20;
+          ctx.lineWidth = 1;
+          ctx.strokeStyle = (p.hue==="gold" || q.hue==="gold")
+            ? "rgba(214,179,90,.55)"
+            : "rgba(106,168,255,.55)";
+          ctx.beginPath();
+          ctx.moveTo(p.x,p.y);
+          ctx.lineTo(q.x,q.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for(const p of particles){
+      p.phase += 0.02;
+      const tw = 1 + Math.sin(p.phase)*settings.twinkle;
+      const color = p.hue === "gold" ? GOLD : BLUE;
+
+      ctx.globalAlpha = Math.max(0.06, Math.min(1, p.a*0.9));
+      ctx.shadowBlur = 18;
+      ctx.shadowColor = color;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r*tw, 0, Math.PI*2);
+      ctx.fill();
+
+      ctx.shadowBlur = 0;
+      ctx.globalAlpha = Math.max(0.10, Math.min(1, p.a));
+      ctx.fillStyle = "rgba(255,255,255,.85)";
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, Math.max(0.6, p.r*0.52), 0, Math.PI*2);
+      ctx.fill();
+
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x < -20) p.x = W+20;
+      if(p.x > W+20) p.x = -20;
+      if(p.y < -20) p.y = H+20;
+      if(p.y > H+20) p.y = -20;
+    }
+
+    ctx.globalAlpha = 1;
+    raf = requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("resize", resize, {passive:true});
+  resize();
+  cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(draw);
+})();
+</script>
+
 </body>
 </html>
