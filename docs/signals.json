@@ -1,6 +1,6 @@
 {
-  "updated_utc": "2026-02-12T06:43:33Z",
-  "count": 2284,
+  "updated_utc": "2026-02-13T06:15:39Z",
+  "count": 2287,
   "signals": [
     {
       "risk": "MED",
@@ -140,7 +140,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Banning Order",
+      "type": "ER - Revocation of registration",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -148,7 +148,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Revocation of registration",
+      "type": "ER - Banning Order",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
