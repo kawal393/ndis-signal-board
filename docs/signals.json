@@ -1,6 +1,6 @@
 {
-  "updated_utc": "2026-02-15T06:10:01Z",
-  "count": 2287,
+  "updated_utc": "2026-02-16T06:45:59Z",
+  "count": 2282,
   "signals": [
     {
       "risk": "MED",
@@ -140,7 +140,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Banning Order",
+      "type": "ER - Revocation of registration",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -148,7 +148,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Revocation of registration",
+      "type": "ER - Banning Order",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -2043,14 +2043,6 @@
       "end": ""
     },
     {
-      "risk": "MED",
-      "type": "ER - Compliance notice",
-      "name": "Australian Instant Care Pty Ltd t/as AUSTRALIAN INSTANT CARE",
-      "state": "VIC",
-      "effective": "",
-      "end": ""
-    },
-    {
       "risk": "HIGH",
       "type": "ER - Banning Order",
       "name": "Australian Institute of Health & Management Pty Ltd",
@@ -2814,14 +2806,6 @@
       "risk": "MED",
       "type": "ER - Compliance notice",
       "name": "Brighter Days Australia Pty Ltd",
-      "state": "NSW",
-      "effective": "",
-      "end": ""
-    },
-    {
-      "risk": "MED",
-      "type": "ER - Compliance notice",
-      "name": "Brighter Days Community Care Pty Ltd t/as BRIGHTER DAYS COMMUNITY CARE",
       "state": "NSW",
       "effective": "",
       "end": ""
@@ -3999,6 +3983,22 @@
       "type": "ER - Compliance notice",
       "name": "Community Integrated Care Pty Ltd",
       "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Living Australia Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Living Care Pty Ltd",
+      "state": "QLD",
       "effective": "",
       "end": ""
     }
