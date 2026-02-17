@@ -1,6 +1,6 @@
 {
-  "updated_utc": "2026-02-16T06:45:59Z",
-  "count": 2282,
+  "updated_utc": "2026-02-17T06:13:12Z",
+  "count": 2309,
   "signals": [
     {
       "risk": "MED",
@@ -2115,6 +2115,14 @@
       "end": ""
     },
     {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Ayobami Okikiola OLAWUMI",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
       "risk": "MED",
       "type": "ER - Compliance notice",
       "name": "Ba Care Pty Ltd",
@@ -3547,6 +3555,14 @@
       "end": ""
     },
     {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Cheryl Lee Dawes",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
       "risk": "MED",
       "type": "ER - Compliance notice",
       "name": "Cheryle Anne Coppleman",
@@ -3983,22 +3999,6 @@
       "type": "ER - Compliance notice",
       "name": "Community Integrated Care Pty Ltd",
       "state": "VIC",
-      "effective": "",
-      "end": ""
-    },
-    {
-      "risk": "MED",
-      "type": "ER - Compliance notice",
-      "name": "Community Living Australia Ltd",
-      "state": "SA",
-      "effective": "",
-      "end": ""
-    },
-    {
-      "risk": "MED",
-      "type": "ER - Compliance notice",
-      "name": "Community Living Care Pty Ltd",
-      "state": "QLD",
       "effective": "",
       "end": ""
     }
