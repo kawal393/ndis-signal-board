@@ -1,6 +1,6 @@
 {
-  "updated_utc": "2026-03-02T04:57:29Z",
-  "count": 2318,
+  "updated_utc": "2026-03-03T04:55:30Z",
+  "count": 2320,
   "signals": [
     {
       "risk": "MED",
@@ -140,7 +140,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Revocation of registration",
+      "type": "ER - Banning Order",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -148,7 +148,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Banning Order",
+      "type": "ER - Revocation of registration",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -3652,14 +3652,6 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Banning Order",
-      "name": "Christine Coop",
-      "state": "QLD",
-      "effective": "",
-      "end": ""
-    },
-    {
-      "risk": "HIGH",
       "type": "ER - Revocation of registration",
       "name": "Christopher  Palmares Sy",
       "state": "NSW",
@@ -3999,6 +3991,14 @@
       "type": "ER - Compliance notice",
       "name": "Community Integrated Care Pty Ltd",
       "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Living Australia Ltd",
+      "state": "SA",
       "effective": "",
       "end": ""
     }
