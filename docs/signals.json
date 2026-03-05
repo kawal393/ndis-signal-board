@@ -1,6 +1,6 @@
 {
-  "updated_utc": "2026-03-04T04:49:36Z",
-  "count": 2320,
+  "updated_utc": "2026-03-05T04:53:16Z",
+  "count": 2306,
   "signals": [
     {
       "risk": "MED",
@@ -140,7 +140,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Banning Order",
+      "type": "ER - Revocation of registration",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -148,7 +148,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Revocation of registration",
+      "type": "ER - Banning Order",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -1293,14 +1293,6 @@
     {
       "risk": "HIGH",
       "type": "ER - Banning Order",
-      "name": "Amanda  Kathrine HOLT",
-      "state": "WA",
-      "effective": "",
-      "end": ""
-    },
-    {
-      "risk": "HIGH",
-      "type": "ER - Banning Order",
       "name": "Amanda Cranfield",
       "state": "TAS",
       "effective": "",
@@ -2111,14 +2103,6 @@
       "type": "ER - Compliance notice",
       "name": "AWANA DISABILITY SERVICES PTY LTD",
       "state": "WA",
-      "effective": "",
-      "end": ""
-    },
-    {
-      "risk": "HIGH",
-      "type": "ER - Banning Order",
-      "name": "Ayobami Okikiola OLAWUMI",
-      "state": "SA",
       "effective": "",
       "end": ""
     },
@@ -3555,26 +3539,10 @@
       "end": ""
     },
     {
-      "risk": "HIGH",
-      "type": "ER - Banning Order",
-      "name": "Cheryl Lee Dawes",
-      "state": "QLD",
-      "effective": "",
-      "end": ""
-    },
-    {
       "risk": "MED",
       "type": "ER - Compliance notice",
       "name": "Cheryle Anne Coppleman",
       "state": "TAS",
-      "effective": "",
-      "end": ""
-    },
-    {
-      "risk": "HIGH",
-      "type": "ER - Banning Order",
-      "name": "Chidiebele Emmanuel OLIAKU",
-      "state": "NSW",
       "effective": "",
       "end": ""
     },
@@ -3647,6 +3615,14 @@
       "type": "ER - Revocation of registration",
       "name": "CHRISBURN PTY LTD",
       "state": "NSW",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "Christine Coop",
+      "state": "QLD",
       "effective": "",
       "end": ""
     },
@@ -3999,6 +3975,30 @@
       "type": "ER - Compliance notice",
       "name": "Community Living Australia Ltd",
       "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Living Care Pty Ltd",
+      "state": "QLD",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Community Living SA Pty Ltd",
+      "state": "SA",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "MED",
+      "type": "ER - Compliance notice",
+      "name": "Compass Care Services Pty Ltd",
+      "state": "NSW",
       "effective": "",
       "end": ""
     }
