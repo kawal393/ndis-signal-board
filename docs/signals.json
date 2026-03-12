@@ -1,6 +1,6 @@
 {
-  "updated_utc": "2026-03-11T04:51:51Z",
-  "count": 2320,
+  "updated_utc": "2026-03-12T04:56:21Z",
+  "count": 2321,
   "signals": [
     {
       "risk": "MED",
@@ -140,7 +140,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Banning Order",
+      "type": "ER - Revocation of registration",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -148,7 +148,7 @@
     },
     {
       "risk": "HIGH",
-      "type": "ER - Revocation of registration",
+      "type": "ER - Banning Order",
       "name": "3ME Trading Pty Ltd",
       "state": "NSW",
       "effective": "",
@@ -2493,14 +2493,6 @@
     {
       "risk": "HIGH",
       "type": "ER - Banning Order",
-      "name": "Bikash Singh Shrestha",
-      "state": "QLD",
-      "effective": "",
-      "end": ""
-    },
-    {
-      "risk": "HIGH",
-      "type": "ER - Banning Order",
       "name": "Billie Jo Neale-Hamilton",
       "state": "SA",
       "effective": "",
@@ -3887,6 +3879,14 @@
       "type": "ER - Compliance notice",
       "name": "Collette May",
       "state": "VIC",
+      "effective": "",
+      "end": ""
+    },
+    {
+      "risk": "HIGH",
+      "type": "ER - Banning Order",
+      "name": "COLLINS, Sandra Marie",
+      "state": "QLD",
       "effective": "",
       "end": ""
     },
